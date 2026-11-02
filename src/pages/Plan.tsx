@@ -175,7 +175,7 @@ function PeopleGrid() {
         </label>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-fixed w-full border-collapse text-[12px]" style={{ minWidth: 170 + (past.length + FUTURE.length) * 54 }}>
+        <table className="table-fixed w-full border-collapse text-[12px]" style={{ minWidth: 170 + (past.length + FUTURE.length) * 51 }}>
           <thead>
             <tr className="border-y border-line">
               <th className={`eyebrow text-left px-3 py-2 w-[170px] border-r border-line ${STICKY_L}`}>Person</th>
