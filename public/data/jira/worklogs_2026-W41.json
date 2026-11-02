@@ -1,0 +1,1748 @@
+{
+ "exportedAt": "2026-10-12T07:15:00+01:00",
+ "weekStart": "2026-10-05",
+ "worklogs": [
+  {
+   "id": "10011",
+   "issueKey": "NOVA-104",
+   "projectKey": "NOVA",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 20700
+  },
+  {
+   "id": "10012",
+   "issueKey": "NOVA-105",
+   "projectKey": "NOVA",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 20700
+  },
+  {
+   "id": "10013",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 20700
+  },
+  {
+   "id": "10014",
+   "issueKey": "NOVA-107",
+   "projectKey": "NOVA",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 20700
+  },
+  {
+   "id": "10015",
+   "issueKey": "NOVA-100",
+   "projectKey": "NOVA",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 20700
+  },
+  {
+   "id": "10016",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10017",
+   "issueKey": "LDG-212",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10018",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10019",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10020",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10059",
+   "issueKey": "HELIX-142",
+   "projectKey": "HELIX",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10060",
+   "issueKey": "HELIX-138",
+   "projectKey": "HELIX",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10061",
+   "issueKey": "HELIX-139",
+   "projectKey": "HELIX",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10062",
+   "issueKey": "HELIX-141",
+   "projectKey": "HELIX",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10063",
+   "issueKey": "HELIX-142",
+   "projectKey": "HELIX",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 17100
+  },
+  {
+   "id": "10064",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10065",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10066",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10067",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10068",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10098",
+   "issueKey": "ORB-175",
+   "projectKey": "ORB",
+   "labels": [],
+   "author": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 23400
+  },
+  {
+   "id": "10099",
+   "issueKey": "ORB-174",
+   "projectKey": "ORB",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 23400
+  },
+  {
+   "id": "10100",
+   "issueKey": "ORB-174",
+   "projectKey": "ORB",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 23400
+  },
+  {
+   "id": "10101",
+   "issueKey": "ORB-175",
+   "projectKey": "ORB",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 23400
+  },
+  {
+   "id": "10102",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 21600
+  },
+  {
+   "id": "10127",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 16200
+  },
+  {
+   "id": "10128",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 16200
+  },
+  {
+   "id": "10129",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 16200
+  },
+  {
+   "id": "10130",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 16200
+  },
+  {
+   "id": "10131",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 16200
+  },
+  {
+   "id": "10132",
+   "issueKey": "LDG-211",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10133",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10134",
+   "issueKey": "LDG-212",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10135",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10136",
+   "issueKey": "LDG-212",
+   "projectKey": "LDG",
+   "labels": [
+    "BE"
+   ],
+   "author": {
+    "accountId": "712020:fed5bf41-8413-9ded-7785-3159fa2f37ed",
+    "displayName": "Fekete Máté"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10175",
+   "issueKey": "NOVA-106",
+   "projectKey": "NOVA",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10176",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10177",
+   "issueKey": "NOVA-106",
+   "projectKey": "NOVA",
+   "labels": [],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10178",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10179",
+   "issueKey": "NOVA-104",
+   "projectKey": "NOVA",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 18900
+  },
+  {
+   "id": "10180",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10181",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10182",
+   "issueKey": "ORB-175",
+   "projectKey": "ORB",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10183",
+   "issueKey": "ORB-177",
+   "projectKey": "ORB",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10184",
+   "issueKey": "ORB-178",
+   "projectKey": "ORB",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 13500
+  },
+  {
+   "id": "10223",
+   "issueKey": "HELIX-141",
+   "projectKey": "HELIX",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10224",
+   "issueKey": "HELIX-139",
+   "projectKey": "HELIX",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10225",
+   "issueKey": "HELIX-143",
+   "projectKey": "HELIX",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10226",
+   "issueKey": "HELIX-137",
+   "projectKey": "HELIX",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10227",
+   "issueKey": "HELIX-138",
+   "projectKey": "HELIX",
+   "labels": [],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10228",
+   "issueKey": "LDG-211",
+   "projectKey": "LDG",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10229",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10230",
+   "issueKey": "LDG-212",
+   "projectKey": "LDG",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10231",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10232",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "FE"
+   ],
+   "author": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10266",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "MOB"
+   ],
+   "author": {
+    "accountId": "712020:ff3d6163-8046-0e20-a224-1a6c161904fa",
+    "displayName": "Kiss Márton"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 18900
+  },
+  {
+   "id": "10267",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "MOB"
+   ],
+   "author": {
+    "accountId": "712020:ff3d6163-8046-0e20-a224-1a6c161904fa",
+    "displayName": "Kiss Márton"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 18900
+  },
+  {
+   "id": "10268",
+   "issueKey": "PLS-249",
+   "projectKey": "PLS",
+   "labels": [
+    "MOB"
+   ],
+   "author": {
+    "accountId": "712020:ff3d6163-8046-0e20-a224-1a6c161904fa",
+    "displayName": "Kiss Márton"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 18900
+  },
+  {
+   "id": "10269",
+   "issueKey": "PLS-249",
+   "projectKey": "PLS",
+   "labels": [
+    "MOB"
+   ],
+   "author": {
+    "accountId": "712020:ff3d6163-8046-0e20-a224-1a6c161904fa",
+    "displayName": "Kiss Márton"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 18900
+  },
+  {
+   "id": "10270",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "MOB"
+   ],
+   "author": {
+    "accountId": "712020:ff3d6163-8046-0e20-a224-1a6c161904fa",
+    "displayName": "Kiss Márton"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 18000
+  },
+  {
+   "id": "10300",
+   "issueKey": "NOVA-105",
+   "projectKey": "NOVA",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10301",
+   "issueKey": "NOVA-100",
+   "projectKey": "NOVA",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10302",
+   "issueKey": "NOVA-100",
+   "projectKey": "NOVA",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10303",
+   "issueKey": "NOVA-104",
+   "projectKey": "NOVA",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10304",
+   "issueKey": "NOVA-103",
+   "projectKey": "NOVA",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10305",
+   "issueKey": "HELIX-138",
+   "projectKey": "HELIX",
+   "labels": [],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10306",
+   "issueKey": "HELIX-143",
+   "projectKey": "HELIX",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10307",
+   "issueKey": "HELIX-137",
+   "projectKey": "HELIX",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10308",
+   "issueKey": "HELIX-143",
+   "projectKey": "HELIX",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 10800
+  },
+  {
+   "id": "10309",
+   "issueKey": "HELIX-141",
+   "projectKey": "HELIX",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 11700
+  },
+  {
+   "id": "10310",
+   "issueKey": "ORB-175",
+   "projectKey": "ORB",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10311",
+   "issueKey": "ORB-177",
+   "projectKey": "ORB",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10312",
+   "issueKey": "ORB-178",
+   "projectKey": "ORB",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10313",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10314",
+   "issueKey": "ORB-179",
+   "projectKey": "ORB",
+   "labels": [
+    "QA"
+   ],
+   "author": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10372",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10373",
+   "issueKey": "NOVA-100",
+   "projectKey": "NOVA",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10374",
+   "issueKey": "NOVA-105",
+   "projectKey": "NOVA",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10375",
+   "issueKey": "NOVA-106",
+   "projectKey": "NOVA",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10376",
+   "issueKey": "NOVA-108",
+   "projectKey": "NOVA",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10377",
+   "issueKey": "HELIX-142",
+   "projectKey": "HELIX",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10378",
+   "issueKey": "HELIX-143",
+   "projectKey": "HELIX",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10379",
+   "issueKey": "HELIX-142",
+   "projectKey": "HELIX",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10380",
+   "issueKey": "HELIX-138",
+   "projectKey": "HELIX",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10381",
+   "issueKey": "HELIX-138",
+   "projectKey": "HELIX",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10382",
+   "issueKey": "ORB-174",
+   "projectKey": "ORB",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10383",
+   "issueKey": "ORB-177",
+   "projectKey": "ORB",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10384",
+   "issueKey": "ORB-177",
+   "projectKey": "ORB",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10385",
+   "issueKey": "ORB-175",
+   "projectKey": "ORB",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10386",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "OPS"
+   ],
+   "author": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10444",
+   "issueKey": "NOVA-107",
+   "projectKey": "NOVA",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10445",
+   "issueKey": "NOVA-102",
+   "projectKey": "NOVA",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10446",
+   "issueKey": "NOVA-103",
+   "projectKey": "NOVA",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10447",
+   "issueKey": "NOVA-107",
+   "projectKey": "NOVA",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10448",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10449",
+   "issueKey": "LDG-211",
+   "projectKey": "LDG",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10450",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10451",
+   "issueKey": "LDG-213",
+   "projectKey": "LDG",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10452",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  },
+  {
+   "id": "10453",
+   "issueKey": "LDG-214",
+   "projectKey": "LDG",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 5400
+  },
+  {
+   "id": "10454",
+   "issueKey": "PLS-248",
+   "projectKey": "PLS",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10455",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10456",
+   "issueKey": "PLS-251",
+   "projectKey": "PLS",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10457",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10458",
+   "issueKey": "PLS-250",
+   "projectKey": "PLS",
+   "labels": [
+    "UX"
+   ],
+   "author": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 4500
+  },
+  {
+   "id": "10521",
+   "issueKey": "NOVA-109",
+   "projectKey": "NOVA",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10522",
+   "issueKey": "NOVA-101",
+   "projectKey": "NOVA",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10523",
+   "issueKey": "NOVA-107",
+   "projectKey": "NOVA",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10524",
+   "issueKey": "NOVA-103",
+   "projectKey": "NOVA",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10525",
+   "issueKey": "NOVA-104",
+   "projectKey": "NOVA",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 9000
+  },
+  {
+   "id": "10526",
+   "issueKey": "HELIX-137",
+   "projectKey": "HELIX",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10527",
+   "issueKey": "HELIX-139",
+   "projectKey": "HELIX",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10528",
+   "issueKey": "HELIX-142",
+   "projectKey": "HELIX",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10529",
+   "issueKey": "HELIX-137",
+   "projectKey": "HELIX",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10530",
+   "issueKey": "HELIX-141",
+   "projectKey": "HELIX",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 8100
+  },
+  {
+   "id": "10531",
+   "issueKey": "ORB-174",
+   "projectKey": "ORB",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10532",
+   "issueKey": "ORB-179",
+   "projectKey": "ORB",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10533",
+   "issueKey": "ORB-178",
+   "projectKey": "ORB",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10534",
+   "issueKey": "ORB-180",
+   "projectKey": "ORB",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 9900
+  },
+  {
+   "id": "10535",
+   "issueKey": "ORB-179",
+   "projectKey": "ORB",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 8100
+  },
+  {
+   "id": "10536",
+   "issueKey": "OPS-286",
+   "projectKey": "OPS",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-05T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10537",
+   "issueKey": "OPS-286",
+   "projectKey": "OPS",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-06T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10538",
+   "issueKey": "OPS-285",
+   "projectKey": "OPS",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-07T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10539",
+   "issueKey": "OPS-287",
+   "projectKey": "OPS",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-08T09:00:00.000+0200",
+   "timeSpentSeconds": 6300
+  },
+  {
+   "id": "10540",
+   "issueKey": "OPS-287",
+   "projectKey": "OPS",
+   "labels": [
+    "PM"
+   ],
+   "author": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "started": "2026-10-09T09:00:00.000+0200",
+   "timeSpentSeconds": 7200
+  }
+ ]
+}

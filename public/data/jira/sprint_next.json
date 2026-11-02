@@ -1,0 +1,345 @@
+{
+ "exportedAt": "2026-11-02T07:20:00+01:00",
+ "sprint": {
+  "id": "SPR-31",
+  "name": "SPR-31",
+  "startDate": "2026-11-02",
+  "endDate": "2026-11-13"
+ },
+ "issues": [
+  {
+   "key": "NOVA-401",
+   "projectKey": "NOVA",
+   "summary": "Login with device binding",
+   "assignee": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "timeoriginalestimate": 86400
+  },
+  {
+   "key": "NOVA-402",
+   "projectKey": "NOVA",
+   "summary": "Statement PDF export",
+   "assignee": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "timeoriginalestimate": 86400
+  },
+  {
+   "key": "NOVA-403",
+   "projectKey": "NOVA",
+   "summary": "Accessibility fixes on transfers",
+   "assignee": {
+    "accountId": "712020:91076163-10fb-fc26-f7fd-a154608eebcb",
+    "displayName": "Kovács Anna"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-404",
+   "projectKey": "NOVA",
+   "summary": "Push notification settings",
+   "assignee": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-405",
+   "projectKey": "NOVA",
+   "summary": "Payee validation",
+   "assignee": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-406",
+   "projectKey": "NOVA",
+   "summary": "Savings goal widget",
+   "assignee": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "ORB-447",
+   "projectKey": "ORB",
+   "summary": "Basket sync",
+   "assignee": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "ORB-448",
+   "projectKey": "ORB",
+   "summary": "Basket sync",
+   "assignee": {
+    "accountId": "712020:cbb3220a-f404-e629-fd43-2fab99334c58",
+    "displayName": "Nagy Eszter"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-407",
+   "projectKey": "NOVA",
+   "summary": "Payee validation",
+   "assignee": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-408",
+   "projectKey": "NOVA",
+   "summary": "Accessibility fixes on transfers",
+   "assignee": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "HELIX-424",
+   "projectKey": "HELIX",
+   "summary": "Adjuster dashboard filters",
+   "assignee": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "HELIX-425",
+   "projectKey": "HELIX",
+   "summary": "Audit log export",
+   "assignee": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "ORB-449",
+   "projectKey": "ORB",
+   "summary": "Basket sync",
+   "assignee": {
+    "accountId": "712020:e018377f-a3ec-12dd-86bd-af72c5d24472",
+    "displayName": "Molnár Petra"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-409",
+   "projectKey": "NOVA",
+   "summary": "Regression pack update",
+   "assignee": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "timeoriginalestimate": 28800
+  },
+  {
+   "key": "NOVA-410",
+   "projectKey": "NOVA",
+   "summary": "Account overview: transaction filter",
+   "assignee": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "timeoriginalestimate": 28800
+  },
+  {
+   "key": "HELIX-426",
+   "projectKey": "HELIX",
+   "summary": "Fraud flag rules",
+   "assignee": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "ORB-450",
+   "projectKey": "ORB",
+   "summary": "Payment retry",
+   "assignee": {
+    "accountId": "712020:8ae29e40-fa30-fda5-00f8-74c0051d4ed7",
+    "displayName": "Farkas Zoltán"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "NOVA-411",
+   "projectKey": "NOVA",
+   "summary": "Card freeze flow",
+   "assignee": {
+    "accountId": "712020:5bfdb197-ef1d-9138-8b82-6e0111dd7c61",
+    "displayName": "Balogh Réka"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "NOVA-412",
+   "projectKey": "NOVA",
+   "summary": "Savings goal widget",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "NOVA-413",
+   "projectKey": "NOVA",
+   "summary": "Account overview: transaction filter",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "HELIX-427",
+   "projectKey": "HELIX",
+   "summary": "Claim status e-mails",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "HELIX-428",
+   "projectKey": "HELIX",
+   "summary": "Fraud flag rules",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "ORB-451",
+   "projectKey": "ORB",
+   "summary": "Promo code rules",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "ORB-452",
+   "projectKey": "ORB",
+   "summary": "Promo code rules",
+   "assignee": {
+    "accountId": "712020:d8a87a34-a101-b894-c327-f95699b21b8a",
+    "displayName": "Papp Kinga"
+   },
+   "timeoriginalestimate": 43200
+  },
+  {
+   "key": "HELIX-429",
+   "projectKey": "HELIX",
+   "summary": "Claim status e-mails",
+   "assignee": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "HELIX-430",
+   "projectKey": "HELIX",
+   "summary": "Fraud flag rules",
+   "assignee": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "timeoriginalestimate": 86400
+  },
+  {
+   "key": "HELIX-431",
+   "projectKey": "HELIX",
+   "summary": "Document upload limits",
+   "assignee": {
+    "accountId": "712020:a414dc40-28cf-1f22-6a25-c3270b71401c",
+    "displayName": "Tóth Bence"
+   },
+   "timeoriginalestimate": null
+  },
+  {
+   "key": "HELIX-432",
+   "projectKey": "HELIX",
+   "summary": "Claim status e-mails",
+   "assignee": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "HELIX-433",
+   "projectKey": "HELIX",
+   "summary": "Claim intake form validation",
+   "assignee": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "timeoriginalestimate": 57600
+  },
+  {
+   "key": "HELIX-434",
+   "projectKey": "HELIX",
+   "summary": "Adjuster dashboard filters",
+   "assignee": {
+    "accountId": "712020:97a97a7a-52ee-cd43-3302-abe48bdb3938",
+    "displayName": "Varga Gergő"
+   },
+   "timeoriginalestimate": 28800
+  },
+  {
+   "key": "ORB-453",
+   "projectKey": "ORB",
+   "summary": "Promo code rules",
+   "assignee": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "timeoriginalestimate": 115200
+  },
+  {
+   "key": "ORB-454",
+   "projectKey": "ORB",
+   "summary": "Promo code rules",
+   "assignee": {
+    "accountId": "712020:d6c2640d-a654-33f4-c51a-67bfefbca812",
+    "displayName": "Szabó Dóra"
+   },
+   "timeoriginalestimate": 115200
+  },
+  {
+   "key": "NOVA-414",
+   "projectKey": "NOVA",
+   "summary": "Accessibility fixes on transfers",
+   "assignee": null,
+   "timeoriginalestimate": 28800
+  },
+  {
+   "key": "NOVA-415",
+   "projectKey": "NOVA",
+   "summary": "Push notification settings",
+   "assignee": null,
+   "timeoriginalestimate": 14400
+  }
+ ]
+}

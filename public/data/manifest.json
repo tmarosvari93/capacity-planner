@@ -1,0 +1,58 @@
+{
+ "files": [
+  {
+   "path": "hr/people.csv",
+   "source": "HR",
+   "kind": "people",
+   "exportedAt": "2026-11-02T06:45:00+01:00"
+  },
+  {
+   "path": "hr/absences.csv",
+   "source": "HR",
+   "kind": "absences",
+   "exportedAt": "2026-11-02T06:45:00+01:00"
+  },
+  {
+   "path": "jira/worklogs_2026-W40.json",
+   "source": "Jira",
+   "kind": "worklogs",
+   "exportedAt": "2026-10-05T07:15:00+01:00"
+  },
+  {
+   "path": "jira/worklogs_2026-W41.json",
+   "source": "Jira",
+   "kind": "worklogs",
+   "exportedAt": "2026-10-12T07:15:00+01:00"
+  },
+  {
+   "path": "jira/worklogs_2026-W42.json",
+   "source": "Jira",
+   "kind": "worklogs",
+   "exportedAt": "2026-10-19T07:15:00+01:00"
+  },
+  {
+   "path": "jira/worklogs_2026-W43.json",
+   "source": "Jira",
+   "kind": "worklogs",
+   "exportedAt": "2026-10-26T07:15:00+01:00"
+  },
+  {
+   "path": "jira/worklogs_2026-W44.json",
+   "source": "Jira",
+   "kind": "worklogs",
+   "exportedAt": "2026-11-02T07:15:00+01:00"
+  },
+  {
+   "path": "jira/sprint_next.json",
+   "source": "Jira",
+   "kind": "sprint",
+   "exportedAt": "2026-11-02T07:20:00+01:00"
+  },
+  {
+   "path": "app/seed.json",
+   "source": "App",
+   "kind": "seed",
+   "exportedAt": "2026-11-02T08:00:00+01:00"
+  }
+ ]
+}

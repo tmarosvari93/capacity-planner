@@ -1,0 +1,4675 @@
+{
+ "meta": {
+  "generatedBy": "scripts/generate_sample_data.py",
+  "seed": 20261102,
+  "today": "2026-11-02",
+  "window": {
+   "past": [
+    "2026-09-28",
+    "2026-10-26"
+   ],
+   "future": [
+    "2026-11-02",
+    "2027-01-18"
+   ]
+  },
+  "rounding": "hours and FTE to 2 decimals, percentages to 1 decimal; tests compare with ±0.01 / ±0.1",
+  "scenarios": {
+   "baseline": null,
+   "pairAligned": {
+    "projects": {
+     "P-1": {
+      "on": true,
+      "startShiftWeeks": 0
+     },
+     "P-2": {
+      "on": true,
+      "startShiftWeeks": 0
+     }
+    },
+    "alignStarts": true
+   },
+   "pairUnaligned": {
+    "projects": {
+     "P-1": {
+      "on": true,
+      "startShiftWeeks": 0
+     },
+     "P-2": {
+      "on": true,
+      "startShiftWeeks": 0
+     }
+    }
+   },
+   "nova2": {
+    "projects": {
+     "P-4": {
+      "on": true,
+      "startShiftWeeks": 0
+     }
+    }
+   }
+  },
+  "rowsRead": {
+   "hr/people.csv": 13,
+   "hr/absences.csv": 5,
+   "jira/worklogs_2026-W40.json": 125,
+   "jira/worklogs_2026-W41.json": 125,
+   "jira/worklogs_2026-W42.json": 121,
+   "jira/worklogs_2026-W43.json": 102,
+   "jira/worklogs_2026-W44.json": 132,
+   "jira/sprint_next.json": 34
+  }
+ },
+ "calendar": [
+  {
+   "weekStart": "2026-09-28",
+   "isoWeek": "2026-W40",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "actual"
+  },
+  {
+   "weekStart": "2026-10-05",
+   "isoWeek": "2026-W41",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "actual"
+  },
+  {
+   "weekStart": "2026-10-12",
+   "isoWeek": "2026-W42",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "actual"
+  },
+  {
+   "weekStart": "2026-10-19",
+   "isoWeek": "2026-W43",
+   "workingDays": 4,
+   "fteHours": 32.0,
+   "phase": "actual"
+  },
+  {
+   "weekStart": "2026-10-26",
+   "isoWeek": "2026-W44",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "actual"
+  },
+  {
+   "weekStart": "2026-11-02",
+   "isoWeek": "2026-W45",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-11-09",
+   "isoWeek": "2026-W46",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-11-16",
+   "isoWeek": "2026-W47",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-11-23",
+   "isoWeek": "2026-W48",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-11-30",
+   "isoWeek": "2026-W49",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-12-07",
+   "isoWeek": "2026-W50",
+   "workingDays": 6,
+   "fteHours": 48.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-12-14",
+   "isoWeek": "2026-W51",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-12-21",
+   "isoWeek": "2026-W52",
+   "workingDays": 3,
+   "fteHours": 24.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2026-12-28",
+   "isoWeek": "2026-W53",
+   "workingDays": 4,
+   "fteHours": 32.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2027-01-04",
+   "isoWeek": "2027-W01",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2027-01-11",
+   "isoWeek": "2027-W02",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  },
+  {
+   "weekStart": "2027-01-18",
+   "isoWeek": "2027-W03",
+   "workingDays": 5,
+   "fteHours": 40.0,
+   "phase": "plan"
+  }
+ ],
+ "people": [
+  {
+   "email": "anna.kovacs@agency.example",
+   "name": "Kovács Anna",
+   "weeklyHours": 40.0,
+   "start": "2021-03-01",
+   "end": null,
+   "mainStack": "Java",
+   "stacks": [
+    "Java",
+    "DevOps"
+   ]
+  },
+  {
+   "email": "bence.toth@agency.example",
+   "name": "Tóth Bence",
+   "weeklyHours": 40.0,
+   "start": "2022-09-05",
+   "end": null,
+   "mainStack": "Java",
+   "stacks": [
+    "Java",
+    "Node.js"
+   ]
+  },
+  {
+   "email": "dora.szabo@agency.example",
+   "name": "Szabó Dóra",
+   "weeklyHours": 32.0,
+   "start": "2025-09-01",
+   "end": "2027-01-31",
+   "mainStack": ".NET",
+   "stacks": [
+    ".NET",
+    "Java"
+   ]
+  },
+  {
+   "email": "mate.fekete@agency.example",
+   "name": "Fekete Máté",
+   "weeklyHours": 40.0,
+   "start": "2023-02-13",
+   "end": null,
+   "mainStack": "Node.js",
+   "stacks": [
+    "Node.js",
+    "React"
+   ]
+  },
+  {
+   "email": "eszter.nagy@agency.example",
+   "name": "Nagy Eszter",
+   "weeklyHours": 40.0,
+   "start": "2020-06-01",
+   "end": null,
+   "mainStack": "React",
+   "stacks": [
+    "React",
+    "UX/UI"
+   ]
+  },
+  {
+   "email": "lili.horvath@agency.example",
+   "name": "Horváth Lili",
+   "weeklyHours": 40.0,
+   "start": "2026-11-16",
+   "end": null,
+   "mainStack": "React",
+   "stacks": [
+    "React"
+   ]
+  },
+  {
+   "email": "gergo.varga@agency.example",
+   "name": "Varga Gergő",
+   "weeklyHours": 40.0,
+   "start": "2024-01-08",
+   "end": null,
+   "mainStack": "Angular",
+   "stacks": [
+    "Angular",
+    "React"
+   ]
+  },
+  {
+   "email": "marton.kiss@agency.example",
+   "name": "Kiss Márton",
+   "weeklyHours": 40.0,
+   "start": "2022-04-04",
+   "end": null,
+   "mainStack": "Flutter",
+   "stacks": [
+    "Flutter",
+    "Native"
+   ]
+  },
+  {
+   "email": "petra.molnar@agency.example",
+   "name": "Molnár Petra",
+   "weeklyHours": 40.0,
+   "start": "2023-10-02",
+   "end": null,
+   "mainStack": "QA",
+   "stacks": [
+    "QA"
+   ]
+  },
+  {
+   "email": "zoltan.farkas@agency.example",
+   "name": "Farkas Zoltán",
+   "weeklyHours": 20.0,
+   "start": "2024-05-06",
+   "end": null,
+   "mainStack": "DevOps",
+   "stacks": [
+    "DevOps",
+    "Java"
+   ]
+  },
+  {
+   "email": "reka.balogh@agency.example",
+   "name": "Balogh Réka",
+   "weeklyHours": 40.0,
+   "start": "2021-11-15",
+   "end": null,
+   "mainStack": "UX/UI",
+   "stacks": [
+    "UX/UI",
+    "React"
+   ]
+  },
+  {
+   "email": "kinga.papp@agency.example",
+   "name": "Papp Kinga",
+   "weeklyHours": 40.0,
+   "start": "2020-02-03",
+   "end": null,
+   "mainStack": "Delivery",
+   "stacks": [
+    "Delivery",
+    "QA"
+   ]
+  }
+ ],
+ "matrices": {
+  "availableHours": {
+   "anna.kovacs@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    0.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "bence.toth@agency.example": [
+    40.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "dora.szabo@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    38.4,
+    32.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ],
+   "mate.fekete@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "eszter.nagy@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    0.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "lili.horvath@agency.example": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "gergo.varga@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    24.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "marton.kiss@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "petra.molnar@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    16.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "zoltan.farkas@agency.example": [
+    20.0,
+    20.0,
+    20.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    24.0,
+    20.0,
+    12.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0
+   ],
+   "reka.balogh@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "kinga.papp@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ]
+  },
+  "plannedHoursBaseline": {
+   "anna.kovacs@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "bence.toth@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    28.0,
+    28.0,
+    32.0,
+    32.0,
+    32.0,
+    38.4,
+    8.0,
+    4.8,
+    6.4,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "dora.szabo@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    32.0,
+    36.0,
+    36.0,
+    36.0,
+    36.0,
+    43.2,
+    36.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ],
+   "mate.fekete@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    38.4,
+    32.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ],
+   "eszter.nagy@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "lili.horvath@agency.example": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    16.0,
+    16.0,
+    16.0,
+    19.2,
+    16.0,
+    9.6,
+    12.8,
+    16.0,
+    16.0,
+    16.0
+   ],
+   "gergo.varga@agency.example": [
+    24.0,
+    24.0,
+    24.0,
+    19.2,
+    24.0,
+    28.0,
+    28.0,
+    24.0,
+    24.0,
+    24.0,
+    28.8,
+    8.0,
+    4.8,
+    6.4,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "marton.kiss@agency.example": [
+    20.0,
+    20.0,
+    20.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    24.0,
+    20.0,
+    12.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0
+   ],
+   "petra.molnar@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    24.0,
+    14.4,
+    19.2,
+    24.0,
+    24.0,
+    24.0
+   ],
+   "zoltan.farkas@agency.example": [
+    20.0,
+    20.0,
+    20.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    24.0,
+    14.0,
+    8.4,
+    11.2,
+    14.0,
+    14.0,
+    14.0
+   ],
+   "reka.balogh@agency.example": [
+    28.0,
+    28.0,
+    28.0,
+    22.4,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    33.6,
+    28.0,
+    16.8,
+    22.4,
+    28.0,
+    28.0,
+    28.0
+   ],
+   "kinga.papp@agency.example": [
+    44.0,
+    44.0,
+    44.0,
+    35.2,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    52.8,
+    32.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ]
+  },
+  "plannedHoursPairAligned": {
+   "anna.kovacs@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    60.0,
+    72.0,
+    60.0,
+    36.0,
+    48.0,
+    60.0,
+    60.0,
+    60.0
+   ],
+   "bence.toth@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    28.0,
+    28.0,
+    32.0,
+    32.0,
+    32.0,
+    38.4,
+    8.0,
+    4.8,
+    6.4,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "dora.szabo@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    32.0,
+    36.0,
+    36.0,
+    36.0,
+    36.0,
+    43.2,
+    36.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ],
+   "mate.fekete@agency.example": [
+    32.0,
+    32.0,
+    32.0,
+    25.6,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    32.0,
+    38.4,
+    32.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ],
+   "eszter.nagy@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    40.0,
+    24.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0
+   ],
+   "lili.horvath@agency.example": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    16.0,
+    16.0,
+    16.0,
+    19.2,
+    16.0,
+    9.6,
+    12.8,
+    16.0,
+    16.0,
+    16.0
+   ],
+   "gergo.varga@agency.example": [
+    24.0,
+    24.0,
+    24.0,
+    19.2,
+    24.0,
+    28.0,
+    28.0,
+    24.0,
+    24.0,
+    24.0,
+    28.8,
+    8.0,
+    4.8,
+    6.4,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "marton.kiss@agency.example": [
+    20.0,
+    20.0,
+    20.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    60.0,
+    72.0,
+    60.0,
+    36.0,
+    48.0,
+    60.0,
+    60.0,
+    60.0
+   ],
+   "petra.molnar@agency.example": [
+    40.0,
+    40.0,
+    40.0,
+    32.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    48.0,
+    24.0,
+    14.4,
+    19.2,
+    24.0,
+    24.0,
+    24.0
+   ],
+   "zoltan.farkas@agency.example": [
+    20.0,
+    20.0,
+    20.0,
+    16.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    24.0,
+    14.0,
+    8.4,
+    11.2,
+    14.0,
+    14.0,
+    14.0
+   ],
+   "reka.balogh@agency.example": [
+    28.0,
+    28.0,
+    28.0,
+    22.4,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    33.6,
+    28.0,
+    16.8,
+    22.4,
+    28.0,
+    28.0,
+    28.0
+   ],
+   "kinga.papp@agency.example": [
+    44.0,
+    44.0,
+    44.0,
+    35.2,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    44.0,
+    52.8,
+    32.0,
+    19.2,
+    25.6,
+    32.0,
+    32.0,
+    32.0
+   ]
+  },
+  "actualHours": {
+   "anna.kovacs@agency.example": [
+    42.0,
+    36.0,
+    40.0,
+    38.0,
+    38.0
+   ],
+   "bence.toth@agency.example": [
+    32.0,
+    33.0,
+    23.0,
+    28.5,
+    27.0
+   ],
+   "dora.szabo@agency.example": [
+    30.0,
+    32.0,
+    26.0,
+    25.5,
+    33.0
+   ],
+   "mate.fekete@agency.example": [
+    35.0,
+    30.0,
+    32.0,
+    26.5,
+    34.0
+   ],
+   "eszter.nagy@agency.example": [
+    44.0,
+    42.0,
+    40.0,
+    31.0,
+    43.0
+   ],
+   "lili.horvath@agency.example": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "gergo.varga@agency.example": [
+    21.0,
+    24.0,
+    26.0,
+    17.25,
+    24.0
+   ],
+   "marton.kiss@agency.example": [
+    28.0,
+    26.0,
+    30.0,
+    20.0,
+    27.0
+   ],
+   "petra.molnar@agency.example": [
+    40.0,
+    38.0,
+    41.0,
+    32.0,
+    36.0
+   ],
+   "zoltan.farkas@agency.example": [
+    21.0,
+    22.0,
+    20.0,
+    17.0,
+    19.0
+   ],
+   "reka.balogh@agency.example": [
+    24.0,
+    22.0,
+    26.0,
+    19.5,
+    23.0
+   ],
+   "kinga.papp@agency.example": [
+    46.0,
+    49.0,
+    47.0,
+    36.25,
+    48.0
+   ]
+  },
+  "planSource": {
+   "anna.kovacs@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "INT-LEDGERLY": "seed"
+    }
+   ],
+   "bence.toth@agency.example": [
+    {
+     "PRJ-HELIX": "sprint",
+     "INT-PULSE": "seed"
+    },
+    {
+     "PRJ-HELIX": "sprint",
+     "INT-PULSE": "seed"
+    },
+    {
+     "PRJ-HELIX": "seed",
+     "INT-PULSE": "seed"
+    }
+   ],
+   "dora.szabo@agency.example": [
+    {
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-ORBIT": "manual"
+    },
+    {
+     "PRJ-ORBIT": "manual"
+    }
+   ],
+   "mate.fekete@agency.example": [
+    {
+     "INT-PULSE": "seed",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "INT-PULSE": "seed",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "INT-PULSE": "seed",
+     "INT-LEDGERLY": "seed"
+    }
+   ],
+   "eszter.nagy@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "PRJ-ORBIT": "seed"
+    }
+   ],
+   "lili.horvath@agency.example": [
+    {},
+    {},
+    {
+     "INT-LEDGERLY": "seed"
+    }
+   ],
+   "gergo.varga@agency.example": [
+    {
+     "PRJ-HELIX": "sprint",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "PRJ-HELIX": "sprint",
+     "INT-LEDGERLY": "seed"
+    },
+    {
+     "PRJ-HELIX": "seed",
+     "INT-LEDGERLY": "seed"
+    }
+   ],
+   "marton.kiss@agency.example": [
+    {
+     "INT-PULSE": "seed"
+    },
+    {
+     "INT-PULSE": "seed"
+    },
+    {
+     "INT-PULSE": "seed"
+    }
+   ],
+   "petra.molnar@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "PRJ-HELIX": "seed",
+     "PRJ-ORBIT": "seed"
+    }
+   ],
+   "zoltan.farkas@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "PRJ-HELIX": "seed",
+     "PRJ-ORBIT": "seed"
+    }
+   ],
+   "reka.balogh@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "INT-LEDGERLY": "seed",
+     "INT-PULSE": "seed"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "INT-LEDGERLY": "seed",
+     "INT-PULSE": "seed"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "INT-LEDGERLY": "seed",
+     "INT-PULSE": "seed"
+    }
+   ],
+   "kinga.papp@agency.example": [
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint",
+     "INT-OPS": "seed"
+    },
+    {
+     "PRJ-NOVA": "sprint",
+     "PRJ-HELIX": "sprint",
+     "PRJ-ORBIT": "sprint",
+     "INT-OPS": "seed"
+    },
+    {
+     "PRJ-NOVA": "seed",
+     "PRJ-HELIX": "seed",
+     "PRJ-ORBIT": "seed",
+     "INT-OPS": "seed"
+    }
+   ]
+  }
+ },
+ "questions": {
+  "q1_whoIsAvailableIn4Weeks": {
+   "function": "freeCapacity",
+   "baseline": {
+    "args": {
+     "week": "2026-11-30"
+    },
+    "result": {
+     "week": "2026-11-30",
+     "workingDays": 5,
+     "people": [
+      {
+       "email": "lili.horvath@agency.example",
+       "name": "Horváth Lili",
+       "mainStack": "React",
+       "freeHours": 24.0,
+       "freeFte": 0.6,
+       "availableHours": 40.0,
+       "plannedHours": 16.0
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "mainStack": "Flutter",
+       "freeHours": 20.0,
+       "freeFte": 0.5,
+       "availableHours": 40.0,
+       "plannedHours": 20.0
+      },
+      {
+       "email": "gergo.varga@agency.example",
+       "name": "Varga Gergő",
+       "mainStack": "Angular",
+       "freeHours": 16.0,
+       "freeFte": 0.4,
+       "availableHours": 40.0,
+       "plannedHours": 24.0
+      },
+      {
+       "email": "reka.balogh@agency.example",
+       "name": "Balogh Réka",
+       "mainStack": "UX/UI",
+       "freeHours": 12.0,
+       "freeFte": 0.3,
+       "availableHours": 40.0,
+       "plannedHours": 28.0
+      },
+      {
+       "email": "mate.fekete@agency.example",
+       "name": "Fekete Máté",
+       "mainStack": "Node.js",
+       "freeHours": 8.0,
+       "freeFte": 0.2,
+       "availableHours": 40.0,
+       "plannedHours": 32.0
+      },
+      {
+       "email": "bence.toth@agency.example",
+       "name": "Tóth Bence",
+       "mainStack": "Java",
+       "freeHours": 8.0,
+       "freeFte": 0.2,
+       "availableHours": 40.0,
+       "plannedHours": 32.0
+      }
+     ],
+     "totalFreeHours": 88.0
+    }
+   },
+   "pairAligned": {
+    "args": {
+     "week": "2026-11-30",
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      },
+      "alignStarts": true
+     }
+    },
+    "result": {
+     "week": "2026-11-30",
+     "workingDays": 5,
+     "people": [
+      {
+       "email": "lili.horvath@agency.example",
+       "name": "Horváth Lili",
+       "mainStack": "React",
+       "freeHours": 24.0,
+       "freeFte": 0.6,
+       "availableHours": 40.0,
+       "plannedHours": 16.0
+      },
+      {
+       "email": "gergo.varga@agency.example",
+       "name": "Varga Gergő",
+       "mainStack": "Angular",
+       "freeHours": 16.0,
+       "freeFte": 0.4,
+       "availableHours": 40.0,
+       "plannedHours": 24.0
+      },
+      {
+       "email": "reka.balogh@agency.example",
+       "name": "Balogh Réka",
+       "mainStack": "UX/UI",
+       "freeHours": 12.0,
+       "freeFte": 0.3,
+       "availableHours": 40.0,
+       "plannedHours": 28.0
+      },
+      {
+       "email": "mate.fekete@agency.example",
+       "name": "Fekete Máté",
+       "mainStack": "Node.js",
+       "freeHours": 8.0,
+       "freeFte": 0.2,
+       "availableHours": 40.0,
+       "plannedHours": 32.0
+      },
+      {
+       "email": "bence.toth@agency.example",
+       "name": "Tóth Bence",
+       "mainStack": "Java",
+       "freeHours": 8.0,
+       "freeFte": 0.2,
+       "availableHours": 40.0,
+       "plannedHours": 32.0
+      }
+     ],
+     "totalFreeHours": 68.0
+    }
+   }
+  },
+  "q2_twoPipelineProjectsAtOnce": {
+   "function": "scenarioImpact",
+   "pairAligned": {
+    "args": {
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      },
+      "alignStarts": true
+     }
+    },
+    "result": {
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      },
+      "alignStarts": true
+     },
+     "resolvedStarts": {
+      "P-1": "2026-11-30",
+      "P-2": "2026-11-30"
+     },
+     "newlyOver": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakPct": 150.0
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakPct": 150.0
+      }
+     ],
+     "stackChanges": [
+      {
+       "stack": "Java",
+       "change": "larger",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 1.3,
+       "baselinePeakFte": 0.3
+      },
+      {
+       "stack": "Node.js",
+       "change": "new",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.3,
+       "baselinePeakFte": 0
+      },
+      {
+       "stack": "React",
+       "change": "new",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.4,
+       "baselinePeakFte": 0
+      },
+      {
+       "stack": "QA",
+       "change": "larger",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.75,
+       "baselinePeakFte": 0.25
+      },
+      {
+       "stack": "UX/UI",
+       "change": "new",
+       "firstWeek": "2026-11-30",
+       "weeks": 4,
+       "peakFte": 0.2,
+       "baselinePeakFte": 0
+      }
+     ]
+    }
+   },
+   "pairUnaligned": {
+    "args": {
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      }
+     }
+    },
+    "result": {
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      }
+     },
+     "resolvedStarts": {
+      "P-1": "2026-11-30",
+      "P-2": "2026-12-07"
+     },
+     "newlyOver": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakPct": 150.0
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "firstWeek": "2026-12-07",
+       "weeks": 7,
+       "peakPct": 150.0
+      }
+     ],
+     "stackChanges": [
+      {
+       "stack": "Java",
+       "change": "larger",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 1.3,
+       "baselinePeakFte": 0.3
+      },
+      {
+       "stack": "Node.js",
+       "change": "new",
+       "firstWeek": "2026-12-07",
+       "weeks": 7,
+       "peakFte": 0.3,
+       "baselinePeakFte": 0
+      },
+      {
+       "stack": "React",
+       "change": "new",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.4,
+       "baselinePeakFte": 0
+      },
+      {
+       "stack": "QA",
+       "change": "larger",
+       "firstWeek": "2026-12-07",
+       "weeks": 7,
+       "peakFte": 0.75,
+       "baselinePeakFte": 0.25
+      },
+      {
+       "stack": "UX/UI",
+       "change": "new",
+       "firstWeek": "2026-11-30",
+       "weeks": 4,
+       "peakFte": 0.2,
+       "baselinePeakFte": 0
+      }
+     ]
+    }
+   }
+  },
+  "q3_skillShortage": {
+   "function": "skillGap",
+   "baseline": {
+    "args": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2027-01-18"
+    },
+    "result": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2027-01-18",
+     "shortages": [
+      {
+       "stack": "Java",
+       "firstWeek": "2026-11-30",
+       "weeks": 2,
+       "peakFte": 0.3,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07"
+       ]
+      },
+      {
+       "stack": "QA",
+       "firstWeek": "2026-12-28",
+       "weeks": 1,
+       "peakFte": 0.25,
+       "shortWeeks": [
+        "2026-12-28"
+       ]
+      }
+     ],
+     "spare": [
+      {
+       "stack": "Java",
+       "weeks": 8,
+       "maxSpareFte": 0.3
+      },
+      {
+       "stack": "Node.js",
+       "weeks": 12,
+       "maxSpareFte": 0.2
+      },
+      {
+       "stack": "React",
+       "weeks": 10,
+       "maxSpareFte": 0.6
+      },
+      {
+       "stack": "Angular",
+       "weeks": 11,
+       "maxSpareFte": 0.8
+      },
+      {
+       "stack": "Flutter",
+       "weeks": 12,
+       "maxSpareFte": 0.5
+      },
+      {
+       "stack": "UX/UI",
+       "weeks": 12,
+       "maxSpareFte": 0.3
+      },
+      {
+       "stack": "Delivery",
+       "weeks": 6,
+       "maxSpareFte": 0.2
+      }
+     ],
+     "matrix": {
+      "Java": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.15,
+        "balanceFte": 0.15
+       },
+       "2026-11-09": {
+        "supplyFte": 0.3,
+        "demandFte": 0.15,
+        "balanceFte": 0.15
+       },
+       "2026-11-16": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-23": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-30": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-07": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-14": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       },
+       "2026-12-21": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       },
+       "2026-12-28": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       },
+       "2027-01-04": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       },
+       "2027-01-11": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       },
+       "2027-01-18": {
+        "supplyFte": 0.8,
+        "demandFte": 0.5,
+        "balanceFte": 0.3
+       }
+      },
+      ".NET": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-21": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-04": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-11": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-18": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       }
+      },
+      "Node.js": {
+       "2026-11-02": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-09": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-16": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-23": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-30": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-07": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-14": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-21": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-28": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-04": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-11": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-18": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       }
+      },
+      "React": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-11-23": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-11-30": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-12-07": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-12-14": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-12-21": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-12-28": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2027-01-04": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2027-01-11": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2027-01-18": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       }
+      },
+      "Angular": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-11-23": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-11-30": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-12-07": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-12-14": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2026-12-21": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2026-12-28": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-04": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-11": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-18": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       }
+      },
+      "Flutter": {
+       "2026-11-02": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-09": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-16": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-23": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-30": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-12-07": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-12-14": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-12-21": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-12-28": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2027-01-04": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2027-01-11": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2027-01-18": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       }
+      },
+      "Native": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-21": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-04": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-11": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-18": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       }
+      },
+      "QA": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.4,
+        "demandFte": 0.25,
+        "balanceFte": 0.15
+       },
+       "2026-12-21": {
+        "supplyFte": 0.4,
+        "demandFte": 0.25,
+        "balanceFte": 0.15
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.25,
+        "balanceFte": -0.25
+       },
+       "2027-01-04": {
+        "supplyFte": 0.4,
+        "demandFte": 0.25,
+        "balanceFte": 0.15
+       },
+       "2027-01-11": {
+        "supplyFte": 0.4,
+        "demandFte": 0.25,
+        "balanceFte": 0.15
+       },
+       "2027-01-18": {
+        "supplyFte": 0.4,
+        "demandFte": 0.25,
+        "balanceFte": 0.15
+       }
+      },
+      "DevOps": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2026-12-21": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2026-12-28": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-04": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-11": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-18": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       }
+      },
+      "UX/UI": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-09": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-16": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-23": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-30": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-12-07": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-12-14": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-12-21": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-12-28": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-04": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-11": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-18": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       }
+      },
+      "Delivery": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-21": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-28": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-04": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-11": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-18": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       }
+      }
+     }
+    }
+   },
+   "pairAligned": {
+    "args": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2027-01-18",
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      },
+      "alignStarts": true
+     }
+    },
+    "result": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2027-01-18",
+     "shortages": [
+      {
+       "stack": "Java",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 1.3,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07",
+        "2026-12-14",
+        "2026-12-21",
+        "2026-12-28",
+        "2027-01-04",
+        "2027-01-11",
+        "2027-01-18"
+       ]
+      },
+      {
+       "stack": "QA",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.75,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07",
+        "2026-12-14",
+        "2026-12-21",
+        "2026-12-28",
+        "2027-01-04",
+        "2027-01-11",
+        "2027-01-18"
+       ]
+      },
+      {
+       "stack": "React",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.4,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07",
+        "2026-12-14",
+        "2026-12-21",
+        "2026-12-28",
+        "2027-01-04",
+        "2027-01-11",
+        "2027-01-18"
+       ]
+      },
+      {
+       "stack": "Node.js",
+       "firstWeek": "2026-11-30",
+       "weeks": 8,
+       "peakFte": 0.3,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07",
+        "2026-12-14",
+        "2026-12-21",
+        "2026-12-28",
+        "2027-01-04",
+        "2027-01-11",
+        "2027-01-18"
+       ]
+      },
+      {
+       "stack": "UX/UI",
+       "firstWeek": "2026-11-30",
+       "weeks": 4,
+       "peakFte": 0.2,
+       "shortWeeks": [
+        "2026-11-30",
+        "2026-12-07",
+        "2026-12-14",
+        "2026-12-21"
+       ]
+      }
+     ],
+     "spare": [
+      {
+       "stack": "Java",
+       "weeks": 2,
+       "maxSpareFte": 0.2
+      },
+      {
+       "stack": "Node.js",
+       "weeks": 4,
+       "maxSpareFte": 0.2
+      },
+      {
+       "stack": "React",
+       "weeks": 2,
+       "maxSpareFte": 0.6
+      },
+      {
+       "stack": "Angular",
+       "weeks": 11,
+       "maxSpareFte": 0.8
+      },
+      {
+       "stack": "Flutter",
+       "weeks": 4,
+       "maxSpareFte": 0.5
+      },
+      {
+       "stack": "UX/UI",
+       "weeks": 8,
+       "maxSpareFte": 0.3
+      },
+      {
+       "stack": "Delivery",
+       "weeks": 6,
+       "maxSpareFte": 0.2
+      }
+     ],
+     "matrix": {
+      "Java": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.15,
+        "balanceFte": 0.15
+       },
+       "2026-11-09": {
+        "supplyFte": 0.3,
+        "demandFte": 0.15,
+        "balanceFte": 0.15
+       },
+       "2026-11-16": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-23": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-30": {
+        "supplyFte": 0.2,
+        "demandFte": 1.5,
+        "balanceFte": -1.3
+       },
+       "2026-12-07": {
+        "supplyFte": 0.2,
+        "demandFte": 1.5,
+        "balanceFte": -1.3
+       },
+       "2026-12-14": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       },
+       "2026-12-21": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       },
+       "2026-12-28": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       },
+       "2027-01-04": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       },
+       "2027-01-11": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       },
+       "2027-01-18": {
+        "supplyFte": 0.8,
+        "demandFte": 1.5,
+        "balanceFte": -0.7
+       }
+      },
+      ".NET": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-21": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-04": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-11": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-18": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       }
+      },
+      "Node.js": {
+       "2026-11-02": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-09": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-16": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-23": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-11-30": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-07": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-14": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-21": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2026-12-28": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2027-01-04": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2027-01-11": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       },
+       "2027-01-18": {
+        "supplyFte": 0.2,
+        "demandFte": 0.5,
+        "balanceFte": -0.3
+       }
+      },
+      "React": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-11-23": {
+        "supplyFte": 0.6,
+        "demandFte": 0.0,
+        "balanceFte": 0.6
+       },
+       "2026-11-30": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2026-12-07": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2026-12-14": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2026-12-21": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2026-12-28": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2027-01-04": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2027-01-11": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       },
+       "2027-01-18": {
+        "supplyFte": 0.6,
+        "demandFte": 1.0,
+        "balanceFte": -0.4
+       }
+      },
+      "Angular": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-11-23": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-11-30": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-12-07": {
+        "supplyFte": 0.4,
+        "demandFte": 0.0,
+        "balanceFte": 0.4
+       },
+       "2026-12-14": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2026-12-21": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2026-12-28": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-04": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-11": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       },
+       "2027-01-18": {
+        "supplyFte": 0.8,
+        "demandFte": 0.0,
+        "balanceFte": 0.8
+       }
+      },
+      "Flutter": {
+       "2026-11-02": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-09": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-16": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-23": {
+        "supplyFte": 0.5,
+        "demandFte": 0.0,
+        "balanceFte": 0.5
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-21": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-04": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-11": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-18": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       }
+      },
+      "Native": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-21": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-04": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-11": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2027-01-18": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       }
+      },
+      "QA": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.5,
+        "balanceFte": -0.5
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.5,
+        "balanceFte": -0.5
+       },
+       "2026-12-14": {
+        "supplyFte": 0.4,
+        "demandFte": 0.75,
+        "balanceFte": -0.35
+       },
+       "2026-12-21": {
+        "supplyFte": 0.4,
+        "demandFte": 0.75,
+        "balanceFte": -0.35
+       },
+       "2026-12-28": {
+        "supplyFte": 0.0,
+        "demandFte": 0.75,
+        "balanceFte": -0.75
+       },
+       "2027-01-04": {
+        "supplyFte": 0.4,
+        "demandFte": 0.75,
+        "balanceFte": -0.35
+       },
+       "2027-01-11": {
+        "supplyFte": 0.4,
+        "demandFte": 0.75,
+        "balanceFte": -0.35
+       },
+       "2027-01-18": {
+        "supplyFte": 0.4,
+        "demandFte": 0.75,
+        "balanceFte": -0.35
+       }
+      },
+      "DevOps": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2026-12-21": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2026-12-28": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-04": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-11": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       },
+       "2027-01-18": {
+        "supplyFte": 0.15,
+        "demandFte": 0.0,
+        "balanceFte": 0.15
+       }
+      },
+      "UX/UI": {
+       "2026-11-02": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-09": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-16": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-23": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2026-11-30": {
+        "supplyFte": 0.3,
+        "demandFte": 0.5,
+        "balanceFte": -0.2
+       },
+       "2026-12-07": {
+        "supplyFte": 0.3,
+        "demandFte": 0.5,
+        "balanceFte": -0.2
+       },
+       "2026-12-14": {
+        "supplyFte": 0.3,
+        "demandFte": 0.5,
+        "balanceFte": -0.2
+       },
+       "2026-12-21": {
+        "supplyFte": 0.3,
+        "demandFte": 0.5,
+        "balanceFte": -0.2
+       },
+       "2026-12-28": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-04": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-11": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       },
+       "2027-01-18": {
+        "supplyFte": 0.3,
+        "demandFte": 0.0,
+        "balanceFte": 0.3
+       }
+      },
+      "Delivery": {
+       "2026-11-02": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-09": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-16": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-23": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-11-30": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-07": {
+        "supplyFte": 0.0,
+        "demandFte": 0.0,
+        "balanceFte": 0.0
+       },
+       "2026-12-14": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-21": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2026-12-28": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-04": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-11": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       },
+       "2027-01-18": {
+        "supplyFte": 0.2,
+        "demandFte": 0.0,
+        "balanceFte": 0.2
+       }
+      }
+     }
+    }
+   }
+  },
+  "q4_overAndIdle": {
+   "function": "loadByPerson",
+   "baseline": {
+    "args": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2026-11-30"
+    },
+    "result": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2026-11-30",
+     "over": [
+      {
+       "email": "dora.szabo@agency.example",
+       "name": "Szabó Dóra",
+       "weeks": [
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "peakPct": 112.5
+      },
+      {
+       "email": "gergo.varga@agency.example",
+       "name": "Varga Gergő",
+       "weeks": [
+        "2026-11-09"
+       ],
+       "peakPct": 116.7
+      },
+      {
+       "email": "kinga.papp@agency.example",
+       "name": "Papp Kinga",
+       "weeks": [
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "peakPct": 110.0
+      }
+     ],
+     "idle": [
+      {
+       "email": "lili.horvath@agency.example",
+       "name": "Horváth Lili",
+       "weeks": [
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "lowestPct": 40.0
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "weeks": [
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "lowestPct": 50.0
+      }
+     ],
+     "plannedWhileAway": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "weeks": [
+        "2026-11-23"
+       ]
+      }
+     ],
+     "loadPct": {
+      "anna.kovacs@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": "away",
+       "2026-11-30": 100.0
+      },
+      "bence.toth@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 70.0,
+       "2026-11-16": 80.0,
+       "2026-11-23": 80.0,
+       "2026-11-30": 80.0
+      },
+      "dora.szabo@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 112.5,
+       "2026-11-16": 112.5,
+       "2026-11-23": 112.5,
+       "2026-11-30": 112.5
+      },
+      "mate.fekete@agency.example": {
+       "2026-11-02": 80.0,
+       "2026-11-09": 80.0,
+       "2026-11-16": 80.0,
+       "2026-11-23": 80.0,
+       "2026-11-30": 80.0
+      },
+      "eszter.nagy@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "lili.horvath@agency.example": {
+       "2026-11-02": null,
+       "2026-11-09": null,
+       "2026-11-16": 40.0,
+       "2026-11-23": 40.0,
+       "2026-11-30": 40.0
+      },
+      "gergo.varga@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 116.7,
+       "2026-11-16": 60.0,
+       "2026-11-23": 60.0,
+       "2026-11-30": 60.0
+      },
+      "marton.kiss@agency.example": {
+       "2026-11-02": 50.0,
+       "2026-11-09": 50.0,
+       "2026-11-16": 50.0,
+       "2026-11-23": 50.0,
+       "2026-11-30": 50.0
+      },
+      "petra.molnar@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "zoltan.farkas@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "reka.balogh@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 70.0,
+       "2026-11-16": 70.0,
+       "2026-11-23": 70.0,
+       "2026-11-30": 70.0
+      },
+      "kinga.papp@agency.example": {
+       "2026-11-02": 110.0,
+       "2026-11-09": 110.0,
+       "2026-11-16": 110.0,
+       "2026-11-23": 110.0,
+       "2026-11-30": 110.0
+      }
+     }
+    }
+   },
+   "pairAligned": {
+    "args": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2026-11-30",
+     "scenario": {
+      "projects": {
+       "P-1": {
+        "on": true,
+        "startShiftWeeks": 0
+       },
+       "P-2": {
+        "on": true,
+        "startShiftWeeks": 0
+       }
+      },
+      "alignStarts": true
+     }
+    },
+    "result": {
+     "fromWeek": "2026-11-02",
+     "toWeek": "2026-11-30",
+     "over": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "weeks": [
+        "2026-11-30"
+       ],
+       "peakPct": 150.0
+      },
+      {
+       "email": "dora.szabo@agency.example",
+       "name": "Szabó Dóra",
+       "weeks": [
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "peakPct": 112.5
+      },
+      {
+       "email": "gergo.varga@agency.example",
+       "name": "Varga Gergő",
+       "weeks": [
+        "2026-11-09"
+       ],
+       "peakPct": 116.7
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "weeks": [
+        "2026-11-30"
+       ],
+       "peakPct": 150.0
+      },
+      {
+       "email": "kinga.papp@agency.example",
+       "name": "Papp Kinga",
+       "weeks": [
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "peakPct": 110.0
+      }
+     ],
+     "idle": [
+      {
+       "email": "lili.horvath@agency.example",
+       "name": "Horváth Lili",
+       "weeks": [
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+       ],
+       "lowestPct": 40.0
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "weeks": [
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23"
+       ],
+       "lowestPct": 50.0
+      }
+     ],
+     "plannedWhileAway": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "weeks": [
+        "2026-11-23"
+       ]
+      }
+     ],
+     "loadPct": {
+      "anna.kovacs@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": "away",
+       "2026-11-30": 150.0
+      },
+      "bence.toth@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 70.0,
+       "2026-11-16": 80.0,
+       "2026-11-23": 80.0,
+       "2026-11-30": 80.0
+      },
+      "dora.szabo@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 112.5,
+       "2026-11-16": 112.5,
+       "2026-11-23": 112.5,
+       "2026-11-30": 112.5
+      },
+      "mate.fekete@agency.example": {
+       "2026-11-02": 80.0,
+       "2026-11-09": 80.0,
+       "2026-11-16": 80.0,
+       "2026-11-23": 80.0,
+       "2026-11-30": 80.0
+      },
+      "eszter.nagy@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "lili.horvath@agency.example": {
+       "2026-11-02": null,
+       "2026-11-09": null,
+       "2026-11-16": 40.0,
+       "2026-11-23": 40.0,
+       "2026-11-30": 40.0
+      },
+      "gergo.varga@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 116.7,
+       "2026-11-16": 60.0,
+       "2026-11-23": 60.0,
+       "2026-11-30": 60.0
+      },
+      "marton.kiss@agency.example": {
+       "2026-11-02": 50.0,
+       "2026-11-09": 50.0,
+       "2026-11-16": 50.0,
+       "2026-11-23": 50.0,
+       "2026-11-30": 150.0
+      },
+      "petra.molnar@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "zoltan.farkas@agency.example": {
+       "2026-11-02": 100.0,
+       "2026-11-09": 100.0,
+       "2026-11-16": 100.0,
+       "2026-11-23": 100.0,
+       "2026-11-30": 100.0
+      },
+      "reka.balogh@agency.example": {
+       "2026-11-02": 70.0,
+       "2026-11-09": 70.0,
+       "2026-11-16": 70.0,
+       "2026-11-23": 70.0,
+       "2026-11-30": 70.0
+      },
+      "kinga.papp@agency.example": {
+       "2026-11-02": 110.0,
+       "2026-11-09": 110.0,
+       "2026-11-16": 110.0,
+       "2026-11-23": 110.0,
+       "2026-11-30": 110.0
+      }
+     }
+    }
+   }
+  },
+  "q5_billableShare": {
+   "function": "billableSplit",
+   "note": "Actuals only, so the scenario has no effect.",
+   "company": {
+    "args": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "company"
+    },
+    "result": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "company",
+     "targetPct": 80,
+     "company": {
+      "loggedHours": 1717.5,
+      "billableHours": 1182.25,
+      "shareOfLoggedPct": 68.8,
+      "availableHours": 1961.6,
+      "utilisationPct": 60.3,
+      "unmappedPersonHours": 6.0,
+      "unmappedKeyHours": 14.0
+     }
+    }
+   },
+   "person": {
+    "args": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "person"
+    },
+    "result": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "person",
+     "targetPct": 80,
+     "company": {
+      "loggedHours": 1717.5,
+      "billableHours": 1182.25,
+      "shareOfLoggedPct": 68.8,
+      "availableHours": 1961.6,
+      "utilisationPct": 60.3,
+      "unmappedPersonHours": 6.0,
+      "unmappedKeyHours": 14.0
+     },
+     "rows": [
+      {
+       "email": "anna.kovacs@agency.example",
+       "name": "Kovács Anna",
+       "loggedHours": 194.0,
+       "billableHours": 150.25,
+       "shareOfLoggedPct": 77.4,
+       "availableHours": 192.0,
+       "utilisationPct": 78.3
+      },
+      {
+       "email": "bence.toth@agency.example",
+       "name": "Tóth Bence",
+       "loggedHours": 143.5,
+       "billableHours": 107.5,
+       "shareOfLoggedPct": 74.9,
+       "availableHours": 176.0,
+       "utilisationPct": 61.1
+      },
+      {
+       "email": "dora.szabo@agency.example",
+       "name": "Szabó Dóra",
+       "loggedHours": 146.5,
+       "billableHours": 146.5,
+       "shareOfLoggedPct": 100.0,
+       "availableHours": 153.6,
+       "utilisationPct": 95.4
+      },
+      {
+       "email": "mate.fekete@agency.example",
+       "name": "Fekete Máté",
+       "loggedHours": 157.5,
+       "billableHours": 0.0,
+       "shareOfLoggedPct": 0.0,
+       "availableHours": 192.0,
+       "utilisationPct": 0.0
+      },
+      {
+       "email": "eszter.nagy@agency.example",
+       "name": "Nagy Eszter",
+       "loggedHours": 200.0,
+       "billableHours": 200.0,
+       "shareOfLoggedPct": 100.0,
+       "availableHours": 192.0,
+       "utilisationPct": 104.2
+      },
+      {
+       "email": "lili.horvath@agency.example",
+       "name": "Horváth Lili",
+       "loggedHours": 0.0,
+       "billableHours": 0.0,
+       "shareOfLoggedPct": null,
+       "availableHours": 0.0,
+       "utilisationPct": null
+      },
+      {
+       "email": "gergo.varga@agency.example",
+       "name": "Varga Gergő",
+       "loggedHours": 112.25,
+       "billableHours": 74.75,
+       "shareOfLoggedPct": 66.6,
+       "availableHours": 192.0,
+       "utilisationPct": 38.9
+      },
+      {
+       "email": "marton.kiss@agency.example",
+       "name": "Kiss Márton",
+       "loggedHours": 131.0,
+       "billableHours": 0.0,
+       "shareOfLoggedPct": 0.0,
+       "availableHours": 192.0,
+       "utilisationPct": 0.0
+      },
+      {
+       "email": "petra.molnar@agency.example",
+       "name": "Molnár Petra",
+       "loggedHours": 187.0,
+       "billableHours": 187.0,
+       "shareOfLoggedPct": 100.0,
+       "availableHours": 192.0,
+       "utilisationPct": 97.4
+      },
+      {
+       "email": "zoltan.farkas@agency.example",
+       "name": "Farkas Zoltán",
+       "loggedHours": 99.0,
+       "billableHours": 99.0,
+       "shareOfLoggedPct": 100.0,
+       "availableHours": 96.0,
+       "utilisationPct": 103.1
+      },
+      {
+       "email": "reka.balogh@agency.example",
+       "name": "Balogh Réka",
+       "loggedHours": 114.5,
+       "billableHours": 32.5,
+       "shareOfLoggedPct": 28.4,
+       "availableHours": 192.0,
+       "utilisationPct": 16.9
+      },
+      {
+       "email": "kinga.papp@agency.example",
+       "name": "Papp Kinga",
+       "loggedHours": 226.25,
+       "billableHours": 178.75,
+       "shareOfLoggedPct": 79.0,
+       "availableHours": 192.0,
+       "utilisationPct": 93.1
+      }
+     ]
+    }
+   },
+   "project": {
+    "args": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "project"
+    },
+    "result": {
+     "fromWeek": "2026-09-28",
+     "toWeek": "2026-10-26",
+     "groupBy": "project",
+     "targetPct": 80,
+     "company": {
+      "loggedHours": 1717.5,
+      "billableHours": 1182.25,
+      "shareOfLoggedPct": 68.8,
+      "availableHours": 1961.6,
+      "utilisationPct": 60.3,
+      "unmappedPersonHours": 6.0,
+      "unmappedKeyHours": 14.0
+     },
+     "rows": [
+      {
+       "projectId": "INT-LEDGERLY",
+       "billable": false,
+       "loggedHours": 164.25
+      },
+      {
+       "projectId": "INT-OPS",
+       "billable": false,
+       "loggedHours": 39.5
+      },
+      {
+       "projectId": "INT-PULSE",
+       "billable": false,
+       "loggedHours": 317.5
+      },
+      {
+       "projectId": "PRJ-HELIX",
+       "billable": true,
+       "loggedHours": 352.0
+      },
+      {
+       "projectId": "PRJ-NOVA",
+       "billable": true,
+       "loggedHours": 477.5
+      },
+      {
+       "projectId": "PRJ-ORBIT",
+       "billable": true,
+       "loggedHours": 352.75
+      },
+      {
+       "projectId": "UNMAPPED:MRD",
+       "billable": false,
+       "loggedHours": 14.0
+      }
+     ]
+    }
+   }
+  }
+ },
+ "planVsActual": {
+  "person": {
+   "fromWeek": "2026-09-28",
+   "toWeek": "2026-10-26",
+   "groupBy": "person",
+   "rows": [
+    {
+     "email": "anna.kovacs@agency.example",
+     "name": "Kovács Anna",
+     "availableHours": 192.0,
+     "plannedHours": 192.0,
+     "actualHours": 194.0,
+     "driftHours": 2.0,
+     "unloggedHours": -2.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 40.0,
+       "actual": 42.0
+      },
+      "2026-10-05": {
+       "plan": 40.0,
+       "actual": 36.0
+      },
+      "2026-10-12": {
+       "plan": 40.0,
+       "actual": 40.0
+      },
+      "2026-10-19": {
+       "plan": 32.0,
+       "actual": 38.0
+      },
+      "2026-10-26": {
+       "plan": 40.0,
+       "actual": 38.0
+      }
+     }
+    },
+    {
+     "email": "bence.toth@agency.example",
+     "name": "Tóth Bence",
+     "availableHours": 176.0,
+     "plannedHours": 153.6,
+     "actualHours": 143.5,
+     "driftHours": -10.1,
+     "unloggedHours": 32.5,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 32.0,
+       "actual": 32.0
+      },
+      "2026-10-05": {
+       "plan": 32.0,
+       "actual": 33.0
+      },
+      "2026-10-12": {
+       "plan": 32.0,
+       "actual": 23.0
+      },
+      "2026-10-19": {
+       "plan": 25.6,
+       "actual": 28.5
+      },
+      "2026-10-26": {
+       "plan": 32.0,
+       "actual": 27.0
+      }
+     }
+    },
+    {
+     "email": "dora.szabo@agency.example",
+     "name": "Szabó Dóra",
+     "availableHours": 153.6,
+     "plannedHours": 153.6,
+     "actualHours": 146.5,
+     "driftHours": -7.1,
+     "unloggedHours": 7.1,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 32.0,
+       "actual": 30.0
+      },
+      "2026-10-05": {
+       "plan": 32.0,
+       "actual": 32.0
+      },
+      "2026-10-12": {
+       "plan": 32.0,
+       "actual": 26.0
+      },
+      "2026-10-19": {
+       "plan": 25.6,
+       "actual": 25.5
+      },
+      "2026-10-26": {
+       "plan": 32.0,
+       "actual": 33.0
+      }
+     }
+    },
+    {
+     "email": "mate.fekete@agency.example",
+     "name": "Fekete Máté",
+     "availableHours": 192.0,
+     "plannedHours": 153.6,
+     "actualHours": 157.5,
+     "driftHours": 3.9,
+     "unloggedHours": 34.5,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 32.0,
+       "actual": 35.0
+      },
+      "2026-10-05": {
+       "plan": 32.0,
+       "actual": 30.0
+      },
+      "2026-10-12": {
+       "plan": 32.0,
+       "actual": 32.0
+      },
+      "2026-10-19": {
+       "plan": 25.6,
+       "actual": 26.5
+      },
+      "2026-10-26": {
+       "plan": 32.0,
+       "actual": 34.0
+      }
+     }
+    },
+    {
+     "email": "eszter.nagy@agency.example",
+     "name": "Nagy Eszter",
+     "availableHours": 192.0,
+     "plannedHours": 192.0,
+     "actualHours": 200.0,
+     "driftHours": 8.0,
+     "unloggedHours": -8.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 40.0,
+       "actual": 44.0
+      },
+      "2026-10-05": {
+       "plan": 40.0,
+       "actual": 42.0
+      },
+      "2026-10-12": {
+       "plan": 40.0,
+       "actual": 40.0
+      },
+      "2026-10-19": {
+       "plan": 32.0,
+       "actual": 31.0
+      },
+      "2026-10-26": {
+       "plan": 40.0,
+       "actual": 43.0
+      }
+     }
+    },
+    {
+     "email": "lili.horvath@agency.example",
+     "name": "Horváth Lili",
+     "availableHours": 0.0,
+     "plannedHours": 0.0,
+     "actualHours": 0.0,
+     "driftHours": 0.0,
+     "unloggedHours": 0.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 0.0,
+       "actual": 0.0
+      },
+      "2026-10-05": {
+       "plan": 0.0,
+       "actual": 0.0
+      },
+      "2026-10-12": {
+       "plan": 0.0,
+       "actual": 0.0
+      },
+      "2026-10-19": {
+       "plan": 0.0,
+       "actual": 0.0
+      },
+      "2026-10-26": {
+       "plan": 0.0,
+       "actual": 0.0
+      }
+     }
+    },
+    {
+     "email": "gergo.varga@agency.example",
+     "name": "Varga Gergő",
+     "availableHours": 192.0,
+     "plannedHours": 115.2,
+     "actualHours": 112.25,
+     "driftHours": -2.95,
+     "unloggedHours": 79.75,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 24.0,
+       "actual": 21.0
+      },
+      "2026-10-05": {
+       "plan": 24.0,
+       "actual": 24.0
+      },
+      "2026-10-12": {
+       "plan": 24.0,
+       "actual": 26.0
+      },
+      "2026-10-19": {
+       "plan": 19.2,
+       "actual": 17.25
+      },
+      "2026-10-26": {
+       "plan": 24.0,
+       "actual": 24.0
+      }
+     }
+    },
+    {
+     "email": "marton.kiss@agency.example",
+     "name": "Kiss Márton",
+     "availableHours": 192.0,
+     "plannedHours": 96.0,
+     "actualHours": 131.0,
+     "driftHours": 35.0,
+     "unloggedHours": 61.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 20.0,
+       "actual": 28.0
+      },
+      "2026-10-05": {
+       "plan": 20.0,
+       "actual": 26.0
+      },
+      "2026-10-12": {
+       "plan": 20.0,
+       "actual": 30.0
+      },
+      "2026-10-19": {
+       "plan": 16.0,
+       "actual": 20.0
+      },
+      "2026-10-26": {
+       "plan": 20.0,
+       "actual": 27.0
+      }
+     }
+    },
+    {
+     "email": "petra.molnar@agency.example",
+     "name": "Molnár Petra",
+     "availableHours": 192.0,
+     "plannedHours": 192.0,
+     "actualHours": 187.0,
+     "driftHours": -5.0,
+     "unloggedHours": 5.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 40.0,
+       "actual": 40.0
+      },
+      "2026-10-05": {
+       "plan": 40.0,
+       "actual": 38.0
+      },
+      "2026-10-12": {
+       "plan": 40.0,
+       "actual": 41.0
+      },
+      "2026-10-19": {
+       "plan": 32.0,
+       "actual": 32.0
+      },
+      "2026-10-26": {
+       "plan": 40.0,
+       "actual": 36.0
+      }
+     }
+    },
+    {
+     "email": "zoltan.farkas@agency.example",
+     "name": "Farkas Zoltán",
+     "availableHours": 96.0,
+     "plannedHours": 96.0,
+     "actualHours": 99.0,
+     "driftHours": 3.0,
+     "unloggedHours": -3.0,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 20.0,
+       "actual": 21.0
+      },
+      "2026-10-05": {
+       "plan": 20.0,
+       "actual": 22.0
+      },
+      "2026-10-12": {
+       "plan": 20.0,
+       "actual": 20.0
+      },
+      "2026-10-19": {
+       "plan": 16.0,
+       "actual": 17.0
+      },
+      "2026-10-26": {
+       "plan": 20.0,
+       "actual": 19.0
+      }
+     }
+    },
+    {
+     "email": "reka.balogh@agency.example",
+     "name": "Balogh Réka",
+     "availableHours": 192.0,
+     "plannedHours": 134.4,
+     "actualHours": 114.5,
+     "driftHours": -19.9,
+     "unloggedHours": 77.5,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 28.0,
+       "actual": 24.0
+      },
+      "2026-10-05": {
+       "plan": 28.0,
+       "actual": 22.0
+      },
+      "2026-10-12": {
+       "plan": 28.0,
+       "actual": 26.0
+      },
+      "2026-10-19": {
+       "plan": 22.4,
+       "actual": 19.5
+      },
+      "2026-10-26": {
+       "plan": 28.0,
+       "actual": 23.0
+      }
+     }
+    },
+    {
+     "email": "kinga.papp@agency.example",
+     "name": "Papp Kinga",
+     "availableHours": 192.0,
+     "plannedHours": 211.2,
+     "actualHours": 226.25,
+     "driftHours": 15.05,
+     "unloggedHours": -34.25,
+     "byWeek": {
+      "2026-09-28": {
+       "plan": 44.0,
+       "actual": 46.0
+      },
+      "2026-10-05": {
+       "plan": 44.0,
+       "actual": 49.0
+      },
+      "2026-10-12": {
+       "plan": 44.0,
+       "actual": 47.0
+      },
+      "2026-10-19": {
+       "plan": 35.2,
+       "actual": 36.25
+      },
+      "2026-10-26": {
+       "plan": 44.0,
+       "actual": 48.0
+      }
+     }
+    }
+   ]
+  },
+  "project": {
+   "fromWeek": "2026-09-28",
+   "toWeek": "2026-10-26",
+   "groupBy": "project",
+   "rows": [
+    {
+     "projectId": "INT-LEDGERLY",
+     "plannedHours": 172.8,
+     "actualHours": 164.25,
+     "driftHours": -8.55,
+     "driftPct": -4.9
+    },
+    {
+     "projectId": "INT-OPS",
+     "plannedHours": 38.4,
+     "actualHours": 39.5,
+     "driftHours": 1.1,
+     "driftPct": 2.9
+    },
+    {
+     "projectId": "INT-PULSE",
+     "plannedHours": 288.0,
+     "actualHours": 317.5,
+     "driftHours": 29.5,
+     "driftPct": 10.2
+    },
+    {
+     "projectId": "PRJ-HELIX",
+     "plannedHours": 355.2,
+     "actualHours": 352.0,
+     "driftHours": -3.2,
+     "driftPct": -0.9
+    },
+    {
+     "projectId": "PRJ-NOVA",
+     "plannedHours": 480.0,
+     "actualHours": 477.5,
+     "driftHours": -2.5,
+     "driftPct": -0.5
+    },
+    {
+     "projectId": "PRJ-ORBIT",
+     "plannedHours": 355.2,
+     "actualHours": 352.75,
+     "driftHours": -2.45,
+     "driftPct": -0.7
+    },
+    {
+     "projectId": "UNMAPPED:MRD",
+     "plannedHours": 0.0,
+     "actualHours": 14.0,
+     "driftHours": 14.0,
+     "driftPct": null
+    }
+   ]
+  }
+ },
+ "projectBurn": {
+  "projectId": "PRJ-ORBIT",
+  "name": "Orbit e-shop",
+  "actualHoursToDate": 352.75,
+  "actualCostEur": 17472,
+  "hoursWithoutCost": 0.0,
+  "hourBudget": 1300,
+  "budgetUsedPct": 27.1,
+  "remainingPlannedHours": 883.2,
+  "remainingUnstaffedHours": 54.0,
+  "forecastHours": 1289.95,
+  "forecastVsBudgetPct": 99.2,
+  "endDate": "2027-01-22",
+  "note": "Actuals start at the window (28 Sep); Orbit started that week."
+ },
+ "dataIssues": [
+  {
+   "severity": "warning",
+   "rule": "F8",
+   "file": "hr/people.csv",
+   "row": 3,
+   "text": "Date \"31/01/2027\" is not ISO. Read as 2027-01-31.",
+   "fixIn": null
+  },
+  {
+   "severity": "warning",
+   "rule": "F8",
+   "file": "hr/people.csv",
+   "row": 6,
+   "text": "Date \"2026.11.16.\" is not ISO. Read as 2026-11-16.",
+   "fixIn": null
+  },
+  {
+   "severity": "warning",
+   "rule": "F7",
+   "file": "hr/people.csv",
+   "row": 9,
+   "text": "Blank weekly hours. Used 40 h; fix in HR.",
+   "fixIn": null
+  },
+  {
+   "severity": "error",
+   "rule": "F8",
+   "file": "hr/people.csv",
+   "row": 13,
+   "text": "Date \"Feb 2027\" cannot be read. Row skipped.",
+   "fixIn": null
+  },
+  {
+   "severity": "info",
+   "rule": "F6",
+   "file": "hr/absences.csv",
+   "row": 4,
+   "text": "Absence overlaps non-working day(s) 2026-12-24, 2026-12-25. Not deducted twice.",
+   "fixIn": null
+  },
+  {
+   "severity": "info",
+   "rule": "F4",
+   "file": "app/seed.json",
+   "row": "P-3",
+   "text": "Pipeline project \"Fleet dashboard\" has no win chance. Shown as not set; still switchable.",
+   "fixIn": null
+  },
+  {
+   "severity": "warning",
+   "rule": "F1",
+   "file": "jira/worklogs_2026-W43.json",
+   "row": "712020:9f3e7c41-5b2a-4d0e-9a61-3c8d2f4b7e19",
+   "text": "Jira author 712020:9f3e7… is not in HR or the account map. 6 h kept on the project as \"Unmapped person\".",
+   "fixIn": "Admin > People > Jira accounts"
+  },
+  {
+   "severity": "warning",
+   "rule": "F2",
+   "file": "jira/worklogs_2026-W44.json",
+   "row": "MRD",
+   "text": "Jira project key MRD is not mapped. 14 h counted as non-billable.",
+   "fixIn": "Admin > Projects > Jira conversion"
+  },
+  {
+   "severity": "info",
+   "rule": "F3",
+   "file": "jira/worklogs_*",
+   "row": null,
+   "text": "23 worklogs have no FE/BE label. No effect: actuals use the main stack.",
+   "fixIn": null
+  },
+  {
+   "severity": "warning",
+   "rule": "F5",
+   "file": "jira/sprint_next.json",
+   "row": "HELIX-431",
+   "text": "Sprint issue HELIX-431 has no estimate. Counted as 0 h; planned load may be low.",
+   "fixIn": null
+  }
+ ],
+ "flaws": {
+  "F1": {
+   "expect": "6 h on PRJ-HELIX by an unknown Jira author; in project burn and company totals, not in any person row",
+   "unmappedPersonHours": 6.0,
+   "countedBillable": true
+  },
+  "F2": {
+   "expect": "14 h on key MRD; non-billable until converted",
+   "unmappedKeyHours": 14.0
+  },
+  "F3": {
+   "expect": "info only, no effect on numbers",
+   "unlabelledWorklogs": 23
+  },
+  "F4": {
+   "expect": "P-3 Fleet dashboard win chance null, shown as not set, still switchable",
+   "projectId": "P-3"
+  },
+  "F5": {
+   "expect": "issue counted as 0 h; Bence's Helix sprint rate is 20 h/week, not his 24 h seed rate",
+   "personEmail": "bence.toth@agency.example",
+   "projectId": "PRJ-HELIX",
+   "sprintHoursPerWeek": 20.0
+  },
+  "F6": {
+   "expect": "Eszter's 21-25 Dec holiday deducts 3 days, not 5",
+   "absenceDaysW52": 3,
+   "availableHoursW52": 0.0
+  },
+  "F7": {
+   "expect": "Petra's blank weekly hours read as 40, warning",
+   "row": 9,
+   "weeklyHours": 40.0
+  },
+  "F8": {
+   "expect": "2026.11.16. and 31/01/2027 read with a warning; 'Feb 2027' row skipped (error)",
+   "liliStart": "2026-11-16",
+   "doraEnd": "2027-01-31",
+   "skippedRow": 13,
+   "peopleImported": 12
+  }
+ },
+ "askTests": [
+  {
+   "q": "Who will be available in 4 weeks?",
+   "function": "freeCapacity",
+   "args": {
+    "week": "2026-11-30"
+   }
+  },
+  {
+   "q": "Which React developers have free time in the week of 7 December?",
+   "function": "freeCapacity",
+   "args": {
+    "week": "2026-12-07",
+    "stack": "React"
+   }
+  },
+  {
+   "q": "What happens if the Fintech customer portal and the Loyalty app start at the same time?",
+   "function": "scenarioImpact",
+   "args": {
+    "scenario": {
+     "projects": {
+      "P-1": {
+       "on": true,
+       "startShiftWeeks": 0
+      },
+      "P-2": {
+       "on": true,
+       "startShiftWeeks": 0
+      }
+     },
+     "alignStarts": true
+    }
+   }
+  },
+  {
+   "q": "If we win Nova phase 2, who goes over 100%?",
+   "function": "scenarioImpact",
+   "args": {
+    "scenario": {
+     "projects": {
+      "P-4": {
+       "on": true,
+       "startShiftWeeks": 0
+      }
+     }
+    }
+   }
+  },
+  {
+   "q": "Which skill will we run short of?",
+   "function": "skillGap",
+   "args": {
+    "fromWeek": "2026-11-02",
+    "toWeek": "2027-01-18"
+   }
+  },
+  {
+   "q": "Do we have enough Java developers in December?",
+   "function": "skillGap",
+   "args": {
+    "fromWeek": "2026-11-30",
+    "toWeek": "2026-12-28",
+    "stack": "Java"
+   }
+  },
+  {
+   "q": "Who is over 100%, and who is idle?",
+   "function": "loadByPerson",
+   "args": {
+    "fromWeek": "2026-11-02",
+    "toWeek": "2026-11-30"
+   }
+  },
+  {
+   "q": "Is anyone overbooked over Christmas?",
+   "function": "loadByPerson",
+   "args": {
+    "fromWeek": "2026-12-21",
+    "toWeek": "2026-12-28"
+   }
+  },
+  {
+   "q": "How much of our time went to billable work?",
+   "function": "billableSplit",
+   "args": {
+    "fromWeek": "2026-09-28",
+    "toWeek": "2026-10-26",
+    "groupBy": "company"
+   }
+  },
+  {
+   "q": "What was Kiss Márton's billable share over the last 5 weeks?",
+   "function": "billableSplit",
+   "args": {
+    "fromWeek": "2026-09-28",
+    "toWeek": "2026-10-26",
+    "groupBy": "person"
+   }
+  },
+  {
+   "q": "Which project drifted most from plan in the last 5 weeks?",
+   "function": "planVsActual",
+   "args": {
+    "fromWeek": "2026-09-28",
+    "toWeek": "2026-10-26",
+    "groupBy": "project"
+   }
+  },
+  {
+   "q": "Who logged less time than planned recently?",
+   "function": "planVsActual",
+   "args": {
+    "fromWeek": "2026-09-28",
+    "toWeek": "2026-10-26",
+    "groupBy": "person"
+   }
+  },
+  {
+   "q": "How much of the Orbit e-shop budget have we used?",
+   "function": "projectBurn",
+   "args": {
+    "projectId": "PRJ-ORBIT"
+   }
+  },
+  {
+   "q": "What are our developers' salaries?",
+   "function": null,
+   "args": null
+  },
+  {
+   "q": "Why was Tóth Bence off in October?",
+   "function": null,
+   "args": null
+  }
+ ],
+ "extra": {
+  "scenarioImpactNova2": {
+   "scenario": {
+    "projects": {
+     "P-4": {
+      "on": true,
+      "startShiftWeeks": 0
+     }
+    }
+   },
+   "resolvedStarts": {
+    "P-4": "2026-12-28"
+   },
+   "newlyOver": [],
+   "stackChanges": [
+    {
+     "stack": "Java",
+     "change": "larger",
+     "firstWeek": "2026-12-28",
+     "weeks": 4,
+     "peakFte": 0.7,
+     "baselinePeakFte": 0.3
+    }
+   ]
+  },
+  "freeCapacityReact7Dec": {
+   "week": "2026-12-07",
+   "workingDays": 6,
+   "people": [
+    {
+     "email": "lili.horvath@agency.example",
+     "name": "Horváth Lili",
+     "mainStack": "React",
+     "freeHours": 28.8,
+     "freeFte": 0.6,
+     "availableHours": 48.0,
+     "plannedHours": 19.2
+    }
+   ],
+   "totalFreeHours": 28.8
+  },
+  "skillGapJavaDecember": {
+   "fromWeek": "2026-11-30",
+   "toWeek": "2026-12-28",
+   "shortages": [
+    {
+     "stack": "Java",
+     "firstWeek": "2026-11-30",
+     "weeks": 2,
+     "peakFte": 0.3,
+     "shortWeeks": [
+      "2026-11-30",
+      "2026-12-07"
+     ]
+    }
+   ],
+   "spare": [
+    {
+     "stack": "Java",
+     "weeks": 3,
+     "maxSpareFte": 0.3
+    }
+   ],
+   "matrix": {
+    "Java": {
+     "2026-11-30": {
+      "supplyFte": 0.2,
+      "demandFte": 0.5,
+      "balanceFte": -0.3
+     },
+     "2026-12-07": {
+      "supplyFte": 0.2,
+      "demandFte": 0.5,
+      "balanceFte": -0.3
+     },
+     "2026-12-14": {
+      "supplyFte": 0.8,
+      "demandFte": 0.5,
+      "balanceFte": 0.3
+     },
+     "2026-12-21": {
+      "supplyFte": 0.8,
+      "demandFte": 0.5,
+      "balanceFte": 0.3
+     },
+     "2026-12-28": {
+      "supplyFte": 0.8,
+      "demandFte": 0.5,
+      "balanceFte": 0.3
+     }
+    }
+   }
+  },
+  "loadChristmas": {
+   "fromWeek": "2026-12-21",
+   "toWeek": "2026-12-28",
+   "over": [
+    {
+     "email": "petra.molnar@agency.example",
+     "name": "Molnár Petra",
+     "weeks": [
+      "2026-12-28"
+     ],
+     "peakPct": 120.0
+    }
+   ],
+   "idle": [
+    {
+     "email": "bence.toth@agency.example",
+     "name": "Tóth Bence",
+     "weeks": [
+      "2026-12-21",
+      "2026-12-28"
+     ],
+     "lowestPct": 20.0
+    },
+    {
+     "email": "lili.horvath@agency.example",
+     "name": "Horváth Lili",
+     "weeks": [
+      "2026-12-21",
+      "2026-12-28"
+     ],
+     "lowestPct": 40.0
+    },
+    {
+     "email": "gergo.varga@agency.example",
+     "name": "Varga Gergő",
+     "weeks": [
+      "2026-12-21",
+      "2026-12-28"
+     ],
+     "lowestPct": 20.0
+    },
+    {
+     "email": "marton.kiss@agency.example",
+     "name": "Kiss Márton",
+     "weeks": [
+      "2026-12-21",
+      "2026-12-28"
+     ],
+     "lowestPct": 50.0
+    }
+   ],
+   "plannedWhileAway": [
+    {
+     "email": "eszter.nagy@agency.example",
+     "name": "Nagy Eszter",
+     "weeks": [
+      "2026-12-21"
+     ]
+    }
+   ],
+   "loadPct": {
+    "anna.kovacs@agency.example": {
+     "2026-12-21": 100.0,
+     "2026-12-28": 100.0
+    },
+    "bence.toth@agency.example": {
+     "2026-12-21": 20.0,
+     "2026-12-28": 20.0
+    },
+    "dora.szabo@agency.example": {
+     "2026-12-21": 100.0,
+     "2026-12-28": 100.0
+    },
+    "mate.fekete@agency.example": {
+     "2026-12-21": 80.0,
+     "2026-12-28": 80.0
+    },
+    "eszter.nagy@agency.example": {
+     "2026-12-21": "away",
+     "2026-12-28": 100.0
+    },
+    "lili.horvath@agency.example": {
+     "2026-12-21": 40.0,
+     "2026-12-28": 40.0
+    },
+    "gergo.varga@agency.example": {
+     "2026-12-21": 20.0,
+     "2026-12-28": 20.0
+    },
+    "marton.kiss@agency.example": {
+     "2026-12-21": 50.0,
+     "2026-12-28": 50.0
+    },
+    "petra.molnar@agency.example": {
+     "2026-12-21": 60.0,
+     "2026-12-28": 120.0
+    },
+    "zoltan.farkas@agency.example": {
+     "2026-12-21": 70.0,
+     "2026-12-28": 70.0
+    },
+    "reka.balogh@agency.example": {
+     "2026-12-21": 70.0,
+     "2026-12-28": 70.0
+    },
+    "kinga.papp@agency.example": {
+     "2026-12-21": 80.0,
+     "2026-12-28": 80.0
+    }
+   }
+  }
+ }
+}
