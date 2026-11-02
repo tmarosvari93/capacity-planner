@@ -8,10 +8,7 @@ import Plan from '@/pages/Plan';
 import Home from '@/pages/Home';
 import Ask from '@/pages/Ask';
 import Reports from '@/pages/Reports';
-
-const Placeholder = ({ title }: { title: string }) => (
-  <div><div className="eyebrow">{title}</div><h1 className="text-xl font-semibold mt-1">{title}</h1></div>
-);
+import Admin from '@/pages/Admin';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -22,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<Home />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/reports" element={<Reports />} />
-            <Route path="/admin" element={<Placeholder title="Admin" />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/ask" element={<Ask />} />
           </Route>
         </Routes>
