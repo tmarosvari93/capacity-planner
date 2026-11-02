@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite --port 8080 --host",
     "build": "vite build",
+    "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "test": "vitest run --config vitest.config.ts",
     "typecheck": "tsc --noEmit -p tsconfig.core.json",
