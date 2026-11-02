@@ -11,5 +11,5 @@
     "allowImportingTsExtensions": true,
     "types": ["node"]
   },
-  "include": ["src/core", "tests", "supabase/functions/ask/logic.ts", "supabase/functions/ask/catalogue.ts"]
+  "include": ["src/core", "tests", "supabase/functions/ask/logic.ts", "supabase/functions/ask/catalogue.ts", "supabase/functions/ask/guard.ts"]
 }

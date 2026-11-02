@@ -24,7 +24,7 @@ const FUNCTIONS: [string, string][] = [
 ];
 
 // Pipeline what-ifs are not part of the numbers; answer them here so the scenario function is never called.
-const PIPELINE_ANSWER = 'Pipeline projects are tracked in Admin and are not included in the numbers';
+const PIPELINE_ANSWER = 'Pipeline what-ifs are answered on the Plan page: switch the deal on there to see who goes over 100% and which skill runs short. Ask counts committed work only.';
 const isScenarioQuestion = (q: string) =>
   /\b(scenario|what[- ]if|pipeline|deal|deals|start (together|at the same time)|switch(ed)? on|align)/i.test(q);
 
