@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FUTURE, PAST, TODAY, absenceDays, actualHours, actualRows, allocationRows, availabilityFormula, demandFte, driftHours,
@@ -150,7 +150,7 @@ function PipelineCard() {
 }
 
 function PeopleGrid() {
-  const { model, scenario, layer, reset } = useModel();
+  const { model, scenario, editCount, reset } = useModel();
   const [showPast, setShowPast] = useState(true);
   const [sel, setSel] = useState<{ email: string; w: Week } | null>(null);
   const past = showPast ? PAST : [];
@@ -175,12 +175,12 @@ function PeopleGrid() {
         </label>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
+        <table className="table-fixed w-full border-collapse text-[12px]" style={{ minWidth: 170 + (past.length + FUTURE.length) * 54 }}>
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[210px] border-r border-line">Person</th>
-              {past.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
-              {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
+              <th className={`eyebrow text-left px-3 py-2 w-[170px] border-r border-line ${STICKY_L}`}>Person</th>
+              {past.map((w) => <th key={w} className={`px-0.5 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
+              {FUTURE.map((w) => <th key={w} className={`px-0.5 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
             </tr>
           </thead>
           <tbody>
@@ -196,7 +196,7 @@ function PeopleGrid() {
         <span className="flex items-center gap-1.5"><i className="w-4 h-3 border border-dashed border-hint inline-block rounded-sm" /> Idle, 50% or less</span>
         <span className="flex items-center gap-1.5"><i className="w-4 h-3 hatch inline-block rounded-sm" /> Planned while away</span>
         <span className="flex items-center gap-1.5"><i className="w-1.5 h-1.5 bg-ink rounded-full inline-block" /> Manual edit</span>
-        <span className="ml-auto">Manual edits: <b className="font-mono text-ink">{layer.ops.length}</b></span>
+        <span className="ml-auto">Manual edits: <b className="font-mono text-ink">{editCount}</b></span>
         <button onClick={reset} className="border border-input rounded px-2.5 py-1 text-[12px] text-ink hover:bg-hover">Reset Admin and Plan edits</button>
       </div>
       {sel && <PersonPanel email={sel.email} w={sel.w} onClose={() => setSel(null)} />}
@@ -213,13 +213,13 @@ function Group({ g, past, colCount, onCell }: {
   return (
     <>
       <tr className="bg-page border-b border-line">
-        <td colSpan={colCount} className="eyebrow px-4 py-1.5">{label} · {g.people.length} (main stack)</td>
+        <td colSpan={colCount} className="eyebrow px-3 py-1.5"><span className="sticky left-3">{label} · {g.people.length} (main stack)</span></td>
       </tr>
       {g.people.map((p) => (
         <tr key={p.email} className="border-b border-line">
-          <td className="px-4 py-1.5 border-r border-line">
-            <div className="font-semibold">{p.name}</div>
-            <div className="text-[11px] text-ink2">
+          <td className={`px-3 py-1.5 border-r border-line ${STICKY_L}`} title={p.name}>
+            <div className="font-semibold truncate">{p.name}</div>
+            <div className="text-[11px] text-ink2 truncate">
               {p.weeklyHours} h/wk · {[p.mainStack, ...p.stacks.filter((s) => s !== p.mainStack)].filter(Boolean).join(', ')}
             </div>
           </td>
@@ -229,7 +229,7 @@ function Group({ g, past, colCount, onCell }: {
       ))}
       {g.hasDemand && g.stack && (
         <tr className="border-b border-line bg-amber-t1/40">
-          <td className="px-4 py-1.5 border-r border-line text-amber-text font-semibold">Unstaffed · {g.stack}</td>
+          <td className="px-3 py-1.5 border-r border-line text-amber-text font-semibold sticky left-0 z-20 bg-amber-t1 truncate">Unstaffed · {g.stack}</td>
           {past.map((w) => <td key={w} />)}
           {FUTURE.map((w, i) => (
             <td key={w} className={`text-center font-mono text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>
