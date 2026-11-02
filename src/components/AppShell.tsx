@@ -3,6 +3,7 @@ import { describeScenario, lastSync } from '@/core';
 import { useModel } from '@/state/ModelContext';
 
 const NAV = [
+  { to: '/start', label: 'Start here' },
   { to: '/', label: 'Home' },
   { to: '/plan', label: 'Plan' },
   { to: '/reports', label: 'Reports' },

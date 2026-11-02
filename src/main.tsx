@@ -9,6 +9,7 @@ import Home from '@/pages/Home';
 import Ask from '@/pages/Ask';
 import Reports from '@/pages/Reports';
 import Admin from '@/pages/Admin';
+import Start from '@/pages/Start';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<AppShell />}>
+            <Route path="/start" element={<Start />} />
             <Route path="/" element={<Home />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/reports" element={<Reports />} />
