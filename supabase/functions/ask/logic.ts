@@ -11,7 +11,8 @@ export function buildChooseRequest(question: string, context: unknown, model = D
     max_tokens: 600,
     system: [
       'You route questions about a software agency\'s capacity plan to exactly one calculation function.',
-      'Call one tool. Never answer in text and never calculate anything yourself.',
+      'Answer every question by calling exactly one function. If no function fits the question or the data cannot answer it, call cannot_answer with a short reason.',
+      'Never answer in text and never calculate anything yourself.',
       'Use the context to turn project names into projectIds, stacks into the stack list, and dates into Monday weeks.',
       '"In 4 weeks" means the week of 2026-11-30. "Next weeks" with no number means 2026-11-02 to 2026-11-30.',
       '"Last weeks", "recently" or "so far" about logged time means 2026-09-28 to 2026-10-26.',
@@ -19,13 +20,14 @@ export function buildChooseRequest(question: string, context: unknown, model = D
       'Use cannot_answer for salaries, pay, performance, reasons for absence, health, or anything not in planning data.',
       `Context: ${JSON.stringify(context)}`,
     ].join('\n'),
-    tools: [...FUNCTION_CATALOGUE, CANNOT_ANSWER_TOOL],
-    tool_choice: { type: 'any' },
+    tools: [...FUNCTION_CATALOGUE, CANNOT_ANSWER_TOOL].map((t) => ({ ...t, strict: true })),
+    tool_choice: { type: 'auto' },
     messages: [{ role: 'user', content: question.slice(0, MAX_QUESTION) }],
   };
 }
 
 export function parseChooseResponse(res: any): { function: string; args: Record<string, unknown> } | { outOfScope: true; reason: string } {
+  // A text-only reply (no tool call) is treated as cannot_answer; its text is never shown.
   const block = (res?.content ?? []).find((b: any) => b?.type === 'tool_use');
   if (!block || block.name === CANNOT_ANSWER_TOOL.name) {
     return { outOfScope: true, reason: block?.input?.reason ?? 'No function chosen' };
