@@ -20,7 +20,7 @@ export function buildChooseRequest(question: string, context: unknown, model = D
       'Use cannot_answer for salaries, pay, performance, reasons for absence, health, or anything not in planning data.',
       `Context: ${JSON.stringify(context)}`,
     ].join('\n'),
-    tools: [...FUNCTION_CATALOGUE, CANNOT_ANSWER_TOOL].map((t) => ({ ...t, strict: true })),
+    tools: [...FUNCTION_CATALOGUE, CANNOT_ANSWER_TOOL],
     tool_choice: { type: 'auto' },
     messages: [{ role: 'user', content: question.slice(0, MAX_QUESTION) }],
   };
