@@ -6,7 +6,7 @@ Every number in the app comes from here. Pages never compute hours, loads or per
 
 ```
 npm install
-npm test             # Vitest: 104 tests against fixtures/answer_key.json
+npm test             # Vitest: 112 tests against fixtures/answer_key.json
 npm run typecheck    # tsc on the core, tests and the ask function logic
 npm run data         # regenerate public/data and the answer key (Python 3)
 ```

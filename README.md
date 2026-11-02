@@ -50,7 +50,7 @@ git clone https://github.com/tmarosvari93/capacity-planner
 cd capacity-planner
 bun install
 bun run dev        # http://localhost:8080
-bun run test       # 104 tests
+bun run test       # 112 tests
 bun run typecheck  # type check of the calculation core
 ```
 
@@ -61,15 +61,15 @@ Everything except **Ask** works locally with no setup. Ask calls the Supabase ed
 - React 18, TypeScript, Vite, Tailwind; built with Lovable and Claude.
 - `src/core/`: all calculations as plain, tested TypeScript functions (capacity, importers, overrides, scenarios, questions, Ask catalogue). The UI only calls these.
 - `src/pages/`: Start, Home, Plan, Reports, Admin, Ask.
-- `supabase/functions/ask/`: the only server code. Holds the Anthropic key; picks a function and writes the conclusion.
+- `supabase/functions/ask/`: the only server code. Holds the Anthropic key; picks a function and writes the conclusion. `guard.ts` limits who can call it (see below).
 - `tests/` and `fixtures/answer_key.json`: the expected answers the tests check against.
 - `CORE.md` and `DATA_CONTRACT.md`: the calculation rules and the import format.
 
 ## Known limitations
 
 - Prototype only: no login, and edits are stored per browser, so they are not shared between users.
-- The Ask endpoint has no sign-in or rate limit. Acceptable for a demo with fictional data, not for real use.
+- The Ask endpoint has no sign-in. It only answers the app's own pages (Lovable domains and localhost; add more in the `ALLOWED_ORIGINS` secret), caps question and request size, and allows 30 calls per IP per 10 minutes. A script can fake its origin and the rate counter resets on a cold start, so a spend cap on the Anthropic key is the backstop. Real use needs sign-in.
 - Thresholds (100% over, 50% idle, 80% billable target) are fixed; Admin > Settings shows them read-only.
 - Pipeline demand counts at full size; the win chance is shown but does not weight the numbers.
 - Ask answers "what if we win X?" with a pointer instead of a number; the pipeline what-if lives on Plan.
-- On a 1280 px screen the Plan timelines scroll sideways.
+- Designed for desktop (1280 px and wider); on a 1280 px screen the Plan timelines scroll sideways while names and controls stay pinned. Not designed for phones.
