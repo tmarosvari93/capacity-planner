@@ -267,7 +267,6 @@ function FutureCell({ p, w, onClick }: { p: Person; w: Week; onClick: () => void
       aria-label={`${p.name} ${w}`}>
       {manual && <span title="Manual edit" className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-ink" />}
       {body}
-      {ld !== 'away' && ld != null && off > 0 && ld <= idlePct ? null : null}
     </td>
   );
 }
