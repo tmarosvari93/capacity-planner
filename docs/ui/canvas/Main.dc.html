@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Capacity – app</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#1C3A62}a:hover{color:#0F2440}
+.card{background:#FFFFFF;border:1px solid #E4E6E9;border-radius:10px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.muted{color:#4F5661}
+.eyebrow{font-size:11px;font-weight:600;color:#4F5661;text-transform:uppercase;letter-spacing:0.04em}
+.navb{font:inherit;font-size:13px;font-weight:500;color:#3C424B;background:none;border:0;padding:7px 12px;border-radius:6px;cursor:pointer;min-height:34px}
+.navb.cur{background:#EEF0F2;color:#1B1D21;font-weight:600}
+.side .navb{display:flex;align-items:center;width:100%;text-align:left;padding:8px 12px}
+.askchip{font:inherit;font-size:12px;text-align:left;border:1px solid #CBD0D6;background:#FFFFFF;color:#1B1D21;border-radius:8px;padding:7px 10px;cursor:pointer;min-height:32px}
+.askchip:hover{background:#F5F6F7}
+.dot{width:8px;height:8px;border-radius:50%;background:#1C3A62;display:inline-block;flex:none}
+.dot.act{background:#B85C1E;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){.dot.act{animation:none}}
+.fnbox{background:#F5F6F7;border:1px solid #E4E6E9;border-radius:8px;padding:10px;font-size:12px;display:flex;flex-direction:column;gap:6px}
+.btn{font:inherit;font-size:13px;font-weight:500;border:1px solid #CBD0D6;background:#FFFFFF;color:#1B1D21;border-radius:6px;padding:7px 12px;cursor:pointer;min-height:34px}
+.btn.primary{background:#1B1D21;color:#FFFFFF;border-color:#1B1D21}
+.btn.small{font-size:12px;padding:4px 9px;min-height:28px}
+.btn.link{border:0;background:none;color:#1C3A62;text-decoration:underline;padding:0;min-height:0}
+.tabb{font:inherit;font-size:13px;font-weight:600;color:#4F5661;background:none;border:0;border-bottom:2px solid transparent;padding:8px 2px;cursor:pointer;margin-right:18px}
+.tabb.cur{color:#1B1D21;border-bottom-color:#1B1D21}
+.step{font:inherit;font-size:14px;width:28px;height:28px;border:1px solid #CBD0D6;background:#FFFFFF;border-radius:6px;cursor:pointer;color:#1B1D21}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 6px;border-radius:4px;white-space:nowrap}
+.tag.billable{background:#DCE7F5;color:#1C3A62}
+.tag.internal{background:#EEF0F2;color:#3C424B}
+.tag.pipeline{background:#FFFFFF;color:#6E2E00;border:1px dashed #B85C1E}
+.tag.manual{background:#FFFFFF;color:#3C424B;border:1px dashed #6B7380}
+.tag.warn{background:#FFEBDB;color:#6E2E00}
+.tag.err{background:#6E2E00;color:#FFFFFF}
+.tag.info{background:#EEF0F2;color:#3C424B}
+.sw{font:inherit;display:inline-flex;align-items:center;border:0;background:none;padding:0;cursor:pointer}
+.track{width:32px;height:18px;border-radius:999px;background:#B7BEC7;position:relative;display:inline-block;flex:none}
+.track::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#FFFFFF}
+.sw.on .track{background:#1B1D21}
+.sw.on .track::after{left:16px}
+.g12{display:grid;grid-template-columns:260px repeat(12,minmax(58px,1fr));border-bottom:1px solid #E4E6E9;align-items:stretch}
+.lab{position:sticky;left:0;z-index:2;background:#FFFFFF;border-right:1px solid #E4E6E9;padding:6px 10px;display:flex;align-items:center;gap:8px;min-width:0;font-size:13px}
+.lab .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wh{border-right:1px solid #EEF0F2;padding:6px 4px;text-align:center;font-size:11px;color:#4F5661;background:#FFFFFF}
+.wh strong{display:block;font-size:12px;color:#1B1D21;font-weight:600}
+.wh.today{box-shadow:inset 2px 0 0 #1B1D21;background:#F5F6F7}
+.wh.odd strong{color:#6E2E00}
+.sc{font:inherit;border:0;border-right:1px solid #EEF0F2;background:#FFFFFF;height:30px;padding:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;color:#4F5661;cursor:pointer;position:relative}
+.sc.short{background:#F9D3B4;color:#6E2E00;font-weight:600}
+.sc.spare{background:#DCE7F5;color:#1C3A62;font-weight:500}
+.sc.today{box-shadow:inset 2px 0 0 #1B1D21}
+.sc.chg::before{content:'';position:absolute;left:5px;right:5px;top:2px;height:2px;background:#1B1D21}
+.sc.sel{outline:2px solid #1B1D21;outline-offset:-2px}
+.grp{font-size:11px;font-weight:600;color:#4F5661;text-transform:uppercase;letter-spacing:0.04em}
+.bar{font:inherit;margin:7px 2px;border-radius:6px;padding:4px 8px;font-size:12px;text-align:left;display:flex;align-items:center;gap:6px;min-width:0;cursor:pointer;border:1px solid transparent;overflow:hidden;white-space:nowrap}
+.bar.billable{background:#DCE7F5;color:#1C3A62}
+.bar.internal{background:#EEF0F2;color:#3C424B}
+.bar.pipe{background:#FFFFFF;color:#6E2E00;border:1px dashed #B85C1E}
+.bar.pipe.on{background:#FDE7D6;border-style:solid;border-color:#B85C1E}
+.bar.sel{outline:2px solid #1B1D21;outline-offset:1px}
+.bar>span{min-width:0}
+.bar .clip{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;opacity:0.85;flex:none;white-space:nowrap}
+.pc{position:relative;height:40px;border:0;border-right:1px solid #EEF0F2;margin:0;padding:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500;cursor:pointer;background:#FFFFFF;color:#1B1D21;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pc .sub{font-size:10px}
+.pc.past{background:#EEF0F2}
+.pc.ok{background:#DCE7F5;color:#1C3A62}
+.pc.over{background:#F9D3B4;color:#6E2E00;font-weight:600}
+.pc.idle{color:#4F5661;outline:1px dashed #8E97A3;outline-offset:-5px}
+.pc.off{color:#4F5661}
+.pc.away{background:repeating-linear-gradient(135deg,#F9D3B4 0 5px,#FFF4EC 5px 10px);color:#6E2E00;font-weight:600}
+.pc.notstarted{background:repeating-linear-gradient(135deg,#E9ECEF 0 5px,#FFFFFF 5px 10px);color:#4F5661;cursor:default}
+.pc.today{box-shadow:inset 2px 0 0 #1B1D21}
+.pc.ov::after{content:'';position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;background:#1B1D21}
+.pc.chg::before{content:'';position:absolute;left:5px;right:5px;top:3px;height:2px;background:#1B1D21}
+.pc.sel{outline:2px solid #1B1D21;outline-offset:-2px;z-index:1}
+.prow{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:baseline;padding:6px 0;border-bottom:1px solid #EEF0F2;font-size:12px}
+.src{grid-column:1 / -1;font-size:11px;color:#4F5661}
+.flag{margin:0;padding:6px 8px;border-radius:6px;font-size:12px;background:#FFEBDB;color:#6E2E00}
+.flag.info{background:#EEF0F2;color:#3C424B}
+label.f{display:flex;flex-direction:column;gap:3px;font-size:11px;font-weight:600;color:#3C424B}
+label.f input,label.f select,select.in{font:inherit;font-size:13px;font-weight:400;padding:5px 8px;border:1px solid #CBD0D6;border-radius:6px;background:#FFFFFF;color:#1B1D21;min-height:32px;box-sizing:border-box;width:100%}
+.tile{background:#FFFFFF;border:1px solid #E4E6E9;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .q{font-size:12px;font-weight:600;color:#4F5661}
+.tile .a{font-size:20px;font-weight:600;color:#1B1D21;line-height:1.2}
+.tile .d{font-size:12px;color:#3C424B}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{text-align:left;font-size:11px;font-weight:600;color:#4F5661;padding:6px 8px;border-bottom:1px solid #E4E6E9;white-space:nowrap}
+.tbl td{padding:7px 8px;border-bottom:1px solid #EEF0F2;vertical-align:top}
+.tbl td.n,.tbl th.n{text-align:right;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#3C424B}
+.swb{width:20px;height:12px;border-radius:3px;display:inline-block}
+</style>
+</helmet>
+<div style="min-height: 100%; background: #F5F6F7; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1B1D21; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside class="side" aria-label="App navigation" style="flex: 0 0 208px; box-sizing: border-box; background: #FFFFFF; border-right: 1px solid #E4E6E9; padding: 16px 12px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; gap: 8px"><strong style="font-size: 15px">Capacity</strong><span style="font-size: 11px; color: #4F5661">fictional agency data</span></div>
+<nav aria-label="Main" style="display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="4"><button type="button" class="{{n.cls}}" aria-current="{{n.cur}}" onClick="{{n.go}}">{{n.label}}</button></sc-for>
+</nav>
+<div style="flex: 1"></div>
+<span class="{{scenPillCls}}" style="font-size: 12px; align-self: flex-start">{{scenPill}}</span>
+<div style="font-size: 11px; color: #4F5661; line-height: 1.5">Last sync<br>Jira 30 Oct 18:02<br>HR 28 Oct 16:40</div>
+</aside>
+<div style="flex: 999 1 640px; min-width: 0">
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<main style="padding: 18px 20px 32px; display: flex; flex-direction: column; gap: 16px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto">
+<div>
+<div class="eyebrow">Week of Mon 2 Nov 2026 · W45</div>
+<h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 600">What needs attention</h1>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="5">
+<div class="tile">
+<div class="q">{{t.q}}</div>
+<div class="a">{{t.a}}</div>
+<sc-for list="{{t.lines}}" as="l" hint-placeholder-count="2"><div class="d">{{l.text}}</div></sc-for>
+<div style="flex: 1"></div>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><button type="button" class="btn small" onClick="{{t.go}}">{{t.goText}}</button><button type="button" class="btn small" onClick="{{t.ask}}">Ask about this</button></div>
+</div>
+</sc-for>
+</div>
+
+<section class="card" aria-label="Skill matrix">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px; padding: 12px 14px 8px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Skill matrix · FTE balance per week, next 12 weeks</h2>
+<span style="font-size: 12px; color: #3C424B">{{shortSummary}}</span>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid #E4E6E9"><div style="min-width: 960px">
+<div class="g12"><div class="lab grp">Skill · stack</div><sc-for list="{{wF}}" as="w" hint-placeholder-count="12"><div class="{{w.cls}}" title="{{w.title}}"><strong>{{w.d}}</strong>{{w.sub}}</div></sc-for></div>
+<sc-for list="{{strip}}" as="r" hint-placeholder-count="11">
+<div class="g12"><div class="lab"><span class="t"><span style="color: #4F5661">{{r.skill}}</span> {{r.stackPart}}</span></div><sc-for list="{{r.cells}}" as="c" hint-placeholder-count="12"><button type="button" class="{{c.cls}}" title="{{c.title}}" aria-label="{{c.title}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+</sc-for>
+</div></div>
+<div style="padding: 8px 14px; font-size: 11px; color: #3C424B">Orange −n = FTE short that week. Blue +n = FTE spare (free time of people whose main stack it is, shown from 0.2 FTE). Empty = balanced. 1 FTE = 8 h × working days. Shortages count each person once across their stacks. Click a cell for the breakdown in hours.</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<section class="card" style="flex: 3 1 520px; min-width: 0; padding: 12px 14px" aria-label="People">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">People over 100% or idle · this week and next 4</h2>
+<table class="tbl"><thead><tr><th>Person</th><th>Stack</th><th>Status</th><th>Weeks</th><th class="n">Peak</th></tr></thead>
+<tbody>
+<sc-for list="{{attn}}" as="x" hint-placeholder-count="5"><tr><td>{{x.name}}</td><td>{{x.stack}}</td><td><span class="{{x.tagCls}}">{{x.status}}</span></td><td>{{x.weeks}}</td><td class="n">{{x.peak}}</td></tr></sc-for>
+</tbody></table>
+</section>
+<section class="card" style="flex: 2 1 380px; min-width: 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px" aria-label="Data">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Data from last import</h2>
+<button type="button" class="btn small">Upload newer export</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; font-size: 11px">
+<div style="background: #F5F6F7; border-radius: 6px; padding: 6px 8px"><strong>Jira</strong><br>30 Oct 18:02</div>
+
+<div style="background: #F5F6F7; border-radius: 6px; padding: 6px 8px"><strong>HR</strong><br>28 Oct 16:40</div>
+</div>
+<div style="font-size: 12px; color: #3C424B">{{issueSummary}}</div>
+<sc-for list="{{issues}}" as="x" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 64px 1fr; gap: 2px 8px; padding: 6px 0; border-bottom: 1px solid #EEF0F2; font-size: 12px">
+<span><span class="{{x.cls}}">{{x.sev}}</span></span><span>{{x.text}}</span>
+<span></span><span style="font-size: 11px; color: #4F5661">{{x.src}} · {{x.rule}} <sc-if value="{{x.fix}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn link" style="font-size: 11px" onClick="{{goAdmin}}">Fix in Admin</button></sc-if></span>
+</div>
+</sc-for>
+</section>
+</div>
+</main>
+</sc-if>
+
+<!-- ============ PLAN ============ -->
+<sc-if value="{{isPlan}}" hint-placeholder-val="{{ false }}">
+<main style="padding: 16px 20px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 999 1 720px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px">
+<div>
+<h1 style="margin: 0; font-size: 22px; font-weight: 600">Plan</h1>
+<p style="margin: 2px 0 0; font-size: 13px; color: #4F5661">2 Nov 2026 – 24 Jan 2027, 12 weeks. Pipeline stays pinned at the top while you scroll.</p>
+</div>
+</div>
+
+<section class="card" aria-label="Pipeline scenario" style="position: sticky; top: 0; z-index: 5; box-shadow: 0 6px 14px rgba(27,29,33,0.10)">
+<div style="padding: 10px 14px 8px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600">Pipeline</h2>
+<span style="font-size: 12px; color: #3C424B">{{scenText}}</span>
+<div style="flex: 1"></div>
+<sc-if value="{{dirty}}" hint-placeholder-val="{{ false }}">
+<span class="tag warn">Unsaved what-if changes</span>
+<button type="button" class="btn small primary" onClick="{{applyScen}}">Apply to plan</button>
+<button type="button" class="btn small" onClick="{{discardScen}}">Discard</button>
+</sc-if>
+<button type="button" class="btn small" onClick="{{allOff}}">All off</button>
+<button type="button" class="btn small" onClick="{{openAdd}}">+ Add project</button>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid #E4E6E9"><div style="min-width: 960px">
+<div class="g12"><div class="lab grp">On · deal</div><sc-for list="{{wF}}" as="w" hint-placeholder-count="12"><div class="{{w.cls}}" title="{{w.title}}"><strong>{{w.d}}</strong>{{w.sub}}</div></sc-for></div>
+<sc-for list="{{pipeRows}}" as="g" hint-placeholder-count="4">
+<div class="g12">
+<div class="lab">
+<button type="button" role="switch" class="{{g.swCls}}" aria-checked="{{g.onStr}}" aria-label="{{g.swLabel}}" onClick="{{g.toggle}}"><span class="track" aria-hidden="true"></span></button>
+<div style="min-width: 0; display: flex; flex-direction: column"><span class="t" style="font-weight: 600">{{g.name}}</span><span class="t" style="font-size: 11px; color: #4F5661">{{g.meta}}</span></div>
+</div>
+<button type="button" class="{{g.barCls}}" style="grid-column: {{g.col}}" title="{{g.title}}" onClick="{{g.pick}}"><span style="overflow: hidden; text-overflow: ellipsis">{{g.barText}}</span><span style="flex: 1"></span><span class="clip">{{g.rightClip}}</span></button>
+</div>
+</sc-for>
+</div></div>
+<sc-if value="{{anyOn}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 8px 14px; border-top: 1px solid #EEF0F2">
+<sc-for list="{{deltaLines}}" as="l" hint-placeholder-count="3"><div style="display: flex; gap: 6px; align-items: baseline; font-size: 12px"><span class="{{l.tagCls}}">{{l.tag}}</span><span>{{l.text}}</span></div></sc-for>
+</div>
+</sc-if>
+</section>
+
+<section class="card" aria-label="Skill matrix">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px; padding: 10px 14px 6px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600">Skill matrix · FTE balance per week <span style="font-weight: 400; color: #3C424B">(− short, + spare)</span></h2>
+<span style="font-size: 12px; color: #3C424B">{{shortSummary}}</span>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid #E4E6E9"><div style="min-width: 960px">
+<div class="g12"><div class="lab grp">Skill · stack</div><sc-for list="{{wF}}" as="w" hint-placeholder-count="12"><div class="{{w.cls}}" title="{{w.title}}"><strong>{{w.d}}</strong>{{w.sub}}</div></sc-for></div>
+<sc-for list="{{strip}}" as="r" hint-placeholder-count="11">
+<div class="g12"><div class="lab"><span class="t"><span style="color: #4F5661">{{r.skill}}</span> {{r.stackPart}}</span></div><sc-for list="{{r.cells}}" as="c" hint-placeholder-count="12"><button type="button" class="{{c.cls}}" title="{{c.title}}" aria-label="{{c.title}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+</sc-for>
+</div></div>
+</section>
+
+<section class="card" aria-label="Timeline">
+<div style="padding: 4px 14px 0; border-bottom: 1px solid #E4E6E9; display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<div role="tablist" style="display: flex">
+<button type="button" role="tab" class="{{tabProjCls}}" aria-selected="{{tabProjSel}}" onClick="{{tabProj}}">Projects</button>
+<button type="button" role="tab" class="{{tabPeopleCls}}" aria-selected="{{tabPeopleSel}}" onClick="{{tabPeople}}">People</button>
+</div>
+<div style="flex: 1"></div>
+<sc-if value="{{isPeopleTab}}" hint-placeholder-val="{{ false }}">
+<label style="display: inline-flex; gap: 6px; align-items: center; font-size: 12px; padding: 6px 0"><input type="checkbox" checked="{{showActuals}}" onChange="{{toggleActuals}}">Show last 5 weeks (actuals)</label>
+</sc-if>
+<sc-if value="{{isProjTab}}" hint-placeholder-val="{{ true }}">
+<span style="display: inline-flex; flex-wrap: wrap; gap: 10px; padding: 6px 0"><span class="lg"><span class="swb" style="background: #DCE7F5"></span>Signed, billable</span><span class="lg"><span class="swb" style="background: #EEF0F2"></span>Internal</span></span>
+</sc-if>
+</div>
+
+<sc-if value="{{isProjTab}}" hint-placeholder-val="{{ true }}">
+<div style="overflow-x: auto"><div style="min-width: 960px">
+<div class="g12"><div class="lab grp">Project</div><sc-for list="{{wF}}" as="w" hint-placeholder-count="12"><div class="{{w.cls}}" title="{{w.title}}"><strong>{{w.d}}</strong>{{w.sub}}</div></sc-for></div>
+<sc-for list="{{gantt}}" as="g" hint-placeholder-count="10">
+<sc-if value="{{g.isHead}}" hint-placeholder-val="{{ false }}"><div style="padding: 6px 10px; background: #F5F6F7; border-bottom: 1px solid #E4E6E9" class="grp">{{g.label}}</div></sc-if>
+<sc-if value="{{g.isRow}}" hint-placeholder-val="{{ true }}">
+<div class="g12" style="background-image: repeating-linear-gradient(90deg, transparent 0 0)">
+<div class="lab">
+<sc-if value="{{g.isPipe}}" hint-placeholder-val="{{ false }}"><button type="button" role="switch" class="{{g.swCls}}" aria-checked="{{g.onStr}}" aria-label="{{g.swLabel}}" onClick="{{g.toggle}}"><span class="track" aria-hidden="true"></span></button></sc-if>
+<div style="min-width: 0; display: flex; flex-direction: column"><span class="t" style="font-weight: 600">{{g.name}}</span><span class="t" style="font-size: 11px; color: #4F5661">{{g.meta}}</span></div>
+</div>
+<button type="button" class="{{g.barCls}}" style="grid-column: {{g.col}}" title="{{g.title}}" onClick="{{g.pick}}"><span class="clip">{{g.leftClip}}</span><span style="overflow: hidden; text-overflow: ellipsis">{{g.barText}}</span><span style="flex: 1"></span><span class="clip">{{g.rightClip}}</span></button>
+</div>
+</sc-if>
+</sc-for>
+</div></div>
+</sc-if>
+
+<sc-if value="{{isPeopleTab}}" hint-placeholder-val="{{ false }}">
+<div style="overflow-x: auto"><div style="min-width: 1000px">
+<div style="display: grid; grid-template-columns: {{pCols}}; border-bottom: 1px solid #E4E6E9"><div class="lab grp">Person</div><sc-for list="{{pWeeks}}" as="w" hint-placeholder-count="12"><div class="{{w.cls}}" title="{{w.title}}"><strong>{{w.d}}</strong>{{w.sub}}</div></sc-for></div>
+<sc-for list="{{pRows}}" as="r" hint-placeholder-count="14">
+<sc-if value="{{r.isHead}}" hint-placeholder-val="{{ false }}"><div style="padding: 6px 10px; background: #F5F6F7; border-bottom: 1px solid #E4E6E9" class="grp">{{r.label}}</div></sc-if>
+<sc-if value="{{r.isRow}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: {{pCols}}; border-bottom: 1px solid #E4E6E9">
+<div class="lab"><div style="min-width: 0; display: flex; flex-direction: column"><span class="t" style="font-weight: 600">{{r.name}}</span><span class="t" style="font-size: 11px; color: #4F5661">{{r.meta}}</span></div></div>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="12"><button type="button" class="{{c.cls}}" title="{{c.title}}" aria-label="{{c.aria}}" onClick="{{c.pick}}"><span>{{c.label}}</span><span class="sub">{{c.sub}}</span></button></sc-for>
+</div>
+</sc-if>
+</sc-for>
+</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 8px 14px; align-items: center">
+<span class="lg"><span class="swb" style="background: #F9D3B4"></span>Over 100%</span>
+<span class="lg"><span class="swb" style="background: #DCE7F5"></span>51–100%</span>
+<span class="lg"><span class="swb" style="outline: 1px dashed #8E97A3; outline-offset: -2px"></span>Idle, 50% or less</span>
+<span class="lg"><span class="swb" style="background: repeating-linear-gradient(135deg,#F9D3B4 0 4px,#FFF4EC 4px 8px)"></span>Planned while away</span>
+<span class="lg"><span style="width: 7px; height: 7px; border-radius: 50%; background: #1B1D21; display: inline-block"></span>Manual edit</span>
+<div style="flex: 1"></div>
+<span style="font-size: 12px">Manual edits: <strong class="mono">{{ovCount}}</strong></span>
+<button type="button" class="btn small" onClick="{{resetOverrides}}">Reset edits</button>
+</div>
+</sc-if>
+</section>
+</div>
+
+<aside aria-label="Details" class="card" style="flex: 1 1 320px; max-width: 400px; min-width: 0; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+
+<sc-if value="{{nothingSel}}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 13px; color: #3C424B; display: flex; flex-direction: column; gap: 8px">
+<strong style="font-size: 14px; color: #1B1D21">How to use this page</strong>
+<span>1. Read the shortage strip: orange cells are weeks a stack runs short.</span>
+<span>2. Switch pipeline deals on to see their effect. Click a bar to change its start, length, stack split, or who would staff it.</span>
+<span>3. Use the People tab to change someone's hours on a project.</span>
+<span>What-if changes stay in the scenario until you press Apply to plan.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{dp.show}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div><div class="eyebrow">{{dp.weekLabel}}</div><h2 style="margin: 2px 0 0; font-size: 17px; font-weight: 600">{{dp.title}}</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">Unstaffed</div><div class="mono" style="font-size: 16px; font-weight: 600">{{dp.demand}}</div></div>
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">Covered</div><div class="mono" style="font-size: 16px; font-weight: 600">{{dp.supply}}</div></div>
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">Result</div><div class="mono" style="font-size: 16px; font-weight: 600">{{dp.gap}}</div></div>
+</div>
+<div><div style="font-size: 12px; font-weight: 600">Unstaffed demand</div>
+<sc-for list="{{dp.parts}}" as="x" hint-placeholder-count="2"><div class="prow"><span>{{x.name}}</span><span class="mono">{{x.h}}</span></div></sc-for></div>
+<div><div style="font-size: 12px; font-weight: 600">Covered by (hours used this week)</div>
+<sc-for list="{{dp.free}}" as="x" hint-placeholder-count="2"><div class="prow"><span>{{x.name}}</span><span class="mono">{{x.h}}</span></div></sc-for></div>
+<div style="font-size: 12px; color: #3C424B">{{dp.cover}}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{prj.show}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div><div class="eyebrow">{{prj.eyebrow}}</div><h2 style="margin: 2px 0 0; font-size: 17px; font-weight: 600">{{prj.name}}</h2><div style="font-size: 12px; color: #3C424B">{{prj.sub}}</div></div>
+<p class="flag info">{{prj.sourceNote}}</p>
+<sc-if value="{{prj.isPipe}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: end">
+<div><div style="font-size: 11px; font-weight: 600; color: #3C424B; margin-bottom: 3px">Start</div>
+<div style="display: flex; align-items: center; gap: 6px"><button type="button" class="step" aria-label="Start one week earlier" onClick="{{prj.earlier}}">−</button><span class="mono" style="font-size: 12px">{{prj.startText}}</span><button type="button" class="step" aria-label="Start one week later" onClick="{{prj.later}}">+</button></div></div>
+<label class="f">Duration (weeks)<input type="number" min="1" max="26" value="{{prj.dur}}" onChange="{{prj.onDur}}"></label>
+</div>
+<div style="font-size: 12px; color: #3C424B">{{prj.endText}}</div>
+<label class="f">Win chance (%), optional<input type="number" min="0" max="100" value="{{prj.win}}" onChange="{{prj.onWin}}"></label>
+</sc-if>
+<div>
+<div style="font-size: 12px; font-weight: 600; margin-bottom: 4px">{{prj.linesTitle}}</div>
+<sc-for list="{{prj.lines}}" as="x" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 1fr 74px; gap: 4px 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #EEF0F2">
+<sc-if value="{{x.readonly}}" hint-placeholder-val="{{ false }}"><strong style="font-size: 12px">{{x.stack}}</strong></sc-if>
+<sc-if value="{{x.editable}}" hint-placeholder-val="{{ true }}"><select class="in" aria-label="Stack" value="{{x.stackKey}}" onChange="{{x.onStack}}"><sc-for list="{{stackOpts}}" as="o" hint-placeholder-count="11"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></sc-if>
+<sc-if value="{{x.editable}}" hint-placeholder-val="{{ true }}"><label class="f"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{x.fteLabel}}</span><input type="number" min="0" max="5" step="0.25" value="{{x.fte}}" onChange="{{x.onFte}}"></label></sc-if>
+<sc-if value="{{x.readonly}}" hint-placeholder-val="{{ false }}"><span class="mono" style="font-size: 12px; text-align: right">{{x.fte}} FTE</span></sc-if>
+<sc-if value="{{x.editable}}" hint-placeholder-val="{{ true }}"><select class="in" style="grid-column: 1 / -1" aria-label="{{x.whoLabel}}" value="{{x.who}}" onChange="{{x.onWho}}"><sc-for list="{{x.opts}}" as="o" hint-placeholder-count="3"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></sc-if>
+<sc-if value="{{x.readonly}}" hint-placeholder-val="{{ false }}"><span style="grid-column: 1 / -1; font-size: 11px; color: #4F5661">{{x.whoText}}</span></sc-if>
+<sc-if value="{{x.editable}}" hint-placeholder-val="{{ true }}"><div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) auto; gap: 6px; align-items: end"><label class="f">From<select value="{{x.from}}" onChange="{{x.onFrom}}"><sc-for list="{{x.fromOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><label class="f">To<select value="{{x.to}}" onChange="{{x.onTo}}"><sc-for list="{{x.toOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><button type="button" class="btn small" onClick="{{x.remove}}">Remove</button></div></sc-if>
+</div>
+</sc-for>
+<sc-if value="{{prj.isPipe}}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px"><div><button type="button" class="btn small" onClick="{{prj.addLine}}">+ Add stack line</button></div><div style="font-size: 11px; color: #4F5661">Each line has its own dates; to stage a stack (e.g. 1 FTE, then 0.5), add it again with other dates. 1 FTE = 8 h × working days. Naming a person moves the line onto their load (what-if).</div></div></sc-if>
+</div>
+<sc-if value="{{prj.isPipe}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn primary" onClick="{{prj.toggle}}">{{prj.toggleText}}</button><button type="button" class="btn" onClick="{{prj.markSigned}}">Mark as signed</button><button type="button" class="btn" onClick="{{closeSel}}">Done</button></div>
+</sc-if>
+<sc-if value="{{prj.isSigned}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #E4E6E9; padding-top: 10px">
+<form onSubmit="{{prj.assign.save}}" style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; font-weight: 600">Assign a person (plan)</div>
+<label class="f">Person<select value="{{prj.assign.pid}}" onChange="{{prj.assign.onPid}}"><sc-for list="{{prj.assign.people}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<label class="f">Hours / week<input type="number" min="0" max="60" step="0.25" value="{{prj.assign.h}}" onChange="{{prj.assign.onH}}"></label>
+<label class="f">From w/c<select value="{{prj.assign.from}}" onChange="{{prj.assign.onFrom}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">To w/c<select value="{{prj.assign.to}}" onChange="{{prj.assign.onTo}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+</div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><button type="submit" class="btn primary">Assign</button><span style="font-size: 11px; color: #4F5661">Saved as a manual edit. Jira worklogs and sprint still win for the weeks they cover.</span></div>
+</form>
+<form onSubmit="{{prj.demand.save}}" style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; font-weight: 600">Add unstaffed demand</div>
+<div style="display: grid; grid-template-columns: 1fr 80px; gap: 8px; align-items: end">
+<label class="f">Stack<select value="{{prj.demand.stack}}" onChange="{{prj.demand.onStack}}"><sc-for list="{{stackOpts}}" as="o" hint-placeholder-count="11"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">FTE<input type="number" min="0" max="5" step="0.25" value="{{prj.demand.fte}}" onChange="{{prj.demand.onFte}}"></label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<label class="f">From w/c<select value="{{prj.demand.from}}" onChange="{{prj.demand.onFrom}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">To w/c<select value="{{prj.demand.to}}" onChange="{{prj.demand.onTo}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+</div>
+<div><button type="submit" class="btn">Add demand</button></div>
+</form>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{add.show}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{add.save}}" style="display: flex; flex-direction: column; gap: 10px">
+<div><div class="eyebrow">New project</div><h2 style="margin: 2px 0 0; font-size: 17px; font-weight: 600">Add a project not yet in the CRM</h2></div>
+<p class="flag info">Projects that already exist in Jira are converted in Admin → Projects, not added here.</p>
+<label class="f">Type<select value="{{add.type}}" onChange="{{add.onType}}"><option value="pipeline">Billable · pipeline (not signed yet)</option><option value="internal">Internal · own product (non-billable)</option></select></label>
+<p class="flag info">{{add.typeNote}}</p>
+<label class="f">Project name<input type="text" value="{{add.name}}" onChange="{{add.onName}}"></label>
+<label class="f">Client or owner<input type="text" value="{{add.client}}" onChange="{{add.onClient}}"></label>
+<label class="f">Win chance (%), optional<input type="number" min="0" max="100" value="{{add.win}}" onChange="{{add.onWin}}"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<label class="f">Start w/c<select value="{{add.start}}" onChange="{{add.onStart}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">Duration (weeks)<input type="number" min="1" max="26" value="{{add.dur}}" onChange="{{add.onDur}}"></label>
+</div>
+<div style="font-size: 12px; font-weight: 600">Demand by stack</div>
+<sc-for list="{{add.lines}}" as="x" hint-placeholder-count="1">
+<div style="display: grid; grid-template-columns: 1fr 80px; gap: 6px 8px; padding-bottom: 8px; border-bottom: 1px solid #E4E6E9">
+<select class="in" aria-label="Stack" value="{{x.stack}}" onChange="{{x.onStack}}"><sc-for list="{{stackOpts}}" as="o" hint-placeholder-count="11"><option value="{{o.v}}">{{o.l}}</option></sc-for></select>
+<input class="in" style="font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid #CBD0D6; border-radius: 6px" type="number" min="0" max="5" step="0.25" aria-label="FTE" value="{{x.fte}}" onChange="{{x.onFte}}">
+<div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) auto; gap: 6px; align-items: end"><label class="f">From<select value="{{x.from}}" onChange="{{x.onFrom}}"><sc-for list="{{x.fromOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><label class="f">To<select value="{{x.to}}" onChange="{{x.onTo}}"><sc-for list="{{x.toOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><button type="button" class="btn small" onClick="{{x.remove}}">Remove</button></div>
+</div>
+</sc-for>
+<div><button type="button" class="btn small" onClick="{{add.addLine}}">+ Add stack line</button></div>
+<sc-if value="{{add.hasErr}}" hint-placeholder-val="{{ false }}"><p class="flag">{{add.err}}</p></sc-if>
+<div style="display: flex; gap: 8px"><button type="submit" class="btn primary">Add to scenario</button><button type="button" class="btn" onClick="{{closeSel}}">Cancel</button></div>
+</form>
+</sc-if>
+
+<sc-if value="{{pp.show}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div><div class="eyebrow">{{pp.weekLabel}}</div><h2 style="margin: 2px 0 0; font-size: 17px; font-weight: 600">{{pp.name}}</h2><div style="font-size: 12px; color: #3C424B">{{pp.role}}</div></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">Available</div><div class="mono" style="font-size: 16px; font-weight: 600">{{pp.availText}}</div></div>
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">{{pp.l2}}</div><div class="mono" style="font-size: 16px; font-weight: 600">{{pp.v2}}</div></div>
+<div style="background: #F5F6F7; border-radius: 8px; padding: 8px"><div style="font-size: 11px; color: #4F5661">{{pp.l3}}</div><div class="mono" style="font-size: 16px; font-weight: 600">{{pp.v3}}</div></div>
+</div>
+<div class="mono" style="font-size: 11px; color: #3C424B; background: #F5F6F7; border-radius: 6px; padding: 6px 8px">{{pp.formula}}</div>
+<sc-for list="{{pp.flags}}" as="f" hint-placeholder-count="1"><p class="{{f.cls}}">{{f.text}}</p></sc-for>
+<div><div style="font-size: 12px; font-weight: 600">{{pp.rowsTitle}}</div>
+<sc-for list="{{pp.rows}}" as="x" hint-placeholder-count="3"><div class="prow"><span>{{x.name}} <span class="{{x.tagCls}}">{{x.tag}}</span></span><span class="mono">{{x.h}}</span><span class="src">{{x.src}}</span></div></sc-for></div>
+<sc-if value="{{pp.canEdit}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{applyEdit}}" style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #E4E6E9; padding-top: 10px">
+<div style="font-size: 12px; font-weight: 600">Change weekly hours on the plan</div>
+<label class="f">Project<select value="{{form.proj}}" onChange="{{onProj}}"><sc-for list="{{pp.projOpts}}" as="o" hint-placeholder-count="3"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<label class="f">Hours / week<input type="number" min="0" max="60" step="0.25" value="{{form.hours}}" onChange="{{onHours}}"></label>
+<label class="f">From w/c<select value="{{form.from}}" onChange="{{onFrom}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">To w/c<select value="{{form.to}}" onChange="{{onTo}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+</div>
+<sc-if value="{{form.hasErr}}" hint-placeholder-val="{{ false }}"><p class="flag">{{form.err}}</p></sc-if>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><button type="submit" class="btn primary">Apply</button><span style="font-size: 11px; color: #4F5661">Saved as a manual edit. Imported data stays untouched.</span></div>
+</form>
+</sc-if>
+</div>
+</sc-if>
+</aside>
+</main>
+</sc-if>
+
+<!-- ============ REPORTS (low-fi) ============ -->
+<sc-if value="{{isReports}}" hint-placeholder-val="{{ false }}">
+<main style="padding: 18px 20px 32px; display: flex; flex-direction: column; gap: 16px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px">
+<div><div class="eyebrow">Low-fi · actuals from Jira worklogs</div><h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 600">Reports · 28 Sep – 1 Nov 2026</h1></div>
+<span style="font-size: 12px; color: #3C424B">Billable = logged on a Jira project marked Signed in Admin.</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<div class="tile"><div class="q">Billable share of logged time</div><div class="a mono">{{rep.share}}</div><div class="d">{{rep.shareD}}</div></div>
+<div class="tile"><div class="q">Billable utilisation</div><div class="a mono">{{rep.util}}</div><div class="d">{{rep.utilD}}</div></div>
+<div class="tile"><div class="q">Logged vs available</div><div class="a mono">{{rep.logged}}</div><div class="d">{{rep.loggedD}}</div></div>
+<div class="tile"><div class="q">Plan vs actual</div><div class="a mono">{{rep.drift}}</div><div class="d">Total drift against the plan of record.</div></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
+<section class="card" aria-label="Billable target" style="flex: 1 1 300px; min-width: 0; padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<h2 style="margin: 0; align-self: flex-start; font-size: 15px; font-weight: 600">Billable share vs target</h2>
+<span style="align-self: flex-start; font-size: 12px; color: #3C424B">Share of logged time, 28 Sep – 1 Nov</span>
+<svg viewBox="0 0 200 128" width="100%" style="max-width: 320px; margin-top: 6px" role="img" aria-label="{{rep.gauge.aria}}">
+<path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#E4E6E9" stroke-width="14"></path>
+<path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#1C3A62" stroke-width="14" style="stroke-dasharray: {{rep.gauge.dash}} 100"></path>
+<line x1="{{rep.gauge.tx0}}" y1="{{rep.gauge.ty0}}" x2="{{rep.gauge.tx1}}" y2="{{rep.gauge.ty1}}" stroke="#B85C1E" stroke-width="3"></line>
+<line x1="100" y1="100" x2="{{rep.gauge.nx}}" y2="{{rep.gauge.ny}}" stroke="#1B1D21" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="100" cy="100" r="6" fill="#1B1D21"></circle>
+<text x="20" y="118" text-anchor="middle" font-size="8" fill="#4F5661">0%</text>
+<text x="100" y="14" text-anchor="middle" font-size="8" fill="#4F5661">50%</text>
+<text x="180" y="118" text-anchor="middle" font-size="8" fill="#4F5661">100%</text>
+<text x="198" y="34" text-anchor="end" font-size="8" font-weight="600" fill="#6E2E00">Target {{rep.gauge.target}}</text>
+</svg>
+<div class="mono" style="font-size: 30px; font-weight: 600; line-height: 1">{{rep.gauge.val}}</div>
+<span class="{{rep.gauge.statusCls}}">{{rep.gauge.status}}</span>
+<span style="font-size: 11px; color: #4F5661; text-align: center">Target is a setting in Admin. Unmapped hours count as non-billable.</span>
+</section>
+
+<section class="card" aria-label="Where logged hours went" style="flex: 1 1 360px; min-width: 0; padding: 14px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Where logged hours went</h2>
+<span style="font-size: 12px; color: #3C424B">All logged hours by type of work</span>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 8px">
+<svg viewBox="0 0 42 42" width="150" height="150" role="img" aria-label="{{rep.d1.aria}}">
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke="#EEF0F2" stroke-width="5"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d1.a.color}}; stroke-dasharray: {{rep.d1.a.dash}} {{rep.d1.a.rest}}; stroke-dashoffset: {{rep.d1.a.off}}"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d1.b.color}}; stroke-dasharray: {{rep.d1.b.dash}} {{rep.d1.b.rest}}; stroke-dashoffset: {{rep.d1.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d1.c.color}}; stroke-dasharray: {{rep.d1.c.dash}} {{rep.d1.c.rest}}; stroke-dashoffset: {{rep.d1.c.off}}"></circle>
+<text x="21" y="22.5" text-anchor="middle" font-size="6.5" font-weight="600" fill="#1B1D21">{{rep.d1.center}}</text>
+<text x="21" y="27" text-anchor="middle" font-size="2.8" fill="#4F5661">{{rep.d1.sub}}</text>
+</svg>
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column">
+<sc-for list="{{rep.d1.rows}}" as="x" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 12px 1fr auto auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #EEF0F2; font-size: 12px"><span style="width: 12px; height: 12px; border-radius: 3px; background: {{x.color}}"></span><span>{{x.name}}</span><span class="mono">{{x.h}}</span><span class="mono" style="min-width: 34px; text-align: right; font-weight: 600">{{x.pct}}</span></div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="card" aria-label="Billable hours by project" style="flex: 1 1 360px; min-width: 0; padding: 14px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Billable hours by project</h2>
+<span style="font-size: 12px; color: #3C424B">Signed client projects only</span>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 8px">
+<svg viewBox="0 0 42 42" width="150" height="150" role="img" aria-label="{{rep.d2.aria}}">
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke="#EEF0F2" stroke-width="5"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d2.a.color}}; stroke-dasharray: {{rep.d2.a.dash}} {{rep.d2.a.rest}}; stroke-dashoffset: {{rep.d2.a.off}}"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d2.b.color}}; stroke-dasharray: {{rep.d2.b.dash}} {{rep.d2.b.rest}}; stroke-dashoffset: {{rep.d2.b.off}}"></circle>
+<circle cx="21" cy="21" r="15.9155" fill="none" stroke-width="5" style="stroke: {{rep.d2.c.color}}; stroke-dasharray: {{rep.d2.c.dash}} {{rep.d2.c.rest}}; stroke-dashoffset: {{rep.d2.c.off}}"></circle>
+<text x="21" y="22.5" text-anchor="middle" font-size="6.5" font-weight="600" fill="#1B1D21">{{rep.d2.center}}</text>
+<text x="21" y="27" text-anchor="middle" font-size="2.8" fill="#4F5661">{{rep.d2.sub}}</text>
+</svg>
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column">
+<sc-for list="{{rep.d2.rows}}" as="x" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 12px 1fr auto auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #EEF0F2; font-size: 12px"><span style="width: 12px; height: 12px; border-radius: 3px; background: {{x.color}}"></span><span>{{x.name}}</span><span class="mono">{{x.h}}</span><span class="mono" style="min-width: 34px; text-align: right; font-weight: 600">{{x.pct}}</span></div>
+</sc-for>
+</div>
+</div>
+</section>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<section class="card" style="flex: 1 1 520px; min-width: 0; padding: 12px 14px; overflow-x: auto">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">By person · plan vs actual and billable</h2>
+<table class="tbl"><thead><tr><th>Person</th><th>Stack</th><th class="n">Available</th><th class="n">Plan</th><th class="n">Logged</th><th class="n">Drift</th><th class="n">Billable</th><th class="n">Share</th><th style="width: 30%">Share of logged</th></tr></thead><tbody>
+<sc-for list="{{rep.people}}" as="x" hint-placeholder-count="11"><tr><td>{{x.name}}</td><td>{{x.stack}}</td><td class="n">{{x.avail}}</td><td class="n">{{x.plan}}</td><td class="n">{{x.logged}}</td><td class="n">{{x.drift}}</td><td class="n">{{x.bill}}</td><td class="n">{{x.share}}</td><td><div style="background: #EEF0F2; border-radius: 3px; height: 10px"><div style="background: #1C3A62; border-radius: 3px; height: 10px; width: {{x.w}}"></div></div></td></tr></sc-for>
+</tbody></table>
+</section>
+<section class="card" style="flex: 1 1 420px; min-width: 0; padding: 12px 14px; overflow-x: auto">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">By project · plan vs actual</h2>
+<table class="tbl"><thead><tr><th>Project</th><th>Type</th><th class="n">Plan</th><th class="n">Actual</th><th class="n">Drift</th></tr></thead><tbody>
+<sc-for list="{{rep.projects}}" as="x" hint-placeholder-count="7"><tr><td>{{x.name}}</td><td><span class="{{x.tagCls}}">{{x.kind}}</span></td><td class="n">{{x.plan}}</td><td class="n">{{x.act}}</td><td class="n">{{x.drift}}</td></tr></sc-for>
+</tbody></table>
+<p style="font-size: 11px; color: #4F5661; margin: 8px 0 0">Unmapped hours stay in the totals so burn is right, and count as non-billable until mapped in Admin.</p>
+</section>
+</div>
+</main>
+</sc-if>
+
+<!-- ============ ADMIN (low-fi) ============ -->
+<sc-if value="{{isAdmin}}" hint-placeholder-val="{{ false }}">
+<main style="padding: 18px 20px 32px; display: flex; flex-direction: column; gap: 16px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto">
+<div><div class="eyebrow">Low-fi · what HR and Jira do not hold</div><h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 600">Admin</h1></div>
+<div role="tablist" style="display: flex; border-bottom: 1px solid #E4E6E9">
+<button type="button" role="tab" class="{{adm.tabProjCls}}" aria-selected="{{adm.tabProjSel}}" onClick="{{adm.tabProj}}">Projects</button>
+<button type="button" role="tab" class="{{adm.tabPeopleCls}}" aria-selected="{{adm.tabPeopleSel}}" onClick="{{adm.tabPeople}}">People</button>
+<button type="button" role="tab" class="{{adm.tabSettingsCls}}" aria-selected="{{adm.tabSettingsSel}}" onClick="{{adm.tabSettings}}">Settings</button>
+</div>
+<sc-if value="{{adm.isProjects}}" hint-placeholder-val="{{ true }}">
+<section class="card" aria-label="Projects" style="padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 3 1 560px; min-width: 0; overflow-x: auto">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">Projects</h2><span style="font-size: 12px; color: #3C424B">Projects that exist in Jira are converted below (type and dates). Pipeline projects (2 to 5) are entered by hand on the right.</span></div>
+<table class="tbl"><thead><tr><th>Project</th><th>Type</th><th class="n">Win chance</th><th>When</th><th>Demand by stack (FTE)</th><th>Scenario</th><th></th></tr></thead><tbody>
+<sc-for list="{{adm.projects}}" as="x" hint-placeholder-count="10"><tr><td><strong>{{x.name}}</strong><div style="font-size: 11px; color: #4F5661">{{x.client}}</div></td><td><span class="{{x.srcCls}}">{{x.src}}</span></td><td class="n">{{x.win}}</td><td style="white-space: nowrap">{{x.when}}</td><td>{{x.demand}}</td><td>{{x.scen}}</td><td><button type="button" class="btn small" onClick="{{x.open}}">{{x.openText}}</button></td></tr></sc-for>
+</tbody></table>
+</div>
+<form onSubmit="{{addF.save}}" style="flex: 2 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px; background: #F5F6F7; border-radius: 8px; padding: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Add a project</h2>
+<span style="font-size: 12px; color: #3C424B">Projects already in Jira are converted in the table below, not added here. Enter each pipeline project by hand.</span>
+<sc-if value="{{hasAdded}}" hint-placeholder-val="{{ false }}"><p class="flag info">Added {{lastAdded}}.</p></sc-if>
+<label class="f">Type<select value="{{addF.type}}" onChange="{{addF.onType}}"><option value="pipeline">Billable · pipeline (not signed yet)</option><option value="internal">Internal · own product (non-billable)</option></select></label>
+<p class="flag info">{{addF.typeNote}}</p>
+<label class="f">Project name<input type="text" value="{{addF.name}}" onChange="{{addF.onName}}"></label>
+<label class="f">Client or owner<input type="text" value="{{addF.client}}" onChange="{{addF.onClient}}"></label>
+<label class="f">Win chance (%), optional<input type="number" min="0" max="100" value="{{addF.win}}" onChange="{{addF.onWin}}"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<label class="f">Start w/c<select value="{{addF.start}}" onChange="{{addF.onStart}}"><sc-for list="{{weekOpts}}" as="o" hint-placeholder-count="12"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label>
+<label class="f">Duration (weeks)<input type="number" min="1" max="26" value="{{addF.dur}}" onChange="{{addF.onDur}}"></label>
+</div>
+<div style="font-size: 11px; font-weight: 600; color: #3C424B">Demand by stack (FTE)</div>
+<sc-for list="{{addF.lines}}" as="x" hint-placeholder-count="1">
+<div style="display: grid; grid-template-columns: 1fr 80px; gap: 6px 8px; padding-bottom: 8px; border-bottom: 1px solid #E4E6E9">
+<select class="in" aria-label="Stack" value="{{x.stack}}" onChange="{{x.onStack}}"><sc-for list="{{stackOpts}}" as="o" hint-placeholder-count="11"><option value="{{o.v}}">{{o.l}}</option></sc-for></select>
+<input class="in" style="font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid #CBD0D6; border-radius: 6px" type="number" min="0" max="5" step="0.25" aria-label="FTE" value="{{x.fte}}" onChange="{{x.onFte}}">
+<div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) auto; gap: 6px; align-items: end"><label class="f">From<select value="{{x.from}}" onChange="{{x.onFrom}}"><sc-for list="{{x.fromOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><label class="f">To<select value="{{x.to}}" onChange="{{x.onTo}}"><sc-for list="{{x.toOpts}}" as="o" hint-placeholder-count="6"><option value="{{o.v}}">{{o.l}}</option></sc-for></select></label><button type="button" class="btn small" onClick="{{x.remove}}">Remove</button></div>
+</div>
+</sc-for>
+<div><button type="button" class="btn small" onClick="{{addF.addLine}}">+ Add stack line</button></div>
+<sc-if value="{{addF.hasErr}}" hint-placeholder-val="{{ false }}"><p class="flag">{{addF.err}}</p></sc-if>
+<div><button type="submit" class="btn primary">Add project</button></div>
+</form>
+</section>
+</sc-if>
+<sc-if value="{{adm.isPeople}}" hint-placeholder-val="{{ false }}">
+<section class="card" style="padding: 12px 14px; overflow-x: auto">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">People · skills and stack</h2><span style="font-size: 12px; color: #3C424B">Name, title and hours come from HR. Stacks and cost are set here. The first stack is the main one (dark tag) and decides grouping.</span></div>
+<table class="tbl"><thead><tr><th>Person</th><th>Title (HR)</th><th class="n">h/wk (HR)</th><th>Stacks</th><th class="n">Cost/h</th><th></th></tr></thead><tbody>
+<sc-for list="{{adm.people}}" as="x" hint-placeholder-count="12"><tr><td>{{x.name}}</td><td>{{x.role}}</td><td class="n">{{x.hours}}</td><td><span style="display: flex; flex-wrap: wrap; gap: 4px"><sc-for list="{{x.stacks}}" as="k" hint-placeholder-count="2"><span class="{{k.cls}}">{{k.label}}</span></sc-for></span></td><td class="n">{{x.cost}}</td><td><button type="button" class="btn small">Edit</button></td></tr></sc-for>
+</tbody></table>
+</section>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<sc-if value="{{adm.isPeople}}" hint-placeholder-val="{{ false }}">
+<section class="card" style="flex: 1 1 420px; min-width: 0; padding: 12px 14px">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">Jira account → person</h2>
+<table class="tbl"><thead><tr><th>Jira account</th><th>Display name</th><th>Person</th></tr></thead><tbody>
+<tr><td class="mono">712020:4a1c…</td><td>Kovács Anna</td><td>Kovács Anna</td></tr>
+<tr><td class="mono">712020:77b0…</td><td>Tóth Bence</td><td>Tóth Bence</td></tr>
+<tr style="background: #FFF4EC"><td class="mono">712020:9f3e…</td><td>B. Szilágyi</td><td><select class="in" aria-label="Map Jira account 712020:9f3e to a person"><option>Unmapped · choose person</option><option>Kiss Márton</option><option>Fekete Máté</option></select><div style="font-size: 11px; color: #6E2E00; margin-top: 3px">6 h in W43 under "Unmapped person"</div></td></tr>
+</tbody></table>
+</section>
+</sc-if>
+<sc-if value="{{adm.isProjects}}" hint-placeholder-val="{{ true }}">
+<section class="card" style="flex: 1 1 420px; min-width: 0; padding: 12px 14px">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">Jira project → project <span style="font-weight: 400; font-size: 12px; color: #3C424B">(convert each Jira key: its type and dates make it a signed or internal project)</span></h2>
+<table class="tbl"><thead><tr><th>Jira key</th><th>Project</th><th>Type</th><th>Start</th><th>End</th></tr></thead><tbody>
+<tr><td class="mono">NOVA</td><td>Nova banking app</td><td><span class="tag billable">Signed</span></td><td>27 Jul</td><td>22 Feb</td></tr>
+<tr><td class="mono">HLX</td><td>Helix claims portal</td><td><span class="tag billable">Signed</span></td><td>24 Aug</td><td>7 Dec</td></tr>
+<tr><td class="mono">ORB</td><td>Orbit e-shop</td><td><span class="tag billable">Signed</span></td><td>12 Oct</td><td>18 Jan</td></tr>
+<tr><td class="mono">LDG, PLS</td><td>Ledgerly, Pulse</td><td><span class="tag internal">Internal</span></td><td>—</td><td>ongoing</td></tr>
+<tr style="background: #FFF4EC"><td class="mono">MRD</td><td><select class="in" aria-label="Convert Jira key MRD to a project"><option>Unmapped · choose or create project</option><option>Nova banking app</option><option>New project…</option></select><div style="font-size: 11px; color: #6E2E00; margin-top: 3px">14 h counted as non-billable until converted</div></td><td><select class="in" aria-label="Type of project for key MRD"><option>Signed (billable)</option><option>Internal (non-billable)</option></select></td><td><input class="in" style="font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid #CBD0D6; border-radius: 6px; width: 100%; box-sizing: border-box" type="text" placeholder="start" aria-label="Start date"></td><td><input class="in" style="font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid #CBD0D6; border-radius: 6px; width: 100%; box-sizing: border-box" type="text" placeholder="end" aria-label="End date"></td></tr>
+</tbody></table>
+</section>
+</sc-if>
+<sc-if value="{{adm.isSettings}}" hint-placeholder-val="{{ false }}">
+<section class="card" style="flex: 1 1 520px; min-width: 0; padding: 12px 14px">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 600">Settings</h2>
+<table class="tbl"><tbody>
+<tr><td>Over capacity above</td><td class="n">100%</td></tr>
+<tr><td>Idle at or below</td><td class="n">50%</td></tr>
+<tr><td>Billable target (share of logged time)</td><td class="n">80%</td></tr>
+<tr><td>"Available" means free at least</td><td class="n">8 h</td></tr>
+<tr><td>Win chance on pipeline projects</td><td class="n">optional, set per project</td></tr>
+<tr><td>Stacks</td><td>Backend: Java, .NET, Node.js · Frontend: React, Angular · Mobile: Flutter, Native · QA · DevOps · UX/UI · Delivery</td></tr>
+</tbody></table>
+</section>
+</sc-if>
+</div>
+</main>
+</sc-if>
+<sc-if value="{{isAsk}}" hint-placeholder-val="{{ false }}">
+<main style="padding: 18px 20px 24px; display: flex; flex-direction: column; gap: 16px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto; min-height: 100vh">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px">
+<div><div class="eyebrow">Questions answered from your data</div><h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 600">Ask</h1></div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><span class="{{scenPillCls}}" style="font-size: 12px">{{scenPill}}</span><button type="button" class="btn small" onClick="{{ask.clear}}">New conversation</button></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; flex: 1">
+
+<section aria-label="Conversation" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px; min-height: 640px">
+
+<sc-if value="{{ask.noThread}}" hint-placeholder-val="{{ true }}">
+<div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<strong style="font-size: 16px">What do you want to know about capacity?</strong>
+<span style="font-size: 13px; color: #3C424B">Ask in plain words. Every number in the answer comes from a database query and a backend function. Claude only writes the conclusion.</span>
+<div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-start">
+<sc-for list="{{ask.chips}}" as="c" hint-placeholder-count="5"><button type="button" class="askchip" onClick="{{c.pick}}">{{c.label}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-for list="{{ask.thread}}" as="m" hint-placeholder-count="0">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="align-self: flex-end; max-width: 560px; background: #1C3A62; color: #FFFFFF; border-radius: 12px 12px 2px 12px; padding: 10px 14px; font-size: 14px">{{m.q}}</div>
+
+<sc-if value="{{m.isWorking}}" hint-placeholder-val="{{ false }}">
+<div role="status" class="card" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; max-width: 760px">
+<sc-for list="{{m.steps}}" as="x" hint-placeholder-count="3"><div style="display: flex; gap: 8px; align-items: center; font-size: 13px"><span class="{{x.cls}}"></span><span>{{x.t}}</span></div></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{m.isAnswer}}" hint-placeholder-val="{{ false }}">
+<div class="card" style="padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<div><div class="eyebrow">Conclusion · written by Claude from the numbers below</div>
+<p style="margin: 4px 0 0; font-size: 15px; line-height: 1.5">{{m.res.text}}</p></div>
+<div><div class="eyebrow" style="margin-bottom: 4px">Numbers · from the backend</div>
+<table class="tbl"><thead><tr><th>{{m.res.h1}}</th><th>{{m.res.h2}}</th><th>{{m.res.h3}}</th></tr></thead><tbody>
+<sc-for list="{{m.res.rows}}" as="x" hint-placeholder-count="4"><tr><td>{{x.a}}</td><td>{{x.b}}</td><td>{{x.c}}</td></tr></sc-for>
+</tbody></table></div>
+<div class="fnbox">
+<div class="eyebrow">How this was calculated</div>
+<div style="color: #3C424B">1. Queries run on the database</div>
+<sc-for list="{{m.res.queries}}" as="q" hint-placeholder-count="2"><div class="mono" style="font-size: 11px; background: #FFFFFF; border: 1px solid #E4E6E9; border-radius: 6px; padding: 6px 8px; overflow-wrap: anywhere">{{q.s}}</div></sc-for>
+<div style="color: #3C424B; margin-top: 2px">2. Backend function</div>
+<div class="mono" style="font-size: 13px; font-weight: 600">{{m.res.fn}}()</div>
+<sc-for list="{{m.res.args}}" as="a" hint-placeholder-count="4"><div style="display: grid; grid-template-columns: 130px 1fr; gap: 8px"><span class="mono" style="color: #4F5661">{{a.k}}</span><span class="mono" style="overflow-wrap: anywhere">{{a.v}}</span></div></sc-for>
+<div style="color: #3C424B; margin-top: 2px">Data used: {{m.res.sources}}</div>
+</div>
+<div><button type="button" class="btn small" onClick="{{m.res.open}}">{{m.res.openText}}</button></div>
+</div>
+</sc-if>
+
+<sc-if value="{{m.isCannot}}" hint-placeholder-val="{{ false }}">
+<div class="card" style="padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; max-width: 760px">
+<strong style="font-size: 14px">I can't answer that from this data</strong>
+<span style="font-size: 13px; color: #3C424B">The app holds people's hours and absences, project plans, and Jira worklogs. It has no salaries, performance reviews or reasons for absence, so I won't guess. Try one of the suggested questions.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{m.isError}}" hint-placeholder-val="{{ false }}">
+<div class="card" style="padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; border-color: #B85C1E; max-width: 760px">
+<div><span class="tag warn">Error</span></div>
+<strong style="font-size: 14px">Something went wrong while running the function</strong>
+<span style="font-size: 13px; color: #3C424B">No answer is shown, because a number that can't be traced is worse than none.</span>
+<div><button type="button" class="btn small" onClick="{{m.retry}}">Try again</button></div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+
+<div style="flex: 1"></div>
+<div style="position: sticky; bottom: 0; background: #F5F6F7; padding-top: 8px; display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{ask.hasThread}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{ask.chips}}" as="c" hint-placeholder-count="5"><button type="button" class="askchip" onClick="{{c.pick}}">{{c.label}}</button></sc-for>
+</div>
+</sc-if>
+<form onSubmit="{{ask.submit}}" style="display: flex; gap: 8px; align-items: center">
+<input type="text" aria-label="Your question" placeholder="Ask about capacity, skills, scenarios or billable time" value="{{ask.q}}" onChange="{{ask.onQ}}" style="flex: 1; min-width: 0; min-height: 40px; font: inherit; font-size: 14px; padding: 8px 12px; border: 1px solid #CBD0D6; border-radius: 8px; background: #FFFFFF">
+<button type="submit" class="btn primary" style="min-height: 40px">Ask</button>
+</form>
+</div>
+</section>
+
+<aside aria-label="How Ask works" style="flex: 1 1 300px; max-width: 380px; min-width: 260px; display: flex; flex-direction: column; gap: 12px">
+<div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div class="eyebrow">How an answer is made</div>
+<ol style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; display: flex; flex-direction: column; gap: 4px">
+<li>Claude picks one backend function that fits your question.</li>
+<li>The backend runs database queries for the people, projects, allocations and Jira hours it needs.</li>
+<li>The function aggregates them into numbers. Claude never calculates.</li>
+<li>Claude writes a short conclusion from those numbers and shows what ran.</li>
+</ol>
+</div>
+<div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div class="eyebrow">Functions it can use</div>
+<sc-for list="{{ask.fns}}" as="f" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 1fr; gap: 0"><span class="mono" style="font-size: 12px; font-weight: 600">{{f.n}}()</span><span style="font-size: 12px; color: #3C424B">{{f.d}}</span></div></sc-for>
+</div>
+<div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div class="eyebrow">Design review only: preview each state</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{ask.states}}" as="x" hint-placeholder-count="5"><button type="button" class="{{x.cls}}" onClick="{{x.pick}}">{{x.label}}</button></sc-for>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</sc-if>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startPage":{"editor":"enum","options":["Home","Plan","Reports","Admin","Ask"],"default":"Home"},"$preview":{"width":1440,"height":1400}}'>
+var W = [
+  {d:'28 Sep',w:'W40',days:5},{d:'5 Oct',w:'W41',days:5},{d:'12 Oct',w:'W42',days:5},
+  {d:'19 Oct',w:'W43',days:4,note:'Fri 23 Oct public holiday'},{d:'26 Oct',w:'W44',days:5},
+  {d:'2 Nov',w:'W45',days:5},{d:'9 Nov',w:'W46',days:5},{d:'16 Nov',w:'W47',days:5},
+  {d:'23 Nov',w:'W48',days:5},{d:'30 Nov',w:'W49',days:5},
+  {d:'7 Dec',w:'W50',days:6,note:'Sat 12 Dec is a working day'},{d:'14 Dec',w:'W51',days:5},
+  {d:'21 Dec',w:'W52',days:3,note:'Thu 24 Dec bridge day, Fri 25 Dec holiday'},
+  {d:'28 Dec',w:'W53',days:4,note:'Fri 1 Jan holiday'},
+  {d:'4 Jan',w:'W01',days:5},{d:'11 Jan',w:'W02',days:5},{d:'18 Jan',w:'W03',days:5}
+];
+var TODAY = 5, LAST = 16, MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function wlab(i){ var d = new Date(2026,8,28); d.setDate(d.getDate()+i*7); return d.getDate()+' '+MON[d.getMonth()]; }
+var STACKS = [
+  {skill:'Backend',stack:'Java'},{skill:'Backend',stack:'.NET'},{skill:'Backend',stack:'Node.js'},
+  {skill:'Frontend',stack:'React'},{skill:'Frontend',stack:'Angular'},
+  {skill:'Mobile',stack:'Flutter'},{skill:'Mobile',stack:'Native'},
+  {skill:'QA',stack:'QA'},{skill:'DevOps',stack:'DevOps'},{skill:'UX/UI',stack:'UX/UI'},{skill:'Delivery',stack:'Delivery'}
+];
+function slab(k){ for (var i=0;i<STACKS.length;i++) if (STACKS[i].stack===k) return STACKS[i].skill===k ? k : STACKS[i].skill+' · '+k; return k; }
+var PROJ = {
+  NOVA:{name:'Nova banking app',client:'Lumen Bank',kind:'Billable',s:-9,e:21},
+  HELIX:{name:'Helix claims portal',client:'Pannon Insurance',kind:'Billable',s:-5,e:10},
+  ORBIT:{name:'Orbit e-shop',client:'Tisza Home',kind:'Billable',s:2,e:16},
+  LEDG:{name:'Ledgerly',client:'Own product',kind:'Internal',s:-40,e:99},
+  PULSE:{name:'Pulse',client:'Own product',kind:'Internal',s:-40,e:99},
+  OPS:{name:'Delivery ops',client:'Internal',kind:'Internal',s:-40,e:99}
+};
+var PEOPLE = [
+  {id:'anna',name:'Kovács Anna',role:'Senior Backend Developer',stacks:['Java','DevOps'],hours:40,start:0,abs:{8:5},cost:48,alloc:[{p:'NOVA',h:32,f:0,t:16},{p:'LEDG',h:8,f:0,t:16}],drift:[2,-4,0,6,-2]},
+  {id:'bence',name:'Tóth Bence',role:'Backend Developer',stacks:['Java','Node.js'],hours:40,start:0,abs:{2:2},cost:38,alloc:[{p:'HELIX',h:24,f:0,t:10},{p:'PULSE',h:8,f:0,t:16}],drift:[0,1,-1,3,-5]},
+  {id:'dora',name:'Szabó Dóra',role:'Backend Developer, contractor',stacks:['.NET','Java'],hours:32,start:0,abs:{},cost:55,alloc:[{p:'ORBIT',h:32,f:0,t:16}],drift:[-2,0,-6,0,1]},
+  {id:'mate',name:'Fekete Máté',role:'Backend Developer',stacks:['Node.js','React'],hours:40,start:0,abs:{},cost:40,alloc:[{p:'PULSE',h:24,f:0,t:16},{p:'LEDG',h:8,f:0,t:16}],drift:[3,-2,0,1,2]},
+  {id:'eszter',name:'Nagy Eszter',role:'Senior Frontend Developer',stacks:['React','UX/UI'],hours:40,start:0,abs:{12:3},cost:46,alloc:[{p:'NOVA',h:24,f:0,t:16},{p:'ORBIT',h:16,f:0,t:16}],drift:[4,2,0,-1,3]},
+  {id:'lili',name:'Horváth Lili',role:'Frontend Developer (joins 16 Nov)',stacks:['React'],hours:40,start:7,abs:{},cost:34,alloc:[{p:'LEDG',h:16,f:7,t:16}],drift:[0,0,0,0,0]},
+  {id:'gergo',name:'Varga Gergő',role:'Frontend Developer',stacks:['Angular','React'],hours:40,start:0,abs:{6:2},cost:37,alloc:[{p:'HELIX',h:16,f:0,t:10},{p:'LEDG',h:8,f:0,t:16}],drift:[-3,0,2,-2,0]},
+  {id:'marton',name:'Kiss Márton',role:'Mobile Developer',stacks:['Flutter','Native'],hours:40,start:0,abs:{},cost:42,alloc:[{p:'PULSE',h:20,f:0,t:16}],drift:[6,4,8,2,5]},
+  {id:'petra',name:'Molnár Petra',role:'QA Engineer',stacks:['QA'],hours:40,start:0,abs:{13:2},cost:33,alloc:[{p:'NOVA',h:16,f:0,t:16},{p:'HELIX',h:16,f:0,t:10},{p:'ORBIT',h:8,f:0,t:16}],drift:[0,-2,1,0,-4]},
+  {id:'zoltan',name:'Farkas Zoltán',role:'DevOps Engineer (20 h/wk)',stacks:['DevOps','Java'],hours:20,start:0,abs:{},cost:52,alloc:[{p:'NOVA',h:8,f:0,t:16},{p:'HELIX',h:6,f:0,t:10},{p:'ORBIT',h:6,f:0,t:16}],drift:[1,2,0,1,-1]},
+  {id:'reka',name:'Balogh Réka',role:'Product Designer',stacks:['UX/UI','React'],hours:40,start:0,abs:{},cost:41,alloc:[{p:'NOVA',h:8,f:0,t:16},{p:'LEDG',h:12,f:0,t:16},{p:'PULSE',h:8,f:0,t:16}],drift:[-4,-6,-2,-3,-5]},
+  {id:'kinga',name:'Papp Kinga',role:'Delivery Lead',stacks:['Delivery','QA'],hours:40,start:0,abs:{},cost:50,alloc:[{p:'NOVA',h:12,f:0,t:16},{p:'HELIX',h:12,f:0,t:10},{p:'ORBIT',h:12,f:0,t:16},{p:'OPS',h:8,f:0,t:16}],drift:[2,5,3,1,4]}
+];
+var BASE_DEMAND = [
+  {proj:'NOVA',stack:'Java',fte:0.5,f:9,t:16,name:'Nova banking app · Java 0.5 FTE, no person yet'},
+  {proj:'HELIX',stack:'Java',hrs:6,f:5,t:6,name:'Sprint SPR-31 · unassigned Helix issues'},
+  {proj:'ORBIT',stack:'QA',fte:0.25,f:11,t:16,name:'Orbit e-shop · QA 0.25 FTE, no person yet'}
+];
+var PIPE0 = [
+  {id:'P-1',name:'Fintech customer portal',client:'Meridian Pay',source:'Manual',stage:null,win:50,amount:'',close:'',start:9,dur:10,on:false,lines:[{stack:'Java',fte:0.5,p:'anna'},{stack:'Java',fte:1,p:''},{stack:'React',fte:1,p:''},{stack:'UX/UI',fte:0.5,p:'',o:0,e:3}]},
+  {id:'P-2',name:'Loyalty app',client:'Kestrel Retail',source:'Manual',stage:null,win:75,amount:'',close:'',start:10,dur:8,on:false,lines:[{stack:'Flutter',fte:1,p:'marton'},{stack:'Node.js',fte:0.5,p:''},{stack:'QA',fte:0.5,p:''}]},
+  {id:'P-3',name:'Fleet dashboard',client:'Northway Logistics',source:'Manual',stage:null,win:null,amount:'',close:'',start:14,dur:6,on:false,lines:[{stack:'Angular',fte:1,p:''},{stack:'DevOps',fte:0.25,p:''}]},
+  {id:'P-4',name:'Nova phase 2',client:'Lumen Bank',source:'Manual',stage:null,win:25,amount:'',close:'',start:13,dur:10,on:false,lines:[{stack:'Java',fte:1,p:''},{stack:'React',fte:0.5,p:'',o:4,e:null}]}
+];
+var ISSUES = [
+  {sev:'warning',text:'Jira author 712020:9f3e is not in HR. 6 h kept on the project as "Unmapped person".',src:'jira/worklogs_2026-W43.json',rule:'F1',fix:true},
+  {sev:'warning',text:'Jira project key MRD is not mapped. 14 h counted as non-billable.',src:'jira/worklogs_2026-W44.json',rule:'F2',fix:true},
+  {sev:'warning',text:'Pipeline project "Fleet dashboard" has no win chance set. Shown as not set; still switchable.',src:'entered by hand',rule:'optional field',fix:false},
+  {sev:'info',text:'Pipeline projects are entered by hand in this version. There is no CRM import.',src:'app',rule:'scope cut',fix:false},
+  {sev:'warning',text:'Blank weekly hours for one person. Used 40 h; fix in HR.',src:'hr/people.csv row 9',rule:'F7',fix:false},
+  {sev:'warning',text:'Start date "2026.11.16." is not ISO. Parsed as 16 Nov.',src:'hr/people.csv row 6',rule:'F8',fix:false},
+  {sev:'info',text:'23 worklogs have no FE/BE label. Used the author’s primary stack.',src:'jira/worklogs_*',rule:'F3',fix:false},
+  {sev:'info',text:'An absence on 25 Dec overlaps a public holiday. Not deducted twice.',src:'hr/absences.csv',rule:'F6',fix:false}
+];
+
+var ASKQ = {q1:'Who will be available in 4 weeks?',q2:'What happens if two pipeline projects start at the same time?',q3:'Which skill will we run short of?',q4:'Who is over 100%, and who is idle?',q5:'How much of our time went to billable work?'};
+function askClassify(text){
+  var t = String(text).toLowerCase();
+  if (/salar|wage|pay rise|bonus|perform|review|rating|sick|health|fire /.test(t)) return null;
+  if (/(two|both|same time|together|at once)/.test(t) && /(pipeline|project|deal)/.test(t)) return 'q2';
+  if (/billable|billing|invoice/.test(t)) return 'q5';
+  if (/short|shortage|lack|missing|hire/.test(t)) return 'q3';
+  if (/over ?100|idle|overload|overbook|overallocat/.test(t)) return 'q4';
+  if (/available|free|capacity|4 weeks|four weeks|bench/.test(t)) return 'q1';
+  return null;
+}
+function rnd(x){ return Math.round(x); }
+function hf(x){ var v = Math.round(x*4)/4; return (v % 1 === 0 ? v : v.toFixed(2).replace(/0$/,'')) + 'h'; }
+function fteS(h,i){ var v = h/(8*W[i].days); if (v>0 && v<0.05) return '<0.1'; return (Math.round(v*10)/10).toFixed(1); }
+function person(id){ for (var i=0;i<PEOPLE.length;i++) if (PEOPLE[i].id===id) return PEOPLE[i]; return null; }
+function avail(p,i){ if (i < p.start) return 0; return p.hours/5*(W[i].days - (p.abs[i]||0)); }
+function lineOn(d,l,i){ var s = d.start+(l.o||0), e = d.start+(l.e==null ? d.dur-1 : Math.min(l.e,d.dur-1)); return i>=s && i<=e; }
+function inDeal(d,i){ return d.on && i>=TODAY && i>=d.start && i<d.start+d.dur && i<=LAST; }
+function srcFor(i){ return (i>=5 && i<=6) ? 'Jira sprint SPR-31' : (i<TODAY ? 'Plan of record' : 'App allocation'); }
+function rowsFor(p,i,pipe,ovs){
+  var out = [];
+  p.alloc.forEach(function(a){ if (i>=a.f && i<=a.t) out.push({p:a.p,rate:a.h,h:a.h*W[i].days/5,src:srcFor(i),ov:false,pipe:false}); });
+  if (i >= TODAY) {
+    ovs.forEach(function(o){
+      if (o.pid!==p.id || i<o.f || i>o.t) return;
+      var r = null; out.forEach(function(x){ if (x.p===o.proj) r = x; });
+      if (r) { r.h = o.h*W[i].days/5; r.rate = o.h; r.src = 'Manual edit'; r.ov = true; }
+      else out.push({p:o.proj,rate:o.h,h:o.h*W[i].days/5,src:'Manual edit',ov:true,pipe:false});
+    });
+    pipe.forEach(function(d){ if (!inDeal(d,i)) return; d.lines.forEach(function(l){ if (l.p===p.id && lineOn(d,l,i)) out.push({p:d.id,deal:d,rate:l.fte*40,h:l.fte*8*W[i].days,src:'Pipeline '+d.id+', what-if',ov:false,pipe:true}); }); });
+  }
+  return out;
+}
+function sum(rs){ var t=0; rs.forEach(function(r){ t+=r.h; }); return t; }
+function demandParts(stack,i,pipe){
+  var parts = []; if (i < TODAY) return parts;
+  BASE_DEMAND.forEach(function(b){ if (b.stack===stack && i>=b.f && i<=b.t) parts.push({name:b.name,h:b.fte ? b.fte*8*W[i].days : b.hrs}); });
+  pipe.forEach(function(d){ if (!inDeal(d,i)) return; d.lines.forEach(function(l){ if (l.stack===stack && !l.p && lineOn(d,l,i)) parts.push({name:d.id+' '+d.name+' · '+l.fte+' FTE unstaffed',h:l.fte*8*W[i].days}); }); });
+  return parts;
+}
+// Each person's free hours are handed out once per week: stacks with the fewest people first,
+// and within a stack, people whose FIRST (main) stack it is before others.
+function allocWeek(i,pipe,ovs){
+  var free = {}, orig = {};
+  PEOPLE.forEach(function(p){ orig[p.id] = free[p.id] = Math.max(0, avail(p,i)-sum(rowsFor(p,i,pipe,ovs))); });
+  var order = STACKS.map(function(s,ix){ return {k:s.stack,ix:ix,n:PEOPLE.filter(function(p){ return p.stacks.indexOf(s.stack)>=0; }).length}; })
+    .sort(function(a,b){ return (a.n-b.n) || (a.ix-b.ix); });
+  var res = {};
+  order.forEach(function(o){
+    var d = sum(demandParts(o.k,i,pipe)), rem = d, by = [];
+    PEOPLE.filter(function(p){ return p.stacks.indexOf(o.k)>=0; })
+      .sort(function(a,b){ return a.stacks.indexOf(o.k)-b.stacks.indexOf(o.k); })
+      .forEach(function(p){ var take = Math.min(rem, free[p.id]); free[p.id] -= take; rem -= take; by.push({name:p.name,h:take,free:orig[p.id]}); });
+    res[o.k] = {demand:d,used:d-rem,gap:rem,by:by};
+  });
+  res.__free = free;
+  return res;
+}
+// Spare time left after all demand is covered, attributed to each person's MAIN (first) stack so nobody is counted twice.
+function surplusAt(stack,i,pipe,ovs){ var f = allocWeek(i,pipe,ovs).__free, t = 0; PEOPLE.forEach(function(p){ if (p.stacks[0]===stack) t += f[p.id]; }); return t; }
+function supplyList(stack,i,pipe,ovs){ return allocWeek(i,pipe,ovs)[stack].by; }
+function gapAt(stack,i,pipe,ovs){ var r = allocWeek(i,pipe,ovs)[stack]; return {demand:r.demand,supply:r.used,gap:r.gap}; }
+function offAll(pipe){ return pipe.map(function(d){ var c = Object.assign({}, d); c.on = false; return c; }); }
+function shortages(pipe,ovs){
+  var out = [];
+  STACKS.forEach(function(st){
+    var first = -1, peak = 0, weeks = 0;
+    for (var i=TODAY;i<=LAST;i++){ var g = gapAt(st.stack,i,pipe,ovs).gap; if (g>0.01){ if (first<0) first = i; peak = Math.max(peak,g/(8*W[i].days)); weeks++; } }
+    if (first>=0) out.push({stack:st.stack,first:first,peak:peak,weeks:weeks});
+  });
+  out.sort(function(a,b){ return a.first-b.first; });
+  return out;
+}
+function shortText(x){ return slab(x.stack)+' from w/c '+W[x.first].d+', up to '+(Math.round(x.peak*10)/10).toFixed(1)+' FTE short'; }
+function strip(pipe,base,ovs,anyOn,sel,onPick){
+  return STACKS.map(function(st){
+    return {skill: st.skill===st.stack ? '' : st.skill+' ·', stackPart: st.stack,
+      cells: W.slice(TODAY).map(function(w,k){
+        var i = k+TODAY, g = gapAt(st.stack,i,pipe,ovs), short = g.gap>0.01, sp = surplusAt(st.stack,i,pipe,ovs), spare = !short && sp/(8*W[i].days) >= 0.2;
+        var cls = 'sc' + (short ? ' short' : spare ? ' spare' : '') + (i===TODAY ? ' today' : '');
+        if (anyOn && rnd(gapAt(st.stack,i,base,ovs).gap) !== rnd(g.gap) && (short || gapAt(st.stack,i,base,ovs).gap>0.01)) cls += ' chg';
+        if (sel && sel.kind==='dem' && sel.stack===st.stack && sel.wk===i) cls += ' sel';
+        return {cls:cls,label: short ? '−'+fteS(g.gap,i) : (spare ? '+'+fteS(sp,i) : ''),
+          title: slab(st.stack)+' · w/c '+w.d+': '+(short ? fteS(g.gap,i)+' FTE short ('+rnd(g.gap)+' h)' : (spare ? '+'+fteS(sp,i)+' FTE spare ('+rnd(sp)+' h, main-stack people)' : (g.demand>0 ? 'covered' : 'no unstaffed demand')))+' · demand '+fteS(g.demand,i)+' FTE, covered '+fteS(g.supply,i)+' FTE',
+          pick:function(){ onPick(st.stack,i); }};
+      })};
+  });
+}
+function billable(){
+  var r = {people:[],proj:{},logged:0,bill:0,avail:0,plan:0};
+  Object.keys(PROJ).forEach(function(k){ r.proj[k] = {plan:0,act:0}; });
+  PEOPLE.forEach(function(p){
+    var a=0,l=0,b=0,pn=0;
+    for (var i=0;i<TODAY;i++){
+      var rs = rowsFor(p,i,[],[]), pl = sum(rs), av = avail(p,i); a += av;
+      if (pl<=0) continue;
+      var act = Math.max(0, pl+p.drift[i]); l += act; r.plan += pl; pn += pl;
+      rs.forEach(function(x){ var share = act*x.h/pl; r.proj[x.p].plan += x.h; r.proj[x.p].act += share; if (PROJ[x.p].kind==='Billable') b += share; });
+    }
+    r.people.push({p:p,avail:a,logged:l,bill:b,plan:pn}); r.logged += l; r.bill += b; r.avail += a;
+  });
+  r.logged += 20; r.unmapped = 20;
+  return r;
+}
+
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    var pipe = JSON.parse(JSON.stringify(PIPE0));
+    this.state = {
+      page: (props && props.startPage) || 'Home', tab:'people', showActuals:true,
+      pipe: pipe, saved: JSON.parse(JSON.stringify(pipe)),
+      ovs: [{pid:'dora',proj:'ORBIT',h:36,f:6,t:11}],
+      asg: {pid:'anna',h:'16',from:'5',to:'16',dstack:'Java',dfte:'0.5',dfrom:'5',dto:'16'},
+      ask:{q:''}, thread:[],
+      sel: {},
+      form: {proj:'',hours:'',from:'5',to:'5',err:''},
+      add: {name:'',client:'',start:'9',dur:'8',lines:[{stack:'Java',fte:'1'}],err:''}
+    };
+  }
+  setDeal(id,fn){
+    var pipe = this.state.pipe.map(function(d){ if (d.id!==id) return d; var c = JSON.parse(JSON.stringify(d)); fn(c); return c; });
+    this.setState({pipe:pipe});
+  }
+  askRun(text,key){
+    var self = this, th = (this.state.thread||[]).slice(), id = th.length;
+    th.push({q:text,key:key||'',state:'working'});
+    this.setState({thread:th,ask:{q:''}});
+    setTimeout(function(){ var t2 = (self.state.thread||[]).slice(); if (t2[id] && t2[id].state==='working'){ t2[id] = Object.assign({}, t2[id], {state: key ? 'answer' : 'cannot'}); self.setState({thread:t2}); } },900);
+  }
+  askRetry(ix){ var t2 = (this.state.thread||[]).slice(), m = t2[ix]; if (!m) return; this.setState({thread:t2.slice(0,ix)}); this.askRun(m.q, m.key || askClassify(m.q) || 'q3'); }
+  askNow(text,key){ this.setState({page:'Ask',thread:[]}); this.askRun(text,key); }
+  asgFor(projId){
+    var self = this, A = this.state.asg;
+    function set(patch){ self.setState({asg:Object.assign({}, self.state.asg, patch)}); }
+    return {pid:A.pid,h:A.h,from:A.from,to:A.to,
+      people:PEOPLE.map(function(p){ return {v:p.id,l:p.name+' · '+p.stacks.join(', ')}; }),
+      onPid:function(e){ set({pid:e.target.value}); }, onH:function(e){ set({h:e.target.value}); },
+      onFrom:function(e){ set({from:e.target.value}); }, onTo:function(e){ set({to:e.target.value}); },
+      save:function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        var a = self.state.asg, h = parseFloat(a.h), f = parseInt(a.from,10), t = parseInt(a.to,10);
+        if (isNaN(h) || h<0 || h>60) return;
+        if (t < f) t = f;
+        self.setState({ovs:self.state.ovs.concat([{pid:a.pid,proj:projId,h:h,f:f,t:t}])});
+      }};
+  }
+  demFor(projId){
+    var self = this, A = this.state.asg;
+    function set(patch){ self.setState({asg:Object.assign({}, self.state.asg, patch)}); }
+    return {stack:A.dstack,fte:A.dfte,from:A.dfrom,to:A.dto,
+      onStack:function(e){ set({dstack:e.target.value}); }, onFte:function(e){ set({dfte:e.target.value}); },
+      onFrom:function(e){ set({dfrom:e.target.value}); }, onTo:function(e){ set({dto:e.target.value}); },
+      save:function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        var a = self.state.asg, fte = parseFloat(a.dfte), f = parseInt(a.dfrom,10), t = parseInt(a.dto,10);
+        if (isNaN(fte) || fte<=0 || fte>5) return;
+        if (t < f) t = f;
+        BASE_DEMAND.push({proj:projId,stack:a.dstack,fte:fte,f:f,t:t,name:PROJ[projId].name+' · '+a.dstack+' '+fte+' FTE, no person yet'});
+        set({});
+      }};
+  }
+  markSigned(d){
+    var iid = 'SIG-'+(Object.keys(PROJ).length+1), st = d.start, en = d.start+d.dur-1;
+    PROJ[iid] = {name:d.name,client:d.client,kind:'Billable',s:st,e:en};
+    d.lines.forEach(function(l){
+      var f = st+(l.o||0), t = st+(l.e==null ? d.dur-1 : Math.min(l.e,d.dur-1));
+      if (l.p) person(l.p).alloc.push({p:iid,h:l.fte*40,f:f,t:t});
+      else BASE_DEMAND.push({proj:iid,stack:l.stack,fte:l.fte,f:f,t:t,name:d.name+' · '+l.stack+' '+l.fte+' FTE, no person yet'});
+    });
+    this.setState({pipe:this.state.pipe.filter(function(x){ return x.id!==d.id; }),saved:this.state.saved.filter(function(x){ return x.id!==d.id; }),sel:{kind:'proj',id:iid},lastAdded:d.name+' (now a signed project)'});
+  }
+  pickPerson(p,i){
+    if (i < p.start) return;
+    var rs = rowsFor(p,i,this.state.pipe,this.state.ovs).filter(function(r){ return !r.pipe; });
+    var first = rs[0] || {p:p.alloc[0].p,rate:p.alloc[0].h};
+    var from = String(Math.max(i,TODAY));
+    this.setState({sel:{kind:'person',pid:p.id,wk:i},form:{proj:first.p,hours:String(first.rate),from:from,to:from,err:''}});
+  }
+  renderVals(){
+    var self = this, s = this.state, pipe = s.pipe, ovs = s.ovs, sel = s.sel || {};
+    var base = offAll(pipe), anyOn = pipe.some(function(d){ return d.on; });
+    var strip0 = function(st,i){ return JSON.stringify(st); };
+    var dirty = JSON.stringify(offAll(pipe)) !== JSON.stringify(offAll(s.saved));
+    function go(page,extra){ var o = Object.assign({page:page}, extra||{}); self.setState(o); }
+    function pickDem(stack,i){ go('Plan',{sel:{kind:'dem',stack:stack,wk:i}}); }
+
+    var nav = ['Home','Plan','Reports','Admin','Ask'].map(function(n){ return {label:n,cls:'navb'+(s.page===n?' cur':''),cur:s.page===n?'page':'false',go:function(){ go(n); }}; });
+    var onDeals = pipe.filter(function(d){ return d.on; });
+    var scenPill = anyOn ? 'Scenario: '+onDeals.map(function(d){ return d.id; }).join(' + ')+' on' : 'Scenario: signed and internal only';
+
+    var wF = W.slice(TODAY).map(function(w,k){ var i = k+TODAY;
+      return {d:w.d,sub: i===TODAY ? 'today' : (w.days!==5 ? w.days+' days' : w.w),cls:'wh'+(i===TODAY?' today':'')+(w.days!==5?' odd':''),title:w.w+' · '+w.days+' working days'+(w.note?' · '+w.note:'')}; });
+
+    var cur = shortages(pipe,ovs), baseS = shortages(base,ovs);
+    var shortSummary = cur.length ? cur.length+' stack'+(cur.length>1?'s':'')+' short: '+cur.map(function(x){ return slab(x.stack)+' from '+W[x.first].d; }).join(' · ') : 'No stack runs short in the next 12 weeks.';
+
+    var deltaLines = [];
+    if (anyOn) {
+      PEOPLE.forEach(function(p){
+        var first=-1, peak=0;
+        for (var i=TODAY;i<=LAST;i++){ var a = avail(p,i); if (a<=0) continue; var c = sum(rowsFor(p,i,pipe,ovs))/a*100, b = sum(rowsFor(p,i,base,ovs))/a*100; if (c>100.5 && b<=100.5){ if (first<0) first=i; peak=Math.max(peak,c); } }
+        if (first>=0) deltaLines.push({tag:'Over 100%',tagCls:'tag warn',text:p.name+' from w/c '+W[first].d+', peak '+rnd(peak)+'%'});
+      });
+      cur.forEach(function(x){
+        var b = null; baseS.forEach(function(y){ if (y.stack===x.stack) b = y; });
+        if (!b) deltaLines.push({tag:'New gap',tagCls:'tag warn',text:shortText(x)});
+        else if (x.peak > b.peak+0.05) deltaLines.push({tag:'Worse gap',tagCls:'tag warn',text:slab(x.stack)+' peak '+b.peak.toFixed(1)+' → '+x.peak.toFixed(1)+' FTE short'});
+      });
+      if (!deltaLines.length) deltaLines.push({tag:'No change',tagCls:'tag info',text:'Nobody new over 100% and no new gap. Free hours absorb this scenario.'});
+    }
+    var scenText = anyOn ? onDeals.length+' pipeline project'+(onDeals.length>1?'s':'')+' on. Compared with signed and internal work only:' : 'All off = signed and internal work only. Switch a deal on to see its effect on shortages and people below.';
+
+    // HOME tiles
+    var w4 = 9, tiles = [];
+    tiles.push({q:'Which skill will we run short of?', a: cur.length ? slab(cur[0].stack) : 'None',
+      lines: cur.length ? cur.slice(0,3).map(function(x){ return {text:shortText(x)}; }) : [{text:'No stack runs short in the next 12 weeks.'}],
+      goText:'Open in Plan', go:function(){ go('Plan',{tab:'projects'}); }});
+    var overNow = [], idleNow = [];
+    PEOPLE.forEach(function(p){ var a = avail(p,TODAY); if (a<=0) return; var l = sum(rowsFor(p,TODAY,pipe,ovs))/a*100; if (l>100.5) overNow.push(p.name+' '+rnd(l)+'%'); else if (l<=50) idleNow.push(p.name+' '+rnd(l)+'%'); });
+    tiles.push({q:'Who is over 100%, and who is idle? (this week)', a: overNow.length+' over · '+idleNow.length+' idle',
+      lines:[{text:'Over: '+(overNow.join(', ')||'nobody')},{text:'Idle: '+(idleNow.join(', ')||'nobody')}],
+      goText:'Open People view', go:function(){ go('Plan',{tab:'people'}); }});
+    var free4 = PEOPLE.map(function(p){ return {p:p,h:Math.max(0, avail(p,w4)-sum(rowsFor(p,w4,pipe,ovs)))}; }).filter(function(x){ return x.h>=8; }).sort(function(a,b){ return b.h-a.h; });
+    tiles.push({q:'Who will be available in 4 weeks? (w/c 30 Nov)', a: free4.length+' people, '+fteS(free4.reduce(function(t,x){ return t+x.h; },0),w4)+' FTE free',
+      lines: free4.slice(0,4).map(function(x){ return {text:x.p.name+' · '+x.p.stacks.join(', ')+' · '+fteS(x.h,w4)+' FTE ('+rnd(x.h)+' h)'}; }),
+      goText:'Open People view', go:function(){ go('Plan',{tab:'people'}); }});
+    var both = pipe.map(function(d){ var c = Object.assign({}, d); c.on = (d.id==='P-1' || d.id==='P-2'); return c; });
+    var bothS = shortages(both,ovs), newG = bothS.filter(function(x){ return !baseS.some(function(y){ return y.stack===x.stack; }); });
+    tiles.push({q:'What if two pipeline projects start together?', a:'2 deals: '+newG.length+' new gaps',
+      lines:[{text:'Overlap from w/c 7 Dec.'},{text: newG.map(function(x){ return slab(x.stack); }).join(', ') || 'No new gap'}],
+      goText:'Try this scenario', go:function(){ self.setState({page:'Plan',tab:'projects',sel:{},pipe:pipe.map(function(d){ var c = Object.assign({}, d); c.on = (d.id==='P-1'||d.id==='P-2'); return c; })}); }});
+    var B = billable();
+    tiles.push({q:'How much of our time went to billable work?', a: rnd(B.bill/B.logged*100)+'% of logged time',
+      lines:[{text:'Utilisation '+rnd(B.bill/B.avail*100)+'% of available hours'},{text:'28 Sep – 1 Nov, Jira worklogs'}],
+      goText:'Open Reports', go:function(){ go('Reports'); }});
+
+    var attn = [];
+    PEOPLE.forEach(function(p){
+      var over=[], idle=[], peak=0;
+      for (var i=TODAY;i<=TODAY+4;i++){ var a = avail(p,i); var pl = sum(rowsFor(p,i,pipe,ovs));
+        if (a<=0){ if (pl>0) over.push(W[i].d+' (away)'); continue; }
+        var l = pl/a*100; if (l>100.5){ over.push(W[i].d); peak=Math.max(peak,l); } else if (l<=50 && i>=p.start) idle.push(W[i].d); }
+      if (over.length) attn.push({name:p.name,stack:p.stacks.join(', '),status:'Over',tagCls:'tag warn',weeks:over.join(', '),peak: peak ? rnd(peak)+'%' : '—'});
+      if (idle.length) attn.push({name:p.name,stack:p.stacks.join(', '),status:'Idle',tagCls:'tag info',weeks: idle.length===5 ? 'all 5 weeks' : idle.join(', '),peak:''});
+    });
+
+    var issues = ISSUES.map(function(x){ return {sev:x.sev,cls:'tag '+(x.sev==='error'?'err':x.sev==='warning'?'warn':'info'),text:x.text,src:x.src,rule:'rule '+x.rule,fix:x.fix}; });
+    var nW = ISSUES.filter(function(x){ return x.sev==='warning'; }).length;
+
+    // PLAN: gantt
+    var gantt = [{isHead:true,isRow:false,label:'Signed and internal'}];
+    function colFor(st,en){ var a = Math.max(st,TODAY), b = Math.min(en,LAST); if (b<a) return null; return (a-TODAY+2)+' / span '+(b-a+1); }
+    Object.keys(PROJ).forEach(function(k){
+      var pr = PROJ[k], mix = {};
+      PEOPLE.forEach(function(p){ p.alloc.forEach(function(a){ if (a.p===k && a.t>=TODAY) mix[p.stacks[0]] = (mix[p.stacks[0]]||0)+a.h/40; }); });
+      BASE_DEMAND.forEach(function(b){ if (b.proj===k && b.fte) mix[b.stack] = (mix[b.stack]||0)+b.fte; });
+      var mixText = Object.keys(mix).map(function(st){ return st+' '+(Math.round(mix[st]*10)/10); }).join(' · ');
+      var unst = BASE_DEMAND.filter(function(b){ return b.proj===k; }).length;
+      gantt.push({isHead:false,isRow:true,isPipe:false,name:pr.name,meta:pr.client+' · '+pr.kind+(unst ? ' · '+unst+' unstaffed line'+(unst>1?'s':'') : ''),
+        col:colFor(pr.s,pr.e),barCls:'bar '+(pr.kind==='Billable'?'billable':'internal')+(sel.kind==='proj'&&sel.id===k?' sel':''),
+        leftClip: pr.s<TODAY ? '← since '+wlab(pr.s) : '', rightClip: pr.e>LAST ? (pr.e>=90 ? 'ongoing →' : '→ '+wlab(pr.e)) : '',
+        barText: mixText, title: pr.name+' · '+mixText,
+        pick:function(){ self.setState({sel:{kind:'proj',id:k}}); }});
+    });
+    var pipeRows = [];
+    pipe.forEach(function(d){
+      var en = d.start+d.dur-1, fte = d.lines.reduce(function(t,l){ return t+l.fte; },0);
+      pipeRows.push({isHead:false,isRow:true,isPipe:true,name:d.name,
+        meta:d.client+' · '+(d.win!=null ? d.win+'% win chance' : 'win chance not set'),
+        swCls:'sw'+(d.on?' on':''),onStr:String(d.on),swLabel:'Include '+d.name+' in scenario',
+        toggle:function(){ self.setDeal(d.id,function(c){ c.on = !c.on; }); },
+        col:colFor(d.start,en),barCls:'bar pipe'+(d.on?' on':'')+(sel.kind==='proj'&&sel.id===d.id?' sel':''),
+        leftClip:'', rightClip: en>LAST ? '→ '+wlab(en) : '',
+        barText: fte+' FTE · '+d.lines.map(function(l){ return l.stack+(l.p ? ' ('+person(l.p).name.split(' ')[1]+')' : ''); }).join(', '),
+        title:d.name+' · w/c '+wlab(d.start)+' to w/c '+wlab(en)+' ('+d.dur+' weeks) · '+fte+' FTE: '+d.lines.map(function(l){ return l.stack+' '+l.fte+(l.p ? ' ('+person(l.p).name+')' : ''); }).join(', '), pick:function(){ self.setState({sel:{kind:'proj',id:d.id}}); }});
+    });
+
+    // PLAN: people grid
+    var cols = s.showActuals ? W.map(function(w,i){ return i; }) : W.slice(TODAY).map(function(w,k){ return k+TODAY; });
+    var pCols = '220px repeat('+cols.length+', minmax(52px,1fr))';
+    var pWeeks = cols.map(function(i){ var w = W[i]; return {d:w.d,sub: i===TODAY ? 'today' : i<TODAY ? 'actual' : (w.days!==5 ? w.days+' days' : w.w),cls:'wh'+(i===TODAY?' today':'')+(w.days!==5?' odd':''),title:w.w+' · '+w.days+' working days'+(w.note?' · '+w.note:'')}; });
+    function pcell(p,i){
+      var a = avail(p,i), rs = rowsFor(p,i,pipe,ovs), pl = sum(rs), cls = 'pc', label = '', sub = '';
+      if (i < p.start) { cls += ' notstarted'; label = '—'; sub = i>=TODAY ? 'not started' : ''; }
+      else if (i < TODAY) { var act = Math.max(0,pl+p.drift[i]), dr = rnd(act-pl); cls += ' past'; label = rnd(act)+'h'; sub = (dr>0?'+':dr<0?'−':'±')+Math.abs(dr); }
+      else if (a===0) { if (pl>0){ cls += ' away'; label = 'away'; sub = rnd(pl)+'h plan'; } else { cls += ' off'; label = 'off'; } }
+      else { var pct = rnd(pl/a*100), bp = rnd(sum(rowsFor(p,i,base,ovs))/a*100);
+        cls += pct>100 ? ' over' : pct<=50 ? ' idle' : ' ok'; label = pct+'%';
+        if (anyOn && bp!==pct) { cls += ' chg'; sub = (pct-bp>0?'+':'−')+Math.abs(pct-bp)+' pts'; }
+        else if (p.abs[i]) sub = p.abs[i]+'d off'; }
+      if (i===TODAY) cls += ' today';
+      if (rs.some(function(r){ return r.ov; })) cls += ' ov';
+      if (sel.kind==='person' && sel.pid===p.id && sel.wk===i) cls += ' sel';
+      var title = p.name+' · w/c '+W[i].d+'\nAvailable '+rnd(a)+'h · planned '+rnd(pl)+'h\n'+rs.map(function(r){ return (PROJ[r.p]?PROJ[r.p].name:r.deal.name)+' '+rnd(r.h)+'h'; }).join('\n');
+      return {cls:cls,label:label,sub:sub,title:title,aria:p.name+', week of '+W[i].d+': '+label+' '+sub,pick:function(){ self.pickPerson(p,i); }};
+    }
+    var pRows = [], lastSkill = '';
+    STACKS.forEach(function(st){
+      var ppl = PEOPLE.filter(function(p){ return p.stacks[0]===st.stack; });
+      if (!ppl.length) return;
+      pRows.push({isHead:true,isRow:false,label:slab(st.stack)+' · '+ppl.length+' (main stack)'});
+      ppl.forEach(function(p){ pRows.push({isHead:false,isRow:true,name:p.name,meta:p.hours+' h/wk · '+p.stacks.join(', '),cells:cols.map(function(i){ return pcell(p,i); })}); });
+    });
+
+    var weekOpts = []; for (var k=TODAY;k<=LAST;k++) weekOpts.push({v:String(k),l:W[k].d});
+    var stackOpts = STACKS.map(function(st){ return {v:st.stack,l:slab(st.stack)}; });
+
+    // panels
+    var dp = {show:false}, prj = {show:false}, add = {show:false}, pp = {show:false};
+    if (sel.kind==='dem') {
+      var g = gapAt(sel.stack,sel.wk,pipe,ovs);
+      dp = {show:true,title:slab(sel.stack),weekLabel:'w/c '+W[sel.wk].d+' · '+W[sel.wk].w+' · 1 FTE = '+(8*W[sel.wk].days)+' h',demand:fteS(g.demand,sel.wk)+' FTE',supply:fteS(g.supply,sel.wk)+' FTE',gap: g.gap>0.01 ? fteS(g.gap,sel.wk)+' FTE short' : 'covered',
+        parts: demandParts(sel.stack,sel.wk,pipe).map(function(x){ return {name:x.name,h:hf(x.h)}; }).concat(g.demand>0 ? [] : [{name:'No unstaffed demand this week',h:''}]),
+        free: supplyList(sel.stack,sel.wk,pipe,ovs).map(function(x){ return {name:x.name+' · '+hf(x.free)+' free in total',h:hf(x.h)}; }).concat(PEOPLE.some(function(p){ return p.stacks.indexOf(sel.stack)>=0; }) ? [] : [{name:'Nobody lists this stack',h:'0h'}]),
+        cover:'Each person is counted once per week. Free hours go first to stacks with the fewest people, and within a stack to people whose main stack it is.'};
+    } else if (sel.kind==='proj' && PROJ[sel.id]) {
+      var pr = PROJ[sel.id], lines = [];
+      PEOPLE.forEach(function(p){ p.alloc.forEach(function(a){ if (a.p===sel.id && a.t>=TODAY) lines.push({stack:slab(p.stacks[0]),fte:String(Math.round(a.h/40*100)/100),whoText:p.name+' · '+a.h+' h/wk until w/c '+W[a.t].d,editable:false,readonly:true}); }); });
+      BASE_DEMAND.forEach(function(b){ if (b.proj===sel.id) lines.push({stack:slab(b.stack),fte: b.fte ? String(b.fte) : hf(b.hrs),whoText:'Unstaffed · '+b.name,editable:false,readonly:true}); });
+      prj = {show:true,isPipe:false,isSigned:true,eyebrow:pr.kind==='Billable' ? 'Signed project · billable' : 'Internal project',name:pr.name,sub:pr.client+(pr.s<TODAY ? ' · since '+wlab(pr.s) : '')+(pr.e>=90 ? ' · ongoing' : ' · until '+wlab(pr.e)),
+        sourceNote: pr.kind==='Billable' ? 'Converted from a Jira project. Who works on it now comes from Jira (past worklogs and the next 2 weeks of sprint). Later weeks are the plan you enter here; demand with no person counts as unstaffed.' : 'Internal product. Hours come from Jira and from the plan entered here.',
+        linesTitle:'Team and demand by stack',lines:lines,assign:self.asgFor(sel.id),demand:self.demFor(sel.id)};
+    } else if (sel.kind==='proj') {
+      var d = pipe.filter(function(x){ return x.id===sel.id; })[0], en = d.start+d.dur-1, offOpts = [];
+      for (var ko=0; ko<d.dur; ko++) offOpts.push({v:String(ko),l:'w/c '+wlab(d.start+ko)});
+      prj = {show:true,isPipe:true,isSigned:false,eyebrow:'Pipeline project · '+d.id+(d.on ? ' · in scenario' : ' · off'),name:d.name,
+        sub:d.client+' · '+(d.win!=null ? d.win+'% win chance' : 'win chance not set'),
+        sourceNote: 'Entered by hand. When the deal is signed, press Mark as signed: it joins the baseline, and Jira supplies the actuals once the project exists there.',
+        startText:'w/c '+(W[d.start] ? W[d.start].d : wlab(d.start)),dur:String(d.dur),win:(d.win==null ? '' : String(d.win)),onWin:function(e){ var v = parseFloat(e.target.value); self.setDeal(d.id,function(c){ c.win = isNaN(v) ? null : Math.max(0,Math.min(100,v)); }); },endText:'Runs until w/c '+wlab(en)+(en>LAST ? ', past the 12-week window.' : '.'),
+        earlier:function(){ self.setDeal(d.id,function(c){ if (c.start>TODAY) c.start -= 1; }); },
+        later:function(){ self.setDeal(d.id,function(c){ if (c.start<LAST) c.start += 1; }); },
+        onDur:function(e){ var v = parseInt(e.target.value,10); if (v>=1 && v<=26) self.setDeal(d.id,function(c){ c.dur = v; }); },
+        linesTitle:'Stack split and staffing (what-if)',
+        lines:d.lines.map(function(l,li){
+          var opts = [{v:'',l:'Unstaffed'}];
+          PEOPLE.filter(function(p){ return p.stacks.indexOf(l.stack)>=0; }).sort(function(a,b){ return a.stacks.indexOf(l.stack)-b.stacks.indexOf(l.stack); }).forEach(function(p){ opts.push({v:p.id,l:p.name+' · '+p.stacks.join(', ')}); });
+          return {stack:slab(l.stack),stackKey:l.stack,from:String(l.o||0),to:(l.e==null ? '' : String(l.e)),fromOpts:offOpts,toOpts:[{v:'',l:'project end'}].concat(offOpts),fte:String(l.fte),editable:true,readonly:false,fteLabel:l.stack+' FTE',whoLabel:'Who staffs '+l.stack,who:l.p||'',opts:opts,
+            onFte:function(e){ var v = parseFloat(e.target.value); if (v>=0 && v<=5) self.setDeal(d.id,function(c){ c.lines[li].fte = v; }); },
+            onWho:function(e){ var v = e.target.value; self.setDeal(d.id,function(c){ c.lines[li].p = v; }); },
+            onStack:function(e){ var v = e.target.value; self.setDeal(d.id,function(c){ var L = c.lines[li]; L.stack = v; if (L.p && person(L.p).stacks.indexOf(v)<0) L.p = ''; }); },
+            onFrom:function(e){ var v = parseInt(e.target.value,10); self.setDeal(d.id,function(c){ var L = c.lines[li]; L.o = v; if (L.e!=null && L.e<v) L.e = v; }); },
+            onTo:function(e){ var v = e.target.value; self.setDeal(d.id,function(c){ var L = c.lines[li]; L.e = v==='' ? null : parseInt(v,10); if (L.e!=null && L.e<(L.o||0)) L.e = L.o||0; }); },
+            remove:function(){ self.setDeal(d.id,function(c){ c.lines.splice(li,1); }); }};
+        }),
+        markSigned:function(){ self.markSigned(d); },
+        addLine:function(){ self.setDeal(d.id,function(c){ c.lines.push({stack:'Java',fte:0.5,p:'',o:0,e:null}); }); },
+        toggleText: d.on ? 'Switch off' : 'Switch on', toggle:function(){ self.setDeal(d.id,function(c){ c.on = !c.on; }); }};
+    }
+    var addF = {};
+    {
+      var A = s.add, aS = parseInt(A.start,10), aD = Math.max(1, Math.min(26, parseInt(A.dur,10)||1)), addOff = [];
+      for (var ka=0; ka<aD; ka++) addOff.push({v:String(ka),l:'w/c '+wlab(aS+ka)});
+      function setA(patch){ self.setState({add:Object.assign({}, self.state.add, patch, {err:''})}); }
+      add = {show:true,name:A.name,client:A.client,start:A.start,dur:A.dur,err:A.err,hasErr:!!A.err,
+        type:A.type||'pipeline', onType:function(e){ setA({type:e.target.value}); },
+        win:A.win||'', onWin:function(e){ setA({win:e.target.value}); },
+        typeNote:(A.type==='internal') ? 'Internal work is a real commitment, so it is always in the baseline, not a scenario switch. Staff it in the People tab.' : 'A sales-phase deal. It stays a what-if until it is signed. Once it is signed, press Mark as signed and Jira takes over the actuals.',
+        onName:function(e){ setA({name:e.target.value}); }, onClient:function(e){ setA({client:e.target.value}); },
+        onStart:function(e){ setA({start:e.target.value}); }, onDur:function(e){ setA({dur:e.target.value}); },
+        lines:A.lines.map(function(l,li){ return {stack:l.stack,fte:l.fte,from:l.o||'0',to:l.e||'',fromOpts:addOff,toOpts:[{v:'',l:'project end'}].concat(addOff),
+          onFrom:function(e){ var ls = self.state.add.lines.slice(); ls[li] = Object.assign({}, ls[li], {o:e.target.value}); setA({lines:ls}); },
+          onTo:function(e){ var ls = self.state.add.lines.slice(); ls[li] = Object.assign({}, ls[li], {e:e.target.value}); setA({lines:ls}); },
+          remove:function(){ var ls = self.state.add.lines.slice(); ls.splice(li,1); setA({lines:ls}); },
+          onStack:function(e){ var ls = self.state.add.lines.slice(); ls[li] = Object.assign({}, ls[li], {stack:e.target.value}); setA({lines:ls}); },
+          onFte:function(e){ var ls = self.state.add.lines.slice(); ls[li] = Object.assign({}, ls[li], {fte:e.target.value}); setA({lines:ls}); }}; }),
+        addLine:function(){ setA({lines:self.state.add.lines.concat([{stack:'React',fte:'1'}])}); },
+        save:function(e){
+          if (e && e.preventDefault) e.preventDefault();
+          var a = self.state.add, dur = parseInt(a.dur,10);
+          var ls = a.lines.map(function(l){ var o = parseInt(l.o||'0',10), e = (l.e==null || l.e==='') ? null : parseInt(l.e,10); if (e!=null && e<o) e = o; return {stack:l.stack,fte:parseFloat(l.fte),p:'',o:o,e:e}; }).filter(function(l){ return l.fte>0; });
+          if (!a.name.trim()) { self.setState({add:Object.assign({}, a, {err:'Give the project a name.'})}); return; }
+          if (!(dur>=1 && dur<=26)) { self.setState({add:Object.assign({}, a, {err:'Duration must be 1 to 26 weeks.'})}); return; }
+          if (!ls.length) { self.setState({add:Object.assign({}, a, {err:'Add at least one stack line with FTE above 0.'})}); return; }
+          if (a.type==='internal') {
+            var iid = 'INT-'+(Object.keys(PROJ).length+1), st0 = parseInt(a.start,10);
+            PROJ[iid] = {name:a.name.trim(),client:a.client.trim()||'Internal',kind:'Internal',s:st0,e:st0+dur-1};
+            ls.forEach(function(l){ BASE_DEMAND.push({proj:iid,stack:l.stack,fte:l.fte,f:st0+l.o,t:st0+(l.e==null ? dur-1 : Math.min(l.e,dur-1)),name:a.name.trim()+' · '+l.stack+' '+l.fte+' FTE, no person yet'}); });
+            self.setState({sel:{kind:'proj',id:iid},lastAdded:a.name.trim()+' (internal, always in the baseline)',add:{name:'',client:'',start:'9',dur:'8',type:'pipeline',lines:[{stack:'Java',fte:'1'}],err:''}});
+            return;
+          }
+          var id = 'P-'+(self.state.pipe.length+1);
+          var np = {id:id,name:a.name.trim(),client:a.client.trim()||'—',source:'Manual',stage:null,win:((a.win===''||a.win==null||isNaN(parseFloat(a.win))) ? null : Math.max(0,Math.min(100,parseFloat(a.win)))),amount:'',close:'',start:parseInt(a.start,10),dur:dur,on:true,lines:ls};
+          self.setState({pipe:self.state.pipe.concat([np]),saved:self.state.saved.concat([JSON.parse(JSON.stringify(np))]),sel:{kind:'proj',id:id},lastAdded:np.name+' ('+id+'), pipeline, on in the Plan scenario',add:{name:'',client:'',start:'9',dur:'8',lines:[{stack:'Java',fte:'1'}],err:''}});
+        }};
+      addF = add; add = Object.assign({}, addF, {show: sel.kind==='add'});
+    }
+    if (sel.kind==='person') {
+      var p = person(sel.pid), i = sel.wk, w = W[i], a = avail(p,i), rs = rowsFor(p,i,pipe,ovs), pl = sum(rs), past = i<TODAY;
+      var flags = [];
+      if (!past && a===0 && pl>0) flags.push({cls:'flag',text:'Planned while away: '+rnd(pl)+' h planned in a week with 0 h available.'});
+      if (rs.some(function(r){ return r.ov; })) flags.push({cls:'flag info',text:'Includes a manual edit. Reset edits to return to imported values.'});
+      if (w.note) flags.push({cls:'flag info',text:w.w+' has '+w.days+' working days: '+w.note+'.'});
+      var act = Math.max(0,pl+p.drift[i]);
+      pp = {show:true,name:p.name,role:p.role+' · stacks: '+p.stacks.join(', '),
+        weekLabel:'w/c '+w.d+' · '+w.w+(past ? ' · actuals' : ' · plan'),availText:hf(a),
+        l2: past ? 'Logged' : 'Planned', v2: past ? hf(act) : hf(pl),
+        l3: past ? 'vs plan' : 'Load', v3: past ? ((act-pl>=0?'+':'−')+hf(Math.abs(act-pl))) : (a>0 ? rnd(pl/a*100)+'%' : 'n/a'),
+        formula:'available = '+p.hours+' h ÷ 5 × ('+(i<p.start?0:w.days)+' working days − '+(p.abs[i]||0)+' off) = '+hf(a),
+        flags:flags, rowsTitle: past ? 'Plan of record by project' : 'Planned hours by project',
+        rows: rs.map(function(r){ var pr = PROJ[r.p]; return {name: pr ? pr.name : r.deal.name, tag: r.pipe ? 'Pipeline' : pr.kind, tagCls: r.pipe ? 'tag pipeline' : (pr.kind==='Billable'?'tag billable':'tag internal'), h:hf(r.h), src:r.src+(r.pipe ? '' : ' · '+r.rate+' h/wk'+(w.days!==5 ? ', pro-rated to '+w.days+' days' : ''))}; }),
+        canEdit: !past && i>=p.start, projOpts: p.alloc.map(function(x){ return {v:x.p,l:PROJ[x.p].name}; })};
+    }
+
+    // REPORTS
+    var rep = {share: rnd(B.bill/B.logged*100)+'%', shareD: rnd(B.bill)+' of '+rnd(B.logged)+' logged hours, incl. '+B.unmapped+' h unmapped',
+      util: rnd(B.bill/B.avail*100)+'%', utilD: rnd(B.bill)+' billable of '+rnd(B.avail)+' available hours',
+      logged: rnd((B.logged-B.unmapped)/B.avail*100)+'%', loggedD: rnd(B.avail-(B.logged-B.unmapped))+' h available but not logged',
+      drift: ((B.logged-B.unmapped-B.plan)>=0?'+':'−')+rnd(Math.abs(B.logged-B.unmapped-B.plan))+' h',
+      people: B.people.map(function(x){ var sh = x.logged>0 ? x.bill/x.logged*100 : 0; var dd = x.logged-x.plan; return {name:x.p.name,stack:x.p.stacks.join(', '),avail:rnd(x.avail),logged:rnd(x.logged),plan:rnd(x.plan),drift:(dd>=0?'+':'−')+rnd(Math.abs(dd)),bill:rnd(x.bill),share: x.logged>0 ? rnd(sh)+'%' : '—',w:rnd(sh)+'%'}; }),
+      projects: Object.keys(B.proj).map(function(k){ var x = B.proj[k], d = x.act-x.plan; return {name:PROJ[k].name,kind:PROJ[k].kind,tagCls:PROJ[k].kind==='Billable'?'tag billable':'tag internal',plan:rnd(x.plan),act:rnd(x.act),drift:(d>=0?'+':'−')+rnd(Math.abs(d))}; })
+        .concat([{name:'Unmapped key MRD',kind:'Unmapped',tagCls:'tag warn',plan:'0',act:'14',drift:'+14'},{name:'Unmapped person',kind:'Unmapped',tagCls:'tag warn',plan:'0',act:'6',drift:'+6'}])};
+    var adm = {people: PEOPLE.map(function(p){ return {name:p.name,role:p.role,hours:p.hours,stacks:p.stacks.map(function(k,ix){ return {label:slab(k),cls: ix===0 ? 'tag billable' : 'tag internal'}; }),cost:'€'+p.cost}; })};
+    adm.projects = Object.keys(PROJ).map(function(k){
+      var pr = PROJ[k], g = gantt.filter(function(x){ return x.isRow && x.name===pr.name; })[0];
+      return {name:pr.name,client:pr.client,src: pr.kind==='Billable' ? 'Signed · from Jira' : 'Internal',srcCls: pr.kind==='Billable' ? 'tag billable' : 'tag internal',win:'—',
+        when:(pr.s<TODAY ? 'since '+wlab(pr.s) : wlab(pr.s))+' → '+(pr.e>=90 ? 'ongoing' : wlab(pr.e)),demand: g ? g.barText : '',scen:'always in',openText:'View',
+        open:function(){ self.setState({page:'Plan',tab:'projects',sel:{kind:'proj',id:k}}); }};
+    }).concat(pipe.map(function(d){
+      return {name:d.name,client:d.client,src:'Pipeline',srcCls:'tag pipeline',win:(d.win!=null ? d.win+'%' : 'not set'),
+        when:wlab(d.start)+' → '+wlab(d.start+d.dur-1)+' · '+d.dur+' wks',
+        demand:d.lines.map(function(l){ return l.stack+' '+l.fte+(l.p ? ' ('+person(l.p).name.split(' ')[1]+')' : '')+((l.o || l.e!=null) ? ' ['+wlab(d.start+(l.o||0))+'–'+wlab(d.start+(l.e==null ? d.dur-1 : l.e))+']' : ''); }).join(', '),
+        scen: d.on ? 'on' : 'off',openText:'Edit',
+        open:function(){ self.setState({page:'Plan',tab:'projects',sel:{kind:'proj',id:d.id}}); }};
+    }));
+
+    adm.isProjects = !s.adminTab || s.adminTab==='projects'; adm.isPeople = s.adminTab==='people'; adm.isSettings = s.adminTab==='settings';
+    adm.tabSettingsCls = 'tabb'+(adm.isSettings?' cur':''); adm.tabSettingsSel = String(adm.isSettings);
+    adm.tabSettings = function(){ self.setState({adminTab:'settings'}); };
+    adm.tabProjCls = 'tabb'+(adm.isProjects?' cur':''); adm.tabPeopleCls = 'tabb'+(adm.isPeople?' cur':'');
+    adm.tabProjSel = String(adm.isProjects); adm.tabPeopleSel = String(adm.isPeople);
+    adm.tabProj = function(){ self.setState({adminTab:'projects'}); }; adm.tabPeople = function(){ self.setState({adminTab:'people'}); };
+    var billPct = B.bill/B.logged*100, TARGET = 80;
+    function polar(v,r){ var th = Math.PI*(1-v/100); return {x:100+r*Math.cos(th), y:100-r*Math.sin(th)}; }
+    var nd = polar(billPct,66), t0 = polar(TARGET,70), t1 = polar(TARGET,94), gd = rnd(billPct)-TARGET;
+    rep.gauge = {dash:(Math.round(billPct*10)/10).toFixed(1), val:rnd(billPct)+'%', target:TARGET+'%',
+      nx:nd.x.toFixed(1), ny:nd.y.toFixed(1), tx0:t0.x.toFixed(1), ty0:t0.y.toFixed(1), tx1:t1.x.toFixed(1), ty1:t1.y.toFixed(1),
+      status: gd>=0 ? 'On target, '+gd+' pts above' : Math.abs(gd)+' pts below target', statusCls: gd>=0 ? 'tag info' : 'tag warn',
+      aria:'Billable share of logged time '+rnd(billPct)+' percent, target '+TARGET+' percent'};
+    function donut(parts,colors,center,sub,label){
+      var total = parts.reduce(function(t,p){ return t+p.v; },0), cum = 0;
+      var segs = parts.map(function(p,ix){ var sh = p.v/total*100, dash = Math.max(sh-0.6,0.2);
+        var o = {dash:dash.toFixed(2),rest:(100-dash).toFixed(2),off:(25-cum).toFixed(2),color:colors[ix],name:p.name,h:rnd(p.v)+' h',pct:rnd(sh)+'%'}; cum += sh; return o; });
+      return {a:segs[0],b:segs[1],c:segs[2],rows:segs,center:center,sub:sub,aria:label+': '+segs.map(function(x){ return x.name+' '+x.h+' ('+x.pct+')'; }).join(', ')};
+    }
+    var intH = 0; Object.keys(B.proj).forEach(function(k){ if (PROJ[k].kind==='Internal') intH += B.proj[k].act; });
+    rep.d1 = donut([{name:'Billable client work',v:B.bill},{name:'Internal products and ops',v:intH},{name:'Unmapped',v:B.unmapped}],['#1C3A62','#8E97A3','#B85C1E'],rnd(B.bill/B.logged*100)+'%','billable','Logged hours by type');
+    rep.d2 = donut([{name:PROJ.NOVA.name,v:B.proj.NOVA.act},{name:PROJ.HELIX.name,v:B.proj.HELIX.act},{name:PROJ.ORBIT.name,v:B.proj.ORBIT.act}],['#1C3A62','#4F7CAC','#A9C1DE'],rnd(B.proj.NOVA.act+B.proj.HELIX.act+B.proj.ORBIT.act)+' h','billable','Billable hours by project');
+    var tileKeys = ['q3','q4','q1','q2','q5'];
+    tiles.forEach(function(t,ix){ t.ask = function(){ self.askNow(ASKQ[tileKeys[ix]], tileKeys[ix]); }; });
+    function impactRows(sc){
+      var out = [], bs = shortages(base,ovs), cs = shortages(sc,ovs);
+      PEOPLE.forEach(function(p){ var first=-1, peak=0;
+        for (var i=TODAY;i<=LAST;i++){ var a = avail(p,i); if (a<=0) continue; var c = sum(rowsFor(p,i,sc,ovs))/a*100, b = sum(rowsFor(p,i,base,ovs))/a*100; if (c>100.5 && b<=100.5){ if (first<0) first=i; peak=Math.max(peak,c); } }
+        if (first>=0) out.push({a:p.name,b:'w/c '+W[first].d,c:'over 100%, peak '+rnd(peak)+'%'}); });
+      cs.forEach(function(x){ var b = null; bs.forEach(function(y){ if (y.stack===x.stack) b = y; });
+        if (!b) out.push({a:slab(x.stack),b:'w/c '+W[x.first].d,c:'new gap, up to '+x.peak.toFixed(1)+' FTE'});
+        else if (x.peak > b.peak+0.05) out.push({a:slab(x.stack),b:'w/c '+W[x.first].d,c:'gap grows '+b.peak.toFixed(1)+' → '+x.peak.toFixed(1)+' FTE'}); });
+      return out;
+    }
+    function scText(){ return anyOn ? '{'+onDeals.map(function(d){ return d.id+': on'; }).join(', ')+'}' : 'baseline (all pipeline off)'; }
+    function buildAns(key){
+      var sc = scText();
+      if (key==='q1') {
+        var r1 = free4.map(function(x){ return {a:x.p.name,b:x.p.stacks.join(', '),c:fteS(x.h,w4)+' FTE ('+rnd(x.h)+' h)'}; });
+        return {text: free4.length ? free4.length+' people have at least one day free in the week of 30 Nov. Most free: '+free4.slice(0,3).map(function(x){ return x.p.name; }).join(', ')+'.' : 'Nobody has a full day free in the week of 30 Nov.',
+          h1:'Person',h2:'Stacks',h3:'Free',rows:r1,fn:'freeCapacity',args:[{k:'week',v:'2026-11-30'},{k:'skill',v:'any'},{k:'minFreeHours',v:'8'},{k:'scenario',v:sc}],
+          sources:'HR people and absences, Jira sprint SPR-31, app plan',openText:'Open People view',open:function(){ go('Plan',{tab:'people'}); }};
+      }
+      if (key==='q2') {
+        var pa = pipe.filter(function(d){ return d.id==='P-1'; })[0], pb = pipe.filter(function(d){ return d.id==='P-2'; })[0];
+        var nm = (pa && pb) ? pa.name+' and '+pb.name : 'the first two pipeline projects';
+        var r2 = impactRows(both);
+        return {text: r2.length ? 'If '+nm+' both go ahead, '+r2.length+' things change against the baseline. First: '+r2[0].a+', '+r2[0].c+' from '+r2[0].b+'.' : 'If '+nm+' both go ahead, nobody new goes over 100% and no new skill gap appears.',
+          h1:'Item',h2:'From',h3:'Change',rows:r2,fn:'scenarioImpact',args:[{k:'scenario',v:'{P-1: on, P-2: on}'},{k:'startShiftWeeks',v:'0'},{k:'compareTo',v:'baseline'}],
+          sources:'HR people and absences, Jira sprint SPR-31, app plan, pipeline projects',openText:'Try this scenario in Plan',open:function(){ self.setState({page:'Plan',tab:'projects',sel:{},pipe:pipe.map(function(d){ var c = Object.assign({}, d); c.on = (d.id==='P-1'||d.id==='P-2'); return c; })}); }};
+      }
+      if (key==='q3') {
+        var r3 = cur.map(function(x){ return {a:slab(x.stack),b:'w/c '+W[x.first].d,c:x.peak.toFixed(1)+' FTE short, '+x.weeks+' wks'}; });
+        return {text: cur.length ? slab(cur[0].stack)+' is the first to run short, from w/c '+W[cur[0].first].d+', up to '+cur[0].peak.toFixed(1)+' FTE.'+(cur.length>1 ? ' '+(cur.length-1)+' more stack'+(cur.length>2?'s':'')+' follow.' : '') : 'No stack runs short in the next 12 weeks.',
+          h1:'Stack',h2:'First short',h3:'Peak',rows:r3,fn:'skillGap',args:[{k:'fromWeek',v:'2026-11-02'},{k:'toWeek',v:'2027-01-18'},{k:'scenario',v:sc}],
+          sources:'HR people and absences, Jira sprint SPR-31, app plan'+(anyOn ? ', pipeline projects' : ''),openText:'Open the skill matrix',open:function(){ go('Plan',{tab:'projects'}); }};
+      }
+      if (key==='q4') {
+        var nOver = attn.filter(function(x){ return x.status==='Over'; }).length, nIdle = attn.filter(function(x){ return x.status==='Idle'; }).length;
+        var r4 = attn.map(function(x){ return {a:x.name,b:x.weeks,c:x.status+(x.peak ? ', peak '+x.peak : '')}; });
+        return {text: attn.length ? 'In the next 5 weeks '+nOver+' people go over 100% and '+nIdle+' are idle at 50% or less.' : 'Nobody is over 100% or idle in the next 5 weeks.',
+          h1:'Person',h2:'Weeks',h3:'Status',rows:r4,fn:'loadByPerson',args:[{k:'fromWeek',v:'2026-11-02'},{k:'toWeek',v:'2026-11-30'},{k:'overloadPct',v:'100'},{k:'idlePct',v:'50'},{k:'scenario',v:sc}],
+          sources:'HR people and absences, Jira sprint SPR-31, app plan',openText:'Open People view',open:function(){ go('Plan',{tab:'people'}); }};
+      }
+      var util = rnd(B.bill/B.avail*100);
+      return {text:'About '+rnd(billPct)+'% of logged time went to billable work, '+Math.abs(gd)+' points '+(gd>=0 ? 'above' : 'below')+' the '+TARGET+'% target. Utilisation, billable hours against all available hours, was '+util+'%.',
+        h1:'Measure',h2:'Value',h3:'Basis',rows:[{a:'Share of logged time',b:rnd(billPct)+'%',c:rnd(B.bill)+' of '+rnd(B.logged)+' h'},{a:'Utilisation',b:util+'%',c:rnd(B.bill)+' of '+rnd(B.avail)+' h available'},{a:'Target',b:TARGET+'%',c:'setting in Admin'},{a:'Unmapped',b:B.unmapped+' h',c:'counted as non-billable'}],
+        fn:'billableSplit',args:[{k:'fromWeek',v:'2026-09-28'},{k:'toWeek',v:'2026-11-01'},{k:'groupBy',v:'company'},{k:'scenario',v:'not used (actuals only)'}],
+        sources:'Jira worklogs W40 to W44, project types',openText:'Open Reports',open:function(){ go('Reports'); }};
+    }
+    var QRY = {
+      q1:['SELECT person, stack, hours FROM allocations WHERE week = \'2026-11-30\'','SELECT person, days FROM absences WHERE week = \'2026-11-30\'','SELECT person, weekly_hours FROM people'],
+      q2:['SELECT person, stack, hours, week FROM allocations WHERE week BETWEEN \'2026-11-02\' AND \'2027-01-18\'','SELECT project, stack, fte, from_week, to_week FROM demand WHERE project IN (\'P-1\',\'P-2\')','SELECT person, days, week FROM absences'],
+      q3:['SELECT stack, week, SUM(fte) FROM demand GROUP BY stack, week','SELECT person, stack, is_main, weekly_hours FROM people_stacks','SELECT person, days, week FROM absences'],
+      q4:['SELECT person, week, SUM(hours) FROM allocations WHERE week BETWEEN \'2026-11-02\' AND \'2026-11-30\' GROUP BY person, week','SELECT person, week, available_hours FROM availability'],
+      q5:['SELECT project, SUM(hours) FROM worklogs WHERE week BETWEEN \'2026-09-28\' AND \'2026-11-01\' GROUP BY project','SELECT project, type FROM projects']
+    };
+    var FNS = [{n:'freeCapacity',d:'Who has free hours in a week, by stack'},{n:'scenarioImpact',d:'What changes when pipeline projects switch on'},{n:'skillGap',d:'Which stack is short or spare, by week'},{n:'loadByPerson',d:'Who is over or under their capacity'},{n:'billableSplit',d:'Billable share of logged time'},{n:'planVsActual',d:'Plan against Jira hours'},{n:'projectBurn',d:'Hours used against a project plan'}];
+    var EMPTYRES = {text:'',h1:'',h2:'',h3:'',rows:[],queries:[],fn:'',args:[],sources:'',openText:'',open:function(){}};
+    var TH = s.thread || [];
+    var thread = TH.map(function(m,ix){
+      var res = (m.state==='answer' && m.key) ? buildAns(m.key) : null;
+      if (res) res.queries = (QRY[m.key]||[]).map(function(q){ return {s:q}; });
+      return {q:m.q, isWorking:m.state==='working', isAnswer:m.state==='answer' && !!res, isCannot:m.state==='cannot', isError:m.state==='error',
+        res:res || EMPTYRES, retry:function(){ self.askRetry(ix); },
+        steps:[{t:'Choosing a function',cls:'dot'},{t:'Running the database queries',cls:'dot'},{t:'Writing the conclusion',cls:'dot act'}]};
+    });
+    var askVm = {q:(s.ask&&s.ask.q)||'',
+      onQ:function(e){ self.setState({ask:{q:e.target.value}}); },
+      submit:function(e){ if (e && e.preventDefault) e.preventDefault(); var t = ((self.state.ask&&self.state.ask.q)||'').trim(); if (!t) return; self.askRun(t, askClassify(t)); },
+      chips:['q1','q2','q3','q4','q5'].map(function(k){ return {label:ASKQ[k],pick:function(){ self.askRun(ASKQ[k],k); }}; }),
+      thread:thread, hasThread:TH.length>0, noThread:TH.length===0, fns:FNS,
+      clear:function(){ self.setState({thread:[],ask:{q:''}}); },
+      states:[['Empty',[]],['Answering',[{q:ASKQ.q3,key:'q3',state:'working'}]],['Answer',[{q:ASKQ.q2,key:'q2',state:'answer'}]],['Can\'t answer',[{q:'What are salaries?',key:'',state:'cannot'}]],['Error',[{q:ASKQ.q4,key:'q4',state:'error'}]]].map(function(x){ return {label:x[0],cls:'btn small',pick:function(){ self.setState({thread:x[1]}); }}; })};
+    var f = s.form;
+    return {
+      nav:nav, scenPill:scenPill, scenPillCls: anyOn ? 'tag pipeline' : 'tag info',
+      isHome:s.page==='Home', isPlan:s.page==='Plan', isReports:s.page==='Reports', isAdmin:s.page==='Admin', isAsk:s.page==='Ask',
+      tiles:tiles, wF:wF, strip:strip(pipe,base,ovs,anyOn,sel,pickDem), shortSummary:shortSummary, attn:attn,
+      issues:issues, issueSummary: nW+' warnings, '+(ISSUES.length-nW)+' handled silently. No rows skipped.',
+      goAdmin:function(){ go('Admin'); },
+      scenText:scenText, anyOn:anyOn, deltaLines:deltaLines, dirty:dirty,
+      applyScen:function(){ self.setState({saved:JSON.parse(JSON.stringify(self.state.pipe))}); },
+      discardScen:function(){ var on = {}; self.state.pipe.forEach(function(d){ on[d.id] = d.on; }); self.setState({pipe:self.state.saved.map(function(d){ var c = JSON.parse(JSON.stringify(d)); c.on = !!on[d.id]; return c; })}); },
+      allOff:function(){ self.setState({pipe:offAll(self.state.pipe)}); },
+      openAdd:function(){ self.setState({sel:{kind:'add'}}); },
+      closeSel:function(){ self.setState({sel:{}}); },
+      tabProjCls:'tabb'+(s.tab==='projects'?' cur':''), tabPeopleCls:'tabb'+(s.tab==='people'?' cur':''),
+      tabProjSel:String(s.tab==='projects'), tabPeopleSel:String(s.tab==='people'),
+      tabProj:function(){ self.setState({tab:'projects'}); }, tabPeople:function(){ self.setState({tab:'people'}); },
+      isProjTab:s.tab==='projects', isPeopleTab:s.tab==='people',
+      showActuals:s.showActuals, toggleActuals:function(){ self.setState({showActuals:!self.state.showActuals}); },
+      gantt:gantt, pipeRows:pipeRows, pCols:pCols, pWeeks:pWeeks, pRows:pRows, weekOpts:weekOpts, stackOpts:stackOpts,
+      dp:dp, prj:prj, add:add, addF:addF, pp:pp, lastAdded:s.lastAdded||'', hasAdded:!!s.lastAdded,
+      ask:askVm, nothingSel: !dp.show && !prj.show && !add.show && !pp.show,
+      ovCount:ovs.length, resetOverrides:function(){ self.setState({ovs:[]}); },
+      form:{proj:f.proj,hours:f.hours,from:f.from,to:f.to,err:f.err,hasErr:!!f.err},
+      onProj:function(e){ self.setState({form:Object.assign({}, self.state.form, {proj:e.target.value,err:''})}); },
+      onHours:function(e){ self.setState({form:Object.assign({}, self.state.form, {hours:e.target.value,err:''})}); },
+      onFrom:function(e){ self.setState({form:Object.assign({}, self.state.form, {from:e.target.value,err:''})}); },
+      onTo:function(e){ self.setState({form:Object.assign({}, self.state.form, {to:e.target.value,err:''})}); },
+      applyEdit:function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        var fm = self.state.form, h = parseFloat(fm.hours), fr = parseInt(fm.from,10), to = parseInt(fm.to,10);
+        if (isNaN(h) || h<0 || h>60) { self.setState({form:Object.assign({}, fm, {err:'Hours per week must be between 0 and 60.'})}); return; }
+        if (to < fr) { self.setState({form:Object.assign({}, fm, {err:'"To" week must be the same as or after "From".'})}); return; }
+        self.setState({ovs:self.state.ovs.concat([{pid:self.state.sel.pid,proj:fm.proj,h:h,f:fr,t:to}]),form:Object.assign({}, fm, {err:''})});
+      },
+      rep:rep, adm:adm
+    };
+  }
+}
+</script>
+</body>
+</html>

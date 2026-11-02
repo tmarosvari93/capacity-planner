@@ -1,0 +1,87 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Artboard-uddd.dc.html": {
+      "h": 600,
+      "page": "page-bn7b23",
+      "title": "Artboard 1",
+      "w": 800,
+      "x": 0,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 1400,
+      "is_interactive": true,
+      "title": "Home (app entry)",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Plan.dc.html": {
+      "expand": "fill",
+      "h": 1400,
+      "is_interactive": true,
+      "title": "Plan",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Reports.dc.html": {
+      "expand": "fill",
+      "h": 1100,
+      "is_interactive": true,
+      "title": "Reports (low-fi)",
+      "w": 1440,
+      "x": 0,
+      "y": 1520
+    },
+    "Admin.dc.html": {
+      "expand": "fill",
+      "h": 1100,
+      "is_interactive": true,
+      "title": "Admin (low-fi)",
+      "w": 1440,
+      "x": 1520,
+      "y": 1520
+    },
+    "Ask.dc.html": {
+      "expand": "fill",
+      "h": 1100,
+      "is_interactive": true,
+      "title": "Ask",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-01T19:10:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {},
+  "order": [
+    "Main.dc.html",
+    "Plan.dc.html",
+    "Reports.dc.html",
+    "Admin.dc.html",
+    "Ask.dc.html",
+    "Artboard-uddd.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Page 1"
+    },
+    {
+      "id": "page-bn7b23",
+      "name": "Page 2"
+    }
+  ],
+  "title": "Capacity Planner screens"
+}
