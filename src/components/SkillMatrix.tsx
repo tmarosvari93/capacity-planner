@@ -27,14 +27,14 @@ export function SkillMatrix({ title }: { title: string }) {
         <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[220px] border-r-2 border-ink">Skill · stack</th>
+              <th className="eyebrow text-left px-4 py-2 w-[220px] min-w-[220px] border-r-2 border-ink sticky left-0 z-10 bg-white">Skill · stack</th>
               {FUTURE.map((w) => <th key={w} className="px-1 py-2 border-r border-line min-w-[64px]"><WeekHead w={w} /></th>)}
             </tr>
           </thead>
           <tbody>
             {model.allStacks.map((s) => (
               <tr key={s} className="border-b border-line">
-                <td className="px-4 py-1.5 border-r-2 border-ink whitespace-nowrap">{stackLabel(model, s)}</td>
+                <td title={stackLabel(model, s)} className="px-4 py-1.5 border-r-2 border-ink whitespace-nowrap overflow-hidden text-ellipsis max-w-[220px] sticky left-0 z-10 bg-white">{stackLabel(model, s)}</td>
                 {FUTURE.map((w) => {
                   const b = gap.matrix[s][w].balanceFte;
                   const changed = false;
