@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { describeScenario, runAsk, type AskAnswer } from '@/core';
+import { runAsk, type AskAnswer } from '@/core';
 import { supabase } from '@/integrations/supabase/client';
 import { useModel } from '@/state/ModelContext';
 
 const CHIPS = [
   'Who will be available in 4 weeks?',
-  'What happens if two pipeline projects start at the same time?',
   'Which skill will we run short of?',
   'Who is over 100%, and who is idle?',
   'How much of our time went to billable work?',
@@ -17,7 +16,6 @@ const CHIPS = [
 
 const FUNCTIONS: [string, string][] = [
   ['freeCapacity()', 'Who has free hours in a week, by stack'],
-  ['scenarioImpact()', 'What changes when pipeline projects switch on'],
   ['skillGap()', 'Which stack is short or spare, by week'],
   ['loadByPerson()', 'Who is over or under their capacity'],
   ['billableSplit()', 'Billable share of logged time'],
@@ -29,7 +27,7 @@ const callEdge = (body: Record<string, unknown>) =>
   supabase.functions.invoke('ask', { body }).then((r) => { if (r.error) throw r.error; return r.data; });
 
 export default function Ask() {
-  const { model, scenario } = useModel();
+  const { model } = useModel();
   const [params] = useSearchParams();
   const [q, setQ] = useState('');
   const [busy, setBusy] = useState<string | null>(null);
@@ -43,7 +41,7 @@ export default function Ask() {
     setBusy(text);
     setAnswer(null);
     try {
-      setAnswer(await runAsk(model, text, scenario, callEdge));
+      setAnswer(await runAsk(model, text, undefined, callEdge));
     } catch (e) {
       setAnswer({ question: text, askedAt: new Date().toISOString(), status: 'error', conclusion: 'Something went wrong. Try again.',
         usedTemplate: false, error: e instanceof Error ? e.message : String(e) });
@@ -66,7 +64,6 @@ export default function Ask() {
           <h1 className="text-[22px] font-semibold">Ask</h1>
         </div>
         <div className="flex items-center gap-3 text-[12px]">
-          <span className="bg-hover rounded px-2 py-1">Scenario: <b>{describeScenario(model, scenario)}</b></span>
           <button className="border border-input rounded px-2.5 py-1 hover:bg-hover"
             onClick={() => { setAnswer(null); setQ(''); }}>Clear</button>
         </div>
@@ -117,7 +114,7 @@ export default function Ask() {
         onSubmit={(e) => { e.preventDefault(); ask(q); }}>
         <div className="max-w-[1180px] flex gap-2">
           <input aria-label="Question" value={q} onChange={(e) => setQ(e.target.value)} maxLength={500}
-            placeholder="Ask about capacity, skills, scenarios or billable time"
+            placeholder="Ask about capacity, skills or billable time"
             className="flex-1 border border-input rounded px-3 py-2 bg-white" />
           <button type="submit" disabled={!!busy || !q.trim()}
             className="bg-navy hover:bg-navy-dark text-white rounded px-4 disabled:bg-hint">Ask</button>
@@ -167,7 +164,6 @@ function AnswerCard({ a, onRetry }: { a: AskAnswer; onRetry: () => void }) {
           <div className="eyebrow">How this was worked out</div>
           <div>Function: <span className="font-mono text-navy">{a.function}()</span></div>
           <div>Arguments:<pre className="font-mono text-[11px] bg-white border border-line rounded p-2 mt-1 overflow-x-auto">{JSON.stringify(a.args ?? {}, null, 2)}</pre></div>
-          {a.scenario && <div>Scenario: <b>{a.scenario}</b></div>}
           {a.dataRead && (
             <div>
               Data read: {a.dataRead.summary}
