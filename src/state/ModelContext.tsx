@@ -28,12 +28,10 @@ export function ModelProvider({ children }: { children: ReactNode }) {
     })).then(setDataset).catch((e) => setError(e instanceof Error ? e.message : String(e)));
   }, []);
 
-  const commit = useCallback((next: OverrideLayer) => { saveOverrides(next); setLayer(next); }, []);
   const applyOp = useCallback((op: Op) => setLayer((l) => { const n = withOp(l, op); saveOverrides(n); return n; }), []);
   const setScenario = useCallback((sc: Scenario | undefined) =>
     setLayer((l) => { const n = withScenario(l, sc); saveOverrides(n); return n; }), []);
   const reset = useCallback(() => setLayer(resetOverrides()), []);
-  void commit;
 
   const model = useMemo(() => {
     if (!dataset) return null;
