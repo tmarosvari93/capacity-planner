@@ -33,8 +33,9 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   const setScenario = useCallback((sc: Scenario | undefined) =>
     setLayer((l) => { const n = withScenario(l, sc); saveOverrides(n); return n; }), []);
   const reset = useCallback(() => setLayer(resetOverrides()), []);
-  const upload = useCallback((path: string, text: string) =>
-    setDataset((d) => (d ? mergeUpload(d, path, text, new Date().toISOString()) : d)), []);
+  const upload = useCallback((path: string, text: string) => {
+    if (dataset) setDataset(mergeUpload(dataset, path, text, new Date().toISOString()));
+  }, [dataset]);
 
   const model = useMemo(() => {
     if (!dataset) return null;
