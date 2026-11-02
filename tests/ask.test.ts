@@ -153,7 +153,7 @@ describe('edge function request and response handling', () => {
   it('choose request offers every function plus cannot_answer and forces a tool call', () => {
     const r = buildChooseRequest('Who is idle?', { x: 1 });
     expect(r.tools.map((t) => t.name)).toEqual([...FUNCTION_NAMES, 'cannot_answer']);
-    expect(r.tool_choice).toEqual({ type: 'any' });
+    expect(r.tool_choice).toEqual({ type: 'auto' });
     expect(r.system).toContain('"x":1');
   });
   it('parses a tool call, cannot_answer and no tool call', () => {
