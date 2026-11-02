@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FUTURE, PAST, TODAY, absenceDays, actualHours, actualRows, allocationRows, availabilityFormula, demandFte, driftHours,
@@ -10,30 +10,49 @@ import { SkillMatrix } from '@/components/SkillMatrix';
 import { SidePanel } from '@/components/SidePanel';
 import { WeekHead, fmtSigned } from '@/components/WeekHead';
 
-const COL = 'min-w-[64px] w-[64px]';
+const COL = '';
+const STICKY_L = 'sticky left-0 z-20 bg-white';
+const STICKY_R = 'sticky right-0 z-20 bg-white';
+const HELP_KEY = 'plan-help-seen';
 
 export default function Plan() {
   const last = FUTURE[FUTURE.length - 1];
   const { scenario } = useModel();
   return (
-    <div className="flex gap-4 items-start">
-      <div className="flex-1 min-w-0 space-y-4">
-        <div>
-          <h1 className="text-[22px] font-semibold">Plan</h1>
-          <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
-        </div>
-        <PipelineCard />
-        <SkillMatrix title="Skill matrix · FTE balance per week" scenario={scenario} />
-        <PeopleGrid />
+    <div className="space-y-4 min-w-0">
+      <div>
+        <h1 className="text-[22px] font-semibold">Plan</h1>
+        <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
       </div>
-      <aside className="card w-[290px] shrink-0 p-4 sticky top-4 text-[12px] text-ink2 space-y-2">
-        <h2 className="text-[14px] font-semibold text-ink">How to use this page</h2>
-        <p>1. Orange cells in the skill matrix are weeks a stack runs short.</p>
-        <p>2. Switch pipeline deals on to see their effect; shift them or align their starts.</p>
-        <p>3. Click a person's cell to see the hours behind it and change future hours.</p>
-        <p>4. Every change applies at once; Reset Admin and Plan edits undoes all of them.</p>
-      </aside>
+      <HelpBar />
+      <PipelineCard />
+      <SkillMatrix title="Skill matrix · FTE balance per week" scenario={scenario} />
+      <PeopleGrid />
     </div>
+  );
+}
+
+function HelpBar() {
+  const [open, setOpen] = useState(() => {
+    try { return !localStorage.getItem(HELP_KEY); } catch { return true; }
+  });
+  useEffect(() => { try { localStorage.setItem(HELP_KEY, '1'); } catch { /* ignore */ } }, []);
+  return (
+    <section className="card text-[12px] text-ink2">
+      <button aria-expanded={open} onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-2.5 text-left">
+        <span className="text-[13px] font-semibold text-ink">How to use this page</span>
+        <span aria-hidden className="text-ink2">{open ? '▲ Hide' : '▼ Show'}</span>
+      </button>
+      {open && (
+        <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-4 pb-3">
+          <p>1. Orange cells in the skill matrix are weeks a stack runs short.</p>
+          <p>2. Switch pipeline deals on to see their effect; shift them or align their starts.</p>
+          <p>3. Click a person's cell to see the hours behind it and change future hours.</p>
+          <p>4. Every change applies at once; Reset Admin and Plan edits undoes all of them, including pipeline shifts.</p>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -53,12 +72,12 @@ function PipelineCard() {
         <button onClick={() => setScenario(undefined)} className="border border-input rounded px-2.5 py-1 text-[12px] hover:bg-hover">All off</button>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
+        <table className="table-fixed w-full min-w-[860px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[260px] border-r-2 border-ink">On · deal</th>
-              {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} /></th>)}
-              <th className="eyebrow px-2 w-[90px]">Shift</th>
+              <th className={`eyebrow text-left px-3 py-2 w-[200px] border-r-2 border-ink ${STICKY_L}`}>On · deal</th>
+              {FUTURE.map((w) => <th key={w} className={`px-0.5 py-2 ${COL}`}><WeekHead w={w} /></th>)}
+              <th className={`eyebrow px-1 w-[68px] border-l border-line ${STICKY_R}`}>Shift</th>
             </tr>
           </thead>
           <tbody>
@@ -70,15 +89,15 @@ function PipelineCard() {
               const firstIdx = FUTURE.findIndex((w) => w >= start && w <= end);
               return (
                 <tr key={p.projectId} className="border-b border-line">
-                  <td className="px-4 py-2 border-r-2 border-ink">
-                    <label className="flex items-center gap-2.5 cursor-pointer">
+                  <td className={`px-3 py-2 border-r-2 border-ink ${STICKY_L}`}>
+                    <label className="flex items-center gap-2 cursor-pointer min-w-0">
                       <input type="checkbox" role="switch" aria-label={`Switch ${p.name}`} checked={on}
                         onChange={(e) => setScenario(setProjectOn(scenario, p.projectId, e.target.checked))}
                         className="appearance-none w-8 h-[18px] rounded-full bg-input checked:bg-navy relative cursor-pointer shrink-0
                           before:content-[''] before:absolute before:top-[2px] before:left-[2px] before:w-[14px] before:h-[14px] before:rounded-full before:bg-white before:transition-all checked:before:left-[16px]" />
-                      <span>
-                        <span className="font-semibold block">{p.name}</span>
-                        <span className="text-[11px] text-ink2">{p.client} · {p.winChancePct == null ? 'win chance not set' : `${p.winChancePct}% win chance`}</span>
+                      <span className="min-w-0" title={p.name}>
+                        <span className="font-semibold block truncate">{p.name}</span>
+                        <span className="text-[11px] text-ink2 block truncate">{p.client} · {p.winChancePct == null ? 'win chance not set' : `${p.winChancePct}% win`}</span>
                       </span>
                     </label>
                   </td>
@@ -96,7 +115,7 @@ function PipelineCard() {
                       </td>
                     );
                   })}
-                  <td className="px-2 text-center whitespace-nowrap">
+                  <td className={`px-1 text-center whitespace-nowrap border-l border-line ${STICKY_R}`}>
                     <button aria-label={`Shift ${p.name} earlier`} onClick={() => setScenario(shiftProject(scenario, p.projectId, -1))}
                       className="border border-input rounded w-6 h-6 hover:bg-hover">−</button>{' '}
                     <button aria-label={`Shift ${p.name} later`} onClick={() => setScenario(shiftProject(scenario, p.projectId, 1))}
@@ -131,7 +150,7 @@ function PipelineCard() {
 }
 
 function PeopleGrid() {
-  const { model, scenario, layer, reset } = useModel();
+  const { model, scenario, editCount, reset } = useModel();
   const [showPast, setShowPast] = useState(true);
   const [sel, setSel] = useState<{ email: string; w: Week } | null>(null);
   const past = showPast ? PAST : [];
@@ -156,12 +175,12 @@ function PeopleGrid() {
         </label>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
+        <table className="table-fixed w-full border-collapse text-[12px]" style={{ minWidth: 170 + (past.length + FUTURE.length) * 51 }}>
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[210px] border-r border-line">Person</th>
-              {past.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
-              {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
+              <th className={`eyebrow text-left px-3 py-2 w-[170px] border-r border-line ${STICKY_L}`}>Person</th>
+              {past.map((w) => <th key={w} className={`px-0.5 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
+              {FUTURE.map((w) => <th key={w} className={`px-0.5 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
             </tr>
           </thead>
           <tbody>
@@ -177,7 +196,7 @@ function PeopleGrid() {
         <span className="flex items-center gap-1.5"><i className="w-4 h-3 border border-dashed border-hint inline-block rounded-sm" /> Idle, 50% or less</span>
         <span className="flex items-center gap-1.5"><i className="w-4 h-3 hatch inline-block rounded-sm" /> Planned while away</span>
         <span className="flex items-center gap-1.5"><i className="w-1.5 h-1.5 bg-ink rounded-full inline-block" /> Manual edit</span>
-        <span className="ml-auto">Manual edits: <b className="font-mono text-ink">{layer.ops.length}</b></span>
+        <span className="ml-auto">Manual edits: <b className="font-mono text-ink">{editCount}</b></span>
         <button onClick={reset} className="border border-input rounded px-2.5 py-1 text-[12px] text-ink hover:bg-hover">Reset Admin and Plan edits</button>
       </div>
       {sel && <PersonPanel email={sel.email} w={sel.w} onClose={() => setSel(null)} />}
@@ -194,13 +213,13 @@ function Group({ g, past, colCount, onCell }: {
   return (
     <>
       <tr className="bg-page border-b border-line">
-        <td colSpan={colCount} className="eyebrow px-4 py-1.5">{label} · {g.people.length} (main stack)</td>
+        <td colSpan={colCount} className="eyebrow px-3 py-1.5"><span className="sticky left-3">{label} · {g.people.length} (main stack)</span></td>
       </tr>
       {g.people.map((p) => (
         <tr key={p.email} className="border-b border-line">
-          <td className="px-4 py-1.5 border-r border-line">
-            <div className="font-semibold">{p.name}</div>
-            <div className="text-[11px] text-ink2">
+          <td className={`px-3 py-1.5 border-r border-line ${STICKY_L}`} title={p.name}>
+            <div className="font-semibold truncate">{p.name}</div>
+            <div className="text-[11px] text-ink2 truncate">
               {p.weeklyHours} h/wk · {[p.mainStack, ...p.stacks.filter((s) => s !== p.mainStack)].filter(Boolean).join(', ')}
             </div>
           </td>
@@ -210,10 +229,10 @@ function Group({ g, past, colCount, onCell }: {
       ))}
       {g.hasDemand && g.stack && (
         <tr className="border-b border-line bg-amber-t1/40">
-          <td className="px-4 py-1.5 border-r border-line text-amber-text font-semibold">Unstaffed · {g.stack}</td>
+          <td className="px-3 py-1.5 border-r border-line text-amber-text font-semibold sticky left-0 z-20 bg-amber-t1 truncate">Unstaffed · {g.stack}</td>
           {past.map((w) => <td key={w} />)}
           {FUTURE.map((w, i) => (
-            <td key={w} className={`text-center font-mono text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>
+            <td key={w} className={`text-center font-mono text-[11px] whitespace-nowrap text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>
               {g.demand[i] > 0 ? `${g.demand[i]} FTE` : ''}
             </td>
           ))}

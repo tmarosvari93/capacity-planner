@@ -17,7 +17,7 @@ const fmt = (iso: string) => {
 };
 
 export default function AppShell() {
-  const { model, reset, layer } = useModel();
+  const { model, reset, editCount, scenario } = useModel();
   const syncs = lastSync(model);
   return (
     <div className="flex min-h-screen">
@@ -41,7 +41,7 @@ export default function AppShell() {
               <div key={s.source}>{s.source} <span className="font-mono">{fmt(s.exportedAt)}</span></div>
             ))}
           </div>
-          <button onClick={reset} disabled={!layer.ops.length}
+          <button onClick={reset} disabled={!editCount && !scenario}
             className="w-full border border-input rounded px-2 py-1.5 text-[12px] text-ink hover:bg-hover disabled:text-hint disabled:hover:bg-transparent">
             Reset Admin and Plan edits
           </button>
