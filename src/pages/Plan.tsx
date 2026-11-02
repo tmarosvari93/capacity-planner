@@ -89,15 +89,15 @@ function PipelineCard() {
               const firstIdx = FUTURE.findIndex((w) => w >= start && w <= end);
               return (
                 <tr key={p.projectId} className="border-b border-line">
-                  <td className="px-4 py-2 border-r-2 border-ink">
-                    <label className="flex items-center gap-2.5 cursor-pointer">
+                  <td className={`px-3 py-2 border-r-2 border-ink ${STICKY_L}`}>
+                    <label className="flex items-center gap-2 cursor-pointer min-w-0">
                       <input type="checkbox" role="switch" aria-label={`Switch ${p.name}`} checked={on}
                         onChange={(e) => setScenario(setProjectOn(scenario, p.projectId, e.target.checked))}
                         className="appearance-none w-8 h-[18px] rounded-full bg-input checked:bg-navy relative cursor-pointer shrink-0
                           before:content-[''] before:absolute before:top-[2px] before:left-[2px] before:w-[14px] before:h-[14px] before:rounded-full before:bg-white before:transition-all checked:before:left-[16px]" />
-                      <span>
-                        <span className="font-semibold block">{p.name}</span>
-                        <span className="text-[11px] text-ink2">{p.client} · {p.winChancePct == null ? 'win chance not set' : `${p.winChancePct}% win chance`}</span>
+                      <span className="min-w-0" title={p.name}>
+                        <span className="font-semibold block truncate">{p.name}</span>
+                        <span className="text-[11px] text-ink2 block truncate">{p.client} · {p.winChancePct == null ? 'win chance not set' : `${p.winChancePct}% win`}</span>
                       </span>
                     </label>
                   </td>
@@ -115,7 +115,7 @@ function PipelineCard() {
                       </td>
                     );
                   })}
-                  <td className="px-2 text-center whitespace-nowrap">
+                  <td className={`px-1 text-center whitespace-nowrap border-l border-line ${STICKY_R}`}>
                     <button aria-label={`Shift ${p.name} earlier`} onClick={() => setScenario(shiftProject(scenario, p.projectId, -1))}
                       className="border border-input rounded w-6 h-6 hover:bg-hover">−</button>{' '}
                     <button aria-label={`Shift ${p.name} later`} onClick={() => setScenario(shiftProject(scenario, p.projectId, 1))}
