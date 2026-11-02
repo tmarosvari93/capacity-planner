@@ -10,30 +10,49 @@ import { SkillMatrix } from '@/components/SkillMatrix';
 import { SidePanel } from '@/components/SidePanel';
 import { WeekHead, fmtSigned } from '@/components/WeekHead';
 
-const COL = 'min-w-[64px] w-[64px]';
+const COL = '';
+const STICKY_L = 'sticky left-0 z-20 bg-white';
+const STICKY_R = 'sticky right-0 z-20 bg-white';
+const HELP_KEY = 'plan-help-seen';
 
 export default function Plan() {
   const last = FUTURE[FUTURE.length - 1];
   const { scenario } = useModel();
   return (
-    <div className="flex gap-4 items-start">
-      <div className="flex-1 min-w-0 space-y-4">
-        <div>
-          <h1 className="text-[22px] font-semibold">Plan</h1>
-          <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
-        </div>
-        <PipelineCard />
-        <SkillMatrix title="Skill matrix · FTE balance per week" scenario={scenario} />
-        <PeopleGrid />
+    <div className="space-y-4 min-w-0">
+      <div>
+        <h1 className="text-[22px] font-semibold">Plan</h1>
+        <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
       </div>
-      <aside className="card w-[290px] shrink-0 p-4 sticky top-4 text-[12px] text-ink2 space-y-2">
-        <h2 className="text-[14px] font-semibold text-ink">How to use this page</h2>
-        <p>1. Orange cells in the skill matrix are weeks a stack runs short.</p>
-        <p>2. Switch pipeline deals on to see their effect; shift them or align their starts.</p>
-        <p>3. Click a person's cell to see the hours behind it and change future hours.</p>
-        <p>4. Every change applies at once; Reset Admin and Plan edits undoes all of them.</p>
-      </aside>
+      <HelpBar />
+      <PipelineCard />
+      <SkillMatrix title="Skill matrix · FTE balance per week" scenario={scenario} />
+      <PeopleGrid />
     </div>
+  );
+}
+
+function HelpBar() {
+  const [open, setOpen] = useState(() => {
+    try { return !localStorage.getItem(HELP_KEY); } catch { return true; }
+  });
+  useEffect(() => { try { localStorage.setItem(HELP_KEY, '1'); } catch { /* ignore */ } }, []);
+  return (
+    <section className="card text-[12px] text-ink2">
+      <button aria-expanded={open} onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-2.5 text-left">
+        <span className="text-[13px] font-semibold text-ink">How to use this page</span>
+        <span aria-hidden className="text-ink2">{open ? '▲ Hide' : '▼ Show'}</span>
+      </button>
+      {open && (
+        <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-4 pb-3">
+          <p>1. Orange cells in the skill matrix are weeks a stack runs short.</p>
+          <p>2. Switch pipeline deals on to see their effect; shift them or align their starts.</p>
+          <p>3. Click a person's cell to see the hours behind it and change future hours.</p>
+          <p>4. Every change applies at once; Reset Admin and Plan edits undoes all of them, including pipeline shifts.</p>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -53,12 +72,12 @@ function PipelineCard() {
         <button onClick={() => setScenario(undefined)} className="border border-input rounded px-2.5 py-1 text-[12px] hover:bg-hover">All off</button>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
+        <table className="table-fixed w-full min-w-[860px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[260px] border-r-2 border-ink">On · deal</th>
-              {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} /></th>)}
-              <th className="eyebrow px-2 w-[90px]">Shift</th>
+              <th className={`eyebrow text-left px-3 py-2 w-[200px] border-r-2 border-ink ${STICKY_L}`}>On · deal</th>
+              {FUTURE.map((w) => <th key={w} className={`px-0.5 py-2 ${COL}`}><WeekHead w={w} /></th>)}
+              <th className={`eyebrow px-1 w-[68px] border-l border-line ${STICKY_R}`}>Shift</th>
             </tr>
           </thead>
           <tbody>
