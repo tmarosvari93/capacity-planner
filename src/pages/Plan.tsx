@@ -14,6 +14,7 @@ const COL = 'min-w-[64px] w-[64px]';
 
 export default function Plan() {
   const last = FUTURE[FUTURE.length - 1];
+  const { scenario } = useModel();
   return (
     <div className="flex gap-4 items-start">
       <div className="flex-1 min-w-0 space-y-4">
@@ -22,7 +23,7 @@ export default function Plan() {
           <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
         </div>
         <PipelineCard />
-        <SkillMatrix title="Skill matrix · FTE balance per week (– short, + spare)" />
+        <SkillMatrix title="Skill matrix · FTE balance per week" scenario={scenario} />
         <PeopleGrid />
       </div>
       <aside className="card w-[290px] shrink-0 p-4 sticky top-4 text-[12px] text-ink2 space-y-2">
