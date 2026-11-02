@@ -1,2 +1,3 @@
+project_id = "lajbpcopkmqlcwqjvomj"
 [functions.ask]
 verify_jwt = false
