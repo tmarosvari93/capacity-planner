@@ -44,7 +44,6 @@ export default function Home() {
   const free = useMemo(() => freeCapacity(model, IN_4_WEEKS, null, scenario), [model, scenario]);
   const pair = useMemo(() => scenarioImpact(model, PAIR), [model]);
   const bill = useMemo(() => billableSplit(model, PAST[0], PAST[PAST.length - 1], 'company'), [model]);
-  const name = (e: string) => model.personByEmail.get(e)?.name ?? e;
 
   return (
     <div className="space-y-4">
@@ -112,7 +111,6 @@ export default function Home() {
               </tbody>
             </table>
           )}
-          <span className="hidden">{name('')}</span>
         </section>
         <ImportCard />
       </div>
