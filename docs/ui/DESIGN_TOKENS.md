@@ -1,5 +1,7 @@
 # Design tokens (read from the design canvas, `docs/ui/canvas/Main.dc.html`)
 
+Screen images: `docs/ui/screens/` (01 Home, 02 Plan, 03 Ask, 04 Reports, 05 Admin; same in the PDF). Layout reference only: every number in them is a placeholder, and `docs/lovable/00_SETUP.md` lists where the build differs.
+
 Light theme, desktop first (1440 px), plain and dense. Numbers always sit next to colour, never colour alone.
 
 | Token | Value | Used for |
