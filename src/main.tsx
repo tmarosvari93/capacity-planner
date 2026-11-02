@@ -7,6 +7,7 @@ import AppShell from '@/components/AppShell';
 import Plan from '@/pages/Plan';
 import Home from '@/pages/Home';
 import Ask from '@/pages/Ask';
+import Reports from '@/pages/Reports';
 
 const Placeholder = ({ title }: { title: string }) => (
   <div><div className="eyebrow">{title}</div><h1 className="text-xl font-semibold mt-1">{title}</h1></div>
@@ -20,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route element={<AppShell />}>
             <Route path="/" element={<Home />} />
             <Route path="/plan" element={<Plan />} />
-            <Route path="/reports" element={<Placeholder title="Reports" />} />
+            <Route path="/reports" element={<Reports />} />
             <Route path="/admin" element={<Placeholder title="Admin" />} />
             <Route path="/ask" element={<Ask />} />
           </Route>
