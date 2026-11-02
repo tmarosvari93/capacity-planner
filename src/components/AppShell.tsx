@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { describeScenario, lastSync } from '@/core';
+import { lastSync } from '@/core';
 import { useModel } from '@/state/ModelContext';
 
 const NAV = [
@@ -17,7 +17,7 @@ const fmt = (iso: string) => {
 };
 
 export default function AppShell() {
-  const { model, scenario, reset, layer } = useModel();
+  const { model, reset, layer } = useModel();
   const syncs = lastSync(model);
   return (
     <div className="flex min-h-screen">
@@ -35,16 +35,15 @@ export default function AppShell() {
           ))}
         </nav>
         <div className="mt-auto px-1 text-[11px] text-ink2 space-y-3">
-          <div className="bg-hover rounded px-1.5 py-1 font-semibold text-ink">Scenario: {describeScenario(model, scenario)}</div>
           <div>
             <div className="mb-0.5">Last sync</div>
             {syncs.map((s) => (
               <div key={s.source}>{s.source} <span className="font-mono">{fmt(s.exportedAt)}</span></div>
             ))}
           </div>
-          <button onClick={reset} disabled={!layer.ops.length && !layer.scenario}
+          <button onClick={reset} disabled={!layer.ops.length}
             className="w-full border border-input rounded px-2 py-1.5 text-[12px] text-ink hover:bg-hover disabled:text-hint disabled:hover:bg-transparent">
-            Reset edits
+            Reset Admin and Plan edits
           </button>
         </div>
       </aside>
