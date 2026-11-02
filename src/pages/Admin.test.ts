@@ -29,7 +29,8 @@ describe('Admin requested outcomes', () => {
     expect(plannedRows(model, marton.email, '2026-12-07').find(row => row.projectId === 'P-2')).toMatchObject({ ratePerWeek: 40, source: 'manual' });
     const gap = skillGap(model, '2026-12-07', '2026-12-07').matrix;
     expect(gap['Node.js']['2026-12-07'].balanceFte).toBe(-0.3);
-    expect(gap.QA['2026-12-07'].balanceFte).toBe(-0.75);
+    expect(gap.QA['2026-12-07'].balanceFte).toBe(-0.5);
+    expect(skillGap(model, '2026-12-07', FUTURE[FUTURE.length - 1]).shortages.find(row => row.stack === 'QA')?.peakFte).toBe(0.75);
   });
   it('mapping MRD to Delivery ops clears its 14 unmapped hours and F2 issue', async () => {
     const data = await dataset();
