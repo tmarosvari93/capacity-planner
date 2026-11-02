@@ -5,11 +5,10 @@ import { WeekHead, fmtFte } from './WeekHead';
 import { SidePanel } from './SidePanel';
 
 export function SkillMatrix({ title }: { title: string }) {
-  const { model, scenario } = useModel();
+  const { model } = useModel();
   const from = FUTURE[0];
   const to = FUTURE[FUTURE.length - 1];
-  const gap = useMemo(() => skillGap(model, from, to, scenario), [model, scenario, from, to]);
-  const base = useMemo(() => (scenario ? skillGap(model, from, to) : null), [model, scenario, from, to]);
+  const gap = useMemo(() => skillGap(model, from, to), [model, from, to]);
   const [cell, setCell] = useState<{ stack: string; w: Week } | null>(null);
   const spareMin = model.settings.spareMinFte;
 
@@ -38,7 +37,7 @@ export function SkillMatrix({ title }: { title: string }) {
                 <td className="px-4 py-1.5 border-r-2 border-ink whitespace-nowrap">{stackLabel(model, s)}</td>
                 {FUTURE.map((w) => {
                   const b = gap.matrix[s][w].balanceFte;
-                  const changed = base && base.matrix[s][w].balanceFte !== b;
+                  const changed = false;
                   const cls = b < 0 ? 'bg-amber-t3 text-amber-text' : b >= spareMin ? 'bg-navy-t1 text-navy' : '';
                   const show = b < 0 || b >= spareMin;
                   return (
@@ -55,7 +54,7 @@ export function SkillMatrix({ title }: { title: string }) {
       </div>
       <p className="px-4 py-2 text-[11px] text-ink2">
         Orange −n = FTE short that week. Blue +n = FTE spare (free time of people whose main stack it is, shown from {spareMin} FTE).
-        Empty = balanced. Click a cell for the breakdown in hours.{scenario ? ' Outlined cells differ from signed and internal work only.' : ''}
+        Empty = balanced. Click a cell for the breakdown in hours.
       </p>
       {cell && <DemandPanel stack={cell.stack} w={cell.w} onClose={() => setCell(null)} />}
     </section>
@@ -63,9 +62,9 @@ export function SkillMatrix({ title }: { title: string }) {
 }
 
 function DemandPanel({ stack, w, onClose }: { stack: string; w: Week; onClose: () => void }) {
-  const { model, scenario } = useModel();
-  const parts = demandParts(model, stack, w, scenario);
-  const free = freeCapacity(model, w, stack, scenario).people;
+  const { model } = useModel();
+  const parts = demandParts(model, stack, w);
+  const free = freeCapacity(model, w, stack).people;
   return (
     <SidePanel title={`${stackLabel(model, stack)} · week of ${shortDate(w)}`} onClose={onClose}>
       <div className="eyebrow mb-2">Unstaffed demand</div>

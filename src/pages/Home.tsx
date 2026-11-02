@@ -1,25 +1,23 @@
 import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  FUTURE, IN_4_WEEKS, PAST, TODAY, billableSplit, dataIssues, describeScenario, freeCapacity, isoWeek, issueCounts,
-  lastSync, loadByPerson, scenarioImpact, shortDate, skillGap, stackLabel, type Scenario,
+  FUTURE, IN_4_WEEKS, PAST, TODAY, billableSplit, dataIssues, freeCapacity, isoWeek, issueCounts,
+  lastSync, loadByPerson, shortDate, skillGap, stackLabel,
 } from '@/core';
 import { useModel } from '@/state/ModelContext';
 import { SkillMatrix } from '@/components/SkillMatrix';
 
-const PAIR: Scenario = { projects: { 'P-1': { on: true, startShiftWeeks: 0 }, 'P-2': { on: true, startShiftWeeks: 0 } }, alignStarts: true };
 const NEXT4 = FUTURE[4];
 
 const btn = 'border border-input rounded px-2.5 py-1 text-[12px] bg-white hover:bg-hover';
 
-function Tile({ q, big, lines, actions, note }: { q: string; big: ReactNode; lines: ReactNode[]; actions: ReactNode; note?: string }) {
+function Tile({ q, big, lines, actions }: { q: string; big: ReactNode; lines: ReactNode[]; actions: ReactNode }) {
   const nav = useNavigate();
   return (
     <section className="card p-4 flex flex-col">
       <h2 className="text-[12px] font-semibold text-ink2">{q}</h2>
       <div className="text-[19px] font-semibold mt-1.5 mb-1">{big}</div>
       <div className="text-[12px] text-ink2 space-y-0.5 flex-1">{lines.map((l, i) => <div key={i}>{l}</div>)}</div>
-      {note && <div className="text-[11px] text-navy-t3 mt-2">with scenario: {note}</div>}
       <div className="flex gap-2 mt-3">
         {actions}
         <button className={btn} onClick={() => nav(`/ask?q=${encodeURIComponent(q)}`)}>Ask about this</button>
@@ -34,15 +32,12 @@ const fmtTime = (iso: string) => {
 };
 
 export default function Home() {
-  const { model, scenario, setScenario } = useModel();
-  const nav = useNavigate();
-  const note = scenario ? describeScenario(model, scenario) : undefined;
+  const { model } = useModel();
   const M = (x: ReactNode) => <span className="font-mono">{x}</span>;
 
-  const gap = useMemo(() => skillGap(model, FUTURE[0], FUTURE[FUTURE.length - 1], scenario), [model, scenario]);
-  const load = useMemo(() => loadByPerson(model, TODAY, NEXT4, scenario), [model, scenario]);
-  const free = useMemo(() => freeCapacity(model, IN_4_WEEKS, null, scenario), [model, scenario]);
-  const pair = useMemo(() => scenarioImpact(model, PAIR), [model]);
+  const gap = useMemo(() => skillGap(model, FUTURE[0], FUTURE[FUTURE.length - 1]), [model]);
+  const load = useMemo(() => loadByPerson(model, TODAY, NEXT4), [model]);
+  const free = useMemo(() => freeCapacity(model, IN_4_WEEKS, null), [model]);
   const bill = useMemo(() => billableSplit(model, PAST[0], PAST[PAST.length - 1], 'company'), [model]);
 
   return (
@@ -53,11 +48,11 @@ export default function Home() {
         <h1 className="text-[22px] font-semibold">What needs attention</h1>
       </div>
       <div className="grid grid-cols-4 gap-3">
-        <Tile q="Which skill will we run short of?" note={note}
+        <Tile q="Which skill will we run short of?"
           big={gap.shortages.length ? stackLabel(model, gap.shortages[0].stack) : 'No shortages'}
           lines={gap.shortages.map((s) => <>{stackLabel(model, s.stack)} from w/c {shortDate(s.firstWeek)}, up to {M(s.peakFte)} FTE short</>)}
           actions={<Link className={btn} to="/plan">Open in Plan</Link>} />
-        <Tile q="Who is over 100%, and who is idle?" note={note}
+        <Tile q="Who is over 100%, and who is idle?"
           big={<>{M(load.over.length)} over · {M(load.idle.length)} idle</>}
           lines={[
             ...(load.over.length ? [<>Over: {load.over.map((o, i) => <span key={o.email}>{i ? ', ' : ''}{o.name} {M(`${o.peakPct}%`)}</span>)}</>] : []),
@@ -65,17 +60,10 @@ export default function Home() {
             ...(load.plannedWhileAway.length ? [<>Planned while away: {load.plannedWhileAway.map((o) => o.name).join(', ')}</>] : []),
           ]}
           actions={<Link className={btn} to="/plan">Open Plan</Link>} />
-        <Tile q={`Who will be available in 4 weeks? (w/c ${shortDate(IN_4_WEEKS)})`} note={note}
+        <Tile q={`Who will be available in 4 weeks? (w/c ${shortDate(IN_4_WEEKS)})`}
           big={<>{M(free.people.length)} people, {M(free.totalFreeHours)} h free</>}
           lines={free.people.slice(0, 4).map((p) => <>{p.name} · {p.mainStack} · {M(p.freeFte)} FTE ({M(p.freeHours)} h)</>)}
           actions={<Link className={btn} to="/plan">Open Plan</Link>} />
-        <Tile q="What if two pipeline projects start together?"
-          big={<>{M(pair.newlyOver.length)} people over 100%, {M(pair.stackChanges.length)} stacks short</>}
-          lines={[
-            ...pair.newlyOver.slice(0, 2).map((o) => <>{o.name} from {shortDate(o.firstWeek)}, peak {M(`${o.peakPct}%`)}</>),
-            ...(pair.stackChanges.length ? [<>{pair.stackChanges.map((s) => stackLabel(model, s.stack)).join(', ')}</>] : []),
-          ]}
-          actions={<button className={btn} onClick={() => { setScenario(PAIR); nav('/plan'); }}>Try this scenario</button>} />
         <Tile q="How much of our time went to billable work?"
           big={<>{M(`${bill.company.shareOfLoggedPct ?? '–'}%`)} of logged time <span className="text-[13px] font-normal text-ink2">vs {M(`${bill.targetPct}%`)} target</span></>}
           lines={[<>Utilisation {M(`${bill.company.utilisationPct ?? '–'}%`)} of available hours</>,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { dataIssues, resolveScenario, setProjectOn, shortDate, stackLabel } from '@/core';
+import { dataIssues, shortDate, stackLabel } from '@/core';
 import { useModel } from '@/state/ModelContext';
 import { AdminButton, adminInput } from '@/components/AdminControls';
 import { AdminProjectForm } from '@/components/AdminProjectForm';
@@ -7,22 +7,21 @@ import { AdminProjectPanel } from '@/components/AdminProjectPanel';
 import { AdminPeople } from '@/components/AdminPeople';
 
 function Projects() {
-  const { model, scenario, setScenario, applyOp } = useModel();
+  const { model, applyOp } = useModel();
   const [selected, setSelected] = useState<string>();
-  const starts = resolveScenario(model, scenario);
   const project = selected ? model.projectById.get(selected) : undefined;
   const unmapped = [...new Set(dataIssues(model).filter(issue => issue.rule === 'F2').map(issue => String(issue.row)))];
   return <div className="space-y-6">
     <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-5 items-start">
       <section className="min-w-0"><h2 className="text-[14px] font-semibold mb-3">Projects</h2><div className="overflow-x-auto"><table className="w-full text-[11px] text-left">
-        <thead className="border-b border-line text-ink2"><tr>{['Project', 'Type', 'Win chance', 'When', 'Unstaffed demand', 'Scenario', ''].map(label => <th key={label} className="font-semibold py-2 px-2 whitespace-nowrap">{label}</th>)}</tr></thead>
+        <thead className="border-b border-line text-ink2"><tr>{['Project', 'Type', 'Win chance', 'When', 'Unstaffed demand', 'In planning', ''].map(label => <th key={label} className="font-semibold py-2 px-2 whitespace-nowrap">{label}</th>)}</tr></thead>
         <tbody>{model.projects.map(project => <tr key={project.projectId} className="border-b border-line align-top">
           <td className="py-3 px-2 min-w-[120px]"><div className="font-semibold">{project.name}</div><div className="text-muted mt-0.5">{project.client}</div><div className="font-mono text-muted text-[10px]">{project.projectId}</div></td>
           <td className="py-3 px-2"><span className={`rounded px-1.5 py-0.5 whitespace-nowrap font-semibold ${project.type === 'signed' ? 'bg-navy-t1 text-navy' : project.type === 'pipeline' ? 'bg-amber-t1 text-amber-text' : 'bg-hover text-ink2'}`}>{project.type === 'signed' ? `Signed${project.origin === 'jira' ? ' · from Jira' : ''}` : project.type === 'pipeline' ? 'Pipeline' : 'Internal'}</span></td>
           <td className="py-3 px-2 font-mono whitespace-nowrap">{project.type === 'pipeline' ? project.winChancePct == null ? 'not set' : `${project.winChancePct}%` : '—'}</td>
           <td className="py-3 px-2 min-w-[130px]">{project.type === 'pipeline' ? `${shortDate(project.startDate)} · ${project.durationWeeks} wks` : `since ${shortDate(project.startDate)} → ${project.endDate ? shortDate(project.endDate) : 'ongoing'}`}</td>
           <td className="py-3 px-2 min-w-[160px] space-y-1">{project.demand.length ? project.demand.map((line, i) => <div key={i}>{stackLabel(model, line.stack)} <span className="font-mono">{line.fte} FTE</span>{line.email && ` · ${model.personByEmail.get(line.email)?.name ?? line.email}`}</div>) : '—'}</td>
-          <td className="py-3 px-2">{project.type === 'pipeline' ? <label className="flex items-center gap-1.5 whitespace-nowrap"><input aria-label={`${project.name} scenario`} type="checkbox" checked={Boolean(starts[project.projectId])} onChange={e => setScenario(setProjectOn(scenario, project.projectId, e.target.checked))} />{starts[project.projectId] ? 'on' : 'off'}</label> : <span className="whitespace-nowrap">always in</span>}</td>
+          <td className="py-3 px-2"><span className="whitespace-nowrap">{project.type === 'pipeline' ? 'not counted' : 'counted'}</span></td>
           <td className="py-3 px-2"><AdminButton aria-label={`${project.type === 'pipeline' ? 'Edit' : 'View'} ${project.name}`} onClick={() => setSelected(project.projectId)}>{project.type === 'pipeline' ? 'Edit' : 'View'}</AdminButton></td>
         </tr>)}</tbody>
       </table></div></section>

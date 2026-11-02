@@ -1,10 +1,10 @@
 import { useState, type FormEvent } from 'react';
-import { FUTURE, addWeeks, projectFromForm, setProjectOn, shortDate, stackLabel, type ProjectForm, type ProjectType } from '@/core';
+import { FUTURE, addWeeks, projectFromForm, shortDate, stackLabel, type ProjectForm, type ProjectType } from '@/core';
 import { useModel } from '@/state/ModelContext';
 import { AdminButton, AdminField, AdminWeekSelect, adminInput } from './AdminControls';
 
 export function AdminProjectForm() {
-  const { model, scenario, applyOp, setScenario } = useModel();
+  const { model, applyOp } = useModel();
   const initial = (): ProjectForm => ({ type: 'pipeline', name: '', client: '', winChancePct: '', startWeek: FUTURE[0], durationWeeks: 4, lines: [{ stack: model.allStacks[0] ?? '', fte: 1, fromOffset: '', toOffset: '' }] });
   const [form, setForm] = useState<ProjectForm>(initial);
   const [message, setMessage] = useState('');
@@ -17,7 +17,6 @@ export function AdminProjectForm() {
     const result = projectFromForm(model, form);
     if ('error' in result) { setError(result.error); setMessage(''); return; }
     applyOp({ op: 'addProject', project: result.project });
-    if (result.project.type === 'pipeline') setScenario(setProjectOn(scenario, result.project.projectId, true));
     setMessage(`${result.project.name} added · ${result.project.projectId}`); setError(''); setForm(initial());
   };
   return <form onSubmit={submit} noValidate className="bg-hover rounded-lg p-4 space-y-3" aria-label="Add a project">

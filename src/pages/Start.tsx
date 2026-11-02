@@ -22,7 +22,7 @@ const SECTIONS = [
 
 const PAGES = [
   { to: '/', name: 'Home', what: 'What needs attention this week: shortages, over and idle people, free capacity, billable time.', click: 'Click "Ask about this" on any tile.' },
-  { to: '/plan', name: 'Plan', what: 'Who works on what, week by week, and what pipeline projects would do to the team.', click: 'Switch a pipeline project on and watch the skill matrix.' },
+  { to: '/plan', name: 'Plan', what: 'Who works on what, week by week, from signed and internal work.', click: 'Click a person\u2019s week to see the hours behind it.' },
   { to: '/reports', name: 'Reports', what: 'What happened in the last five weeks: plan vs logged time, billable share, budget burn.', click: 'Look at the by-project drift table.' },
   { to: '/ask', name: 'Ask', what: 'Ask a question in plain words; a tested function finds the numbers and Claude writes the conclusion.', click: 'Click one of the suggested question chips.' },
   { to: '/admin', name: 'Admin', what: 'Add or edit projects, people skills and Jira mappings.', click: 'Map an unmapped Jira key to a project.' },
@@ -32,7 +32,7 @@ const CHECKS = [
   ['F1', 'Jira author not in HR or the account map', 'Hours stay on the project but are left out of people views.', 'warning', true],
   ['F2', 'Jira project key not mapped', 'Hours are kept under the unmapped key and count as non-billable until mapped.', 'warning', true],
   ['F3', 'Worklog has no FE/BE label', 'No effect; actuals use the person\u2019s main stack.', 'info', false],
-  ['F4', 'Pipeline project has no win chance', 'Shown as "not set" and can still be switched on.', 'info', false],
+  ['F4', 'Pipeline project has no win chance', 'Shown as "not set" in Admin.', 'info', false],
   ['F5', 'Sprint issue has no estimate', 'Counted as zero hours, so planned load should not be trusted blindly.', 'warning', false],
   ['F6', 'Absence overlaps a non-working day', 'The day is not deducted twice.', 'info', false],
   ['F7', 'Weekly hours blank in HR', 'A full-time default is used; HR should fix the source.', 'warning', false],
@@ -84,7 +84,7 @@ export default function Start() {
           <div className="eyebrow">Start here</div>
           <h1 className="text-[22px] font-semibold mb-2">How this demo works</h1>
           <p className="text-[13px] text-ink2 max-w-[720px] mb-3">
-            Capacity Planner answers five questions about an agency's people and projects: who is free in 4 weeks, what happens if two pipeline projects start together, which skill runs short, who is over 100% or idle, and how much time went to billable work.
+            Capacity Planner answers four questions about an agency's people and projects: who is free in 4 weeks, which skill runs short, who is over 100% or idle, and how much time went to billable work.
             It runs on fictional data shaped like real HR and Jira exports.
             Today is fixed at Monday 2 November 2026.
           </p>
@@ -164,7 +164,7 @@ export default function Start() {
         <section id="tour" className="card p-4 scroll-mt-4">
           <h2 className="text-[16px] font-semibold mb-2">Suggested tour</h2>
           <ol className="list-decimal pl-5 text-[13px] space-y-1">
-            <li>On <Link to="/" className={link}>Home</Link>, open "What if two pipeline projects start together?"</li>
+            <li>On <Link to="/" className={link}>Home</Link>, open "Who is over 100%, and who is idle?"</li>
             <li>In <Link to="/plan" className={link}>Plan</Link>, click a cell in the skill matrix to see the breakdown.</li>
             <li>In <Link to="/admin" className={link}>Admin</Link>, map an unmapped Jira key and watch Reports change.</li>
           </ol>
@@ -175,8 +175,9 @@ export default function Start() {
           <ul className="list-disc pl-5 text-[13px] space-y-1 text-ink2">
             <li>Uses fictional data only.</li>
             <li>Has no login.</li>
+            <li>Does not plan pipeline projects; only signed and internal work counts.</li>
             <li>Has no live Jira or HR connection; files are static exports.</li>
-            <li>Changes made in Admin are stored in this browser and can be undone with Reset edits.</li>
+            <li>Changes made in Admin and Plan are stored in this browser and can be undone with Reset Admin and Plan edits.</li>
             <li>Is not production-ready.</li>
           </ul>
         </section>
