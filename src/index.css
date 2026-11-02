@@ -5,3 +5,4 @@
 body { @apply bg-page text-ink font-sans; font-size: 13px; }
 .card { @apply bg-white border border-line rounded-[10px]; }
 .eyebrow { @apply uppercase font-semibold text-ink2; font-size: 11px; letter-spacing: 0.04em; }
+.hatch { background: repeating-linear-gradient(135deg, #FDE7D6 0 4px, #FFFFFF 4px 8px); }

@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
-  loadAll, applyOverrides, loadOverrides, saveOverrides, resetOverrides, withOp, withScenario,
+  loadAll, mergeUpload, applyOverrides, loadOverrides, saveOverrides, resetOverrides, withOp, withScenario,
   type Dataset, type Model, type Op, type OverrideLayer, type Scenario,
 } from '@/core';
 
@@ -12,6 +12,7 @@ interface Ctx {
   applyOp: (op: Op) => void;
   setScenario: (sc: Scenario | undefined) => void;
   reset: () => void;
+  upload: (path: string, text: string) => void;
 }
 
 const ModelContext = createContext<Ctx | null>(null);
@@ -32,6 +33,9 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   const setScenario = useCallback((sc: Scenario | undefined) =>
     setLayer((l) => { const n = withScenario(l, sc); saveOverrides(n); return n; }), []);
   const reset = useCallback(() => setLayer(resetOverrides()), []);
+  const upload = useCallback((path: string, text: string) => {
+    if (dataset) setDataset(mergeUpload(dataset, path, text, new Date().toISOString()));
+  }, [dataset]);
 
   const model = useMemo(() => {
     if (!dataset) return null;
@@ -52,7 +56,7 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   if (!dataset || !model) return <div className="p-10 text-muted">Loading sample data...</div>;
 
   return (
-    <ModelContext.Provider value={{ dataset, layer, model, scenario: layer.scenario, applyOp, setScenario, reset }}>
+    <ModelContext.Provider value={{ dataset, layer, model, scenario: layer.scenario, applyOp, setScenario, reset, upload }}>
       {children}
     </ModelContext.Provider>
   );
