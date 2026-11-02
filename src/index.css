@@ -6,3 +6,27 @@ body { @apply bg-page text-ink font-sans; font-size: 13px; }
 .card { @apply bg-white border border-line rounded-[10px]; }
 .eyebrow { @apply uppercase font-semibold text-ink2; font-size: 11px; letter-spacing: 0.04em; }
 .hatch { background: repeating-linear-gradient(135deg, #FDE7D6 0 4px, #FFFFFF 4px 8px); }
+
+:root {
+  --report-surface: #ffffff;
+  --report-primary: #1c3a62;
+  --report-secondary: #8e97a3;
+  --report-tertiary: #a9c1de;
+  --report-track: #e4e6e9;
+  --report-target: #b85c1e;
+  --report-needle: #1b1d21;
+  --report-label: #4f5661;
+}
+.report-tile { background: var(--report-surface); }
+.report-chart-primary { stroke: var(--report-primary); }
+.report-chart-secondary { stroke: var(--report-secondary); }
+.report-chart-tertiary { stroke: var(--report-tertiary); }
+.report-chart-track { stroke: var(--report-track); }
+.report-chart-target { stroke: var(--report-target); }
+.report-chart-needle { stroke: var(--report-needle); }
+.report-chart-swatch.report-chart-primary { fill: var(--report-primary); stroke: none; }
+.report-chart-swatch.report-chart-secondary { fill: var(--report-secondary); stroke: none; }
+.report-chart-swatch.report-chart-tertiary { fill: var(--report-tertiary); stroke: none; }
+.report-chart-swatch.report-chart-track { fill: var(--report-track); stroke: none; }
+.report-chart-swatch.report-chart-needle { fill: var(--report-needle); stroke: none; }
+.report-chart-label { fill: var(--report-label); font-size: 10px; }
