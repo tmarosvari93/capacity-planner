@@ -1,13 +1,16 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   loadAll, mergeUpload, applyOverrides, loadOverrides, saveOverrides, resetOverrides, withOp, withScenario,
-  type Dataset, type Model, type Op, type OverrideLayer,
+  type Dataset, type Model, type Op, type OverrideLayer, type Scenario,
 } from '@/core';
 
 interface Ctx {
   dataset: Dataset;
   layer: OverrideLayer;
   model: Model;
+  /** Pipeline toggles; only the Plan page reads this. */
+  scenario: Scenario | undefined;
+  setScenario: (sc: Scenario | undefined) => void;
   applyOp: (op: Op) => void;
   reset: () => void;
   upload: (path: string, text: string) => void;
@@ -18,12 +21,9 @@ const ModelContext = createContext<Ctx | null>(null);
 export function ModelProvider({ children }: { children: ReactNode }) {
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [layer, setLayer] = useState<OverrideLayer>(() => {
-    // Pipeline what-ifs were removed: drop any saved switch state so only signed and internal work counts.
-    const l = loadOverrides();
-    if (!l.scenario) return l;
-    const n = withScenario(l, undefined); saveOverrides(n); return n;
-  });
+  const [layer, setLayer] = useState<OverrideLayer>(() => loadOverrides());
+  const setScenario = useCallback((sc: Scenario | undefined) =>
+    setLayer((l) => { const n = withScenario(l, sc); saveOverrides(n); return n; }), []);
 
   useEffect(() => {
     loadAll((p) => fetch(`/data/${p}`).then((r) => {
@@ -57,7 +57,7 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   if (!dataset || !model) return <div className="p-10 text-muted">Loading sample data...</div>;
 
   return (
-    <ModelContext.Provider value={{ dataset, layer, model, applyOp, reset, upload }}>
+    <ModelContext.Provider value={{ dataset, layer, model, scenario: layer.scenario, setScenario, applyOp, reset, upload }}>
       {children}
     </ModelContext.Provider>
   );

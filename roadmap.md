@@ -7,3 +7,6 @@
 
 - [x] Build Projects, People, and read-only Settings tabs with project forms and editing panels.
 - [x] Verify project creation, signing, Jira mapping, people edits, persistence, and reset; 104 existing and 4 Admin tests passed.
+# Plan pipeline
+
+- [x] Restore Pipeline card with toggles, shift and align starts on Plan only.

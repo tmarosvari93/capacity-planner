@@ -5,4 +5,4 @@
 - Reports use core historical summaries without pipeline scenarios; reusable SVG report charts render those summaries without changing calculation logic.
 - Admin forms and panels dispatch context operations only; creation is validated by projectFromForm and HR/settings/account-map fields remain read-only to preserve imported facts.
 - Never edit `src/core`, `tests`, `fixtures`, `scripts`, `public/data`, `supabase/functions/ask` (see CORE.md); they are verified by the answer-key tests.
-- Scenario (pipeline what-if) UI and state are removed; the app always calls core functions without a scenario, and ModelContext clears any saved scenario on load. Core scenario code stays because it is protected.
+- Pipeline toggles (scenario) live in ModelContext but only the Plan page passes them to core functions; Home, Reports, Admin and Ask always compute without a scenario.
