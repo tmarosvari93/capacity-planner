@@ -232,7 +232,7 @@ function Group({ g, past, colCount, onCell }: {
           <td className="px-3 py-1.5 border-r border-line text-amber-text font-semibold sticky left-0 z-20 bg-amber-t1 truncate">Unstaffed · {g.stack}</td>
           {past.map((w) => <td key={w} />)}
           {FUTURE.map((w, i) => (
-            <td key={w} className={`text-center font-mono text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>
+            <td key={w} className={`text-center font-mono text-[11px] whitespace-nowrap text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>
               {g.demand[i] > 0 ? `${g.demand[i]} FTE` : ''}
             </td>
           ))}
