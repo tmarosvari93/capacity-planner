@@ -11,6 +11,8 @@ interface Ctx {
   /** Pipeline toggles; only the Plan page reads this. */
   scenario: Scenario | undefined;
   setScenario: (sc: Scenario | undefined) => void;
+  /** Admin/Plan ops plus pipeline projects whose start was shifted. */
+  editCount: number;
   applyOp: (op: Op) => void;
   reset: () => void;
   upload: (path: string, text: string) => void;
@@ -43,6 +45,9 @@ export function ModelProvider({ children }: { children: ReactNode }) {
     try { return applyOverrides(dataset, layer); } catch (e) { setError(e instanceof Error ? e.message : String(e)); return null; }
   }, [dataset, layer]);
 
+  const editCount = layer.ops.length +
+    Object.values(layer.scenario?.projects ?? {}).filter((p) => (p.startShiftWeeks ?? 0) !== 0).length;
+
   if (error) {
     return (
       <div className="p-10">
@@ -57,7 +62,7 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   if (!dataset || !model) return <div className="p-10 text-muted">Loading sample data...</div>;
 
   return (
-    <ModelContext.Provider value={{ dataset, layer, model, scenario: layer.scenario, setScenario, applyOp, reset, upload }}>
+    <ModelContext.Provider value={{ dataset, layer, model, scenario: layer.scenario, setScenario, editCount, applyOp, reset, upload }}>
       {children}
     </ModelContext.Provider>
   );
