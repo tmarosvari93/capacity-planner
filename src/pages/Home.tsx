@@ -47,6 +47,7 @@ export default function Home() {
 
   return (
     <div className="space-y-4">
+      <StartBanner />
       <div>
         <div className="eyebrow">Week of Mon {shortDate(TODAY)} 2026 · {isoWeek(TODAY).slice(-3)}</div>
         <h1 className="text-[22px] font-semibold">What needs attention</h1>
@@ -114,6 +115,25 @@ export default function Home() {
         </section>
         <ImportCard />
       </div>
+    </div>
+  );
+}
+
+const BANNER_KEY = 'capacity.startBannerDismissed';
+
+function StartBanner() {
+  const [hidden, setHidden] = useState(() => {
+    try { return window.localStorage.getItem(BANNER_KEY) === '1'; } catch { return false; }
+  });
+  if (hidden) return null;
+  const dismiss = () => {
+    setHidden(true);
+    try { window.localStorage.setItem(BANNER_KEY, '1'); } catch { /* storage unavailable */ }
+  };
+  return (
+    <div className="flex items-center justify-between gap-3 bg-navy-t1 text-navy rounded px-3 py-1.5 text-[12px]">
+      <span>New here? <Link to="/start" className="underline font-semibold">Read how this demo works</Link></span>
+      <button onClick={dismiss} aria-label="Dismiss" className="px-1.5 rounded hover:bg-white">×</button>
     </div>
   );
 }
