@@ -82,7 +82,7 @@ export default function Reports() {
       </section>
     </div>
 
-    <div className="grid grid-cols-1 2xl:grid-cols-[1.2fr_1fr] gap-6 items-start">
+    <div className="grid grid-cols-1 xl:grid-cols-[1.2fr_1fr] gap-6 items-start">
       <section className="min-w-0">
         <h2 className={`${heading} mb-2`}>By person · plan vs actual and billable</h2>
         <div className="overflow-x-auto" tabIndex={0} aria-label="Person report table">
