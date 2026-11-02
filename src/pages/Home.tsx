@@ -14,11 +14,11 @@ const btn = 'border border-input rounded px-2.5 py-1 text-[12px] bg-white hover:
 function Tile({ q, big, lines, actions }: { q: string; big: ReactNode; lines: ReactNode[]; actions: ReactNode }) {
   const nav = useNavigate();
   return (
-    <section className="card p-4 flex flex-col">
+    <section className="card p-4 flex flex-col h-full min-w-0">
       <h2 className="text-[12px] font-semibold text-ink2">{q}</h2>
       <div className="text-[19px] font-semibold mt-1.5 mb-1">{big}</div>
       <div className="text-[12px] text-ink2 space-y-0.5 flex-1">{lines.map((l, i) => <div key={i}>{l}</div>)}</div>
-      <div className="flex gap-2 mt-3">
+      <div className="flex flex-wrap gap-2 mt-auto pt-3">
         {actions}
         <button className={btn} onClick={() => nav(`/ask?q=${encodeURIComponent(q)}`)}>Ask about this</button>
       </div>
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="eyebrow">Week of Mon {shortDate(TODAY)} 2026 · {isoWeek(TODAY).slice(-3)}</div>
         <h1 className="text-[22px] font-semibold">What needs attention</h1>
       </div>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 min-[600px]:grid-cols-2 min-[1100px]:grid-cols-4 gap-3 items-stretch">
         <Tile q="Which skill will we run short of?"
           big={gap.shortages.length ? stackLabel(model, gap.shortages[0].stack) : 'No shortages'}
           lines={gap.shortages.map((s) => <>{stackLabel(model, s.stack)} from w/c {shortDate(s.firstWeek)}, up to {M(s.peakFte)} FTE short</>)}
@@ -65,7 +65,7 @@ export default function Home() {
           lines={free.people.slice(0, 4).map((p) => <>{p.name} · {p.mainStack} · {M(p.freeFte)} FTE ({M(p.freeHours)} h)</>)}
           actions={<Link className={btn} to="/plan">Open Plan</Link>} />
         <Tile q="How much of our time went to billable work?"
-          big={<>{M(`${bill.company.shareOfLoggedPct ?? '–'}%`)} of logged time <span className="text-[13px] font-normal text-ink2">vs {M(`${bill.targetPct}%`)} target</span></>}
+          big={<>{M(`${bill.company.shareOfLoggedPct ?? '–'}%`)} of logged time <span className="text-[13px] font-normal text-ink2 whitespace-nowrap">vs {M(`${bill.targetPct}%`)} target</span></>}
           lines={[<>Utilisation {M(`${bill.company.utilisationPct ?? '–'}%`)} of available hours</>,
             <>{shortDate(PAST[0])} – {shortDate(PAST[PAST.length - 1])} weeks, Jira worklogs</>]}
           actions={<Link className={btn} to="/reports">Open Reports</Link>} />

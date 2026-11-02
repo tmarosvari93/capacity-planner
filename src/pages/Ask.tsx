@@ -23,6 +23,11 @@ const FUNCTIONS: [string, string][] = [
   ['projectBurn()', 'Hours used against a project budget'],
 ];
 
+// Pipeline what-ifs are not part of the numbers; answer them here so the scenario function is never called.
+const PIPELINE_ANSWER = 'Pipeline projects are tracked in Admin and are not included in the numbers';
+const isScenarioQuestion = (q: string) =>
+  /\b(scenario|what[- ]if|pipeline|deal|deals|start (together|at the same time)|switch(ed)? on|align)/i.test(q);
+
 const callEdge = (body: Record<string, unknown>) =>
   supabase.functions.invoke('ask', { body }).then((r) => { if (r.error) throw r.error; return r.data; });
 
@@ -41,6 +46,10 @@ export default function Ask() {
     setBusy(text);
     setAnswer(null);
     try {
+      if (isScenarioQuestion(text)) {
+        setAnswer({ question: text, askedAt: new Date().toISOString(), status: 'cannot', conclusion: PIPELINE_ANSWER, usedTemplate: false });
+        return;
+      }
       setAnswer(await runAsk(model, text, undefined, callEdge));
     } catch (e) {
       setAnswer({ question: text, askedAt: new Date().toISOString(), status: 'error', conclusion: 'Something went wrong. Try again.',
