@@ -70,7 +70,7 @@ export function AdminProjectPanel({ project, onClose }: { project: Project; onCl
     <form onSubmit={addDemand} className="space-y-3 border-t border-line pt-4">
       <h3 className="font-semibold">Add a demand line</h3>
       <AdminField label="Demand stack"><select className={adminInput} value={stack} onChange={e => setStack(e.target.value)}>{model.allStacks.map(s => <option key={s} value={s}>{stackLabel(model, s)}</option>)}</select></AdminField>
-      <AdminField label="Demand FTE"><input className={adminInput} type="number" min="0.01" step="0.05" value={fte} onChange={e => setFte(e.target.value)} /></AdminField>
+      <AdminField label="Demand FTE"><input className={adminInput} type="number" min="0" step="any" value={fte} onChange={e => setFte(e.target.value)} /></AdminField>
       {pipeline && <AdminField label="Named person (optional)"><select className={adminInput} value={demandPerson} onChange={e => setDemandPerson(e.target.value)}><option value="">Unstaffed</option>{model.people.map(p => <option key={p.email} value={p.email}>{p.name}</option>)}</select></AdminField>}
       <div className="grid grid-cols-2 gap-2"><AdminField label="Demand from"><AdminWeekSelect emptyLabel="project start" value={from} onChange={e => setFrom(e.target.value)} /></AdminField><AdminField label="Demand to"><AdminWeekSelect emptyLabel="project end" value={to} onChange={e => setTo(e.target.value)} /></AdminField></div>
       <AdminButton type="submit">Add demand line</AdminButton>
