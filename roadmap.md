@@ -5,5 +5,5 @@
 
 # Admin page
 
-- [ ] Build Projects, People, and read-only Settings tabs with project forms and editing panels.
-- [ ] Verify project creation, signing, Jira mapping, people edits, persistence, and reset; run tests.
+- [x] Build Projects, People, and read-only Settings tabs with project forms and editing panels.
+- [x] Verify project creation, signing, Jira mapping, people edits, persistence, and reset; 104 existing and 4 Admin tests passed.
