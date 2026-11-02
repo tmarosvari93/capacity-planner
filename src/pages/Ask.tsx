@@ -29,7 +29,7 @@ const callEdge = (body: Record<string, unknown>) =>
   supabase.functions.invoke('ask', { body }).then((r) => { if (r.error) throw r.error; return r.data; });
 
 export default function Ask() {
-  const { model, scenario, setScenario } = useModel();
+  const { model, scenario } = useModel();
   const [params] = useSearchParams();
   const [q, setQ] = useState('');
   const [busy, setBusy] = useState<string | null>(null);
@@ -68,7 +68,7 @@ export default function Ask() {
         <div className="flex items-center gap-3 text-[12px]">
           <span className="bg-hover rounded px-2 py-1">Scenario: <b>{describeScenario(model, scenario)}</b></span>
           <button className="border border-input rounded px-2.5 py-1 hover:bg-hover"
-            onClick={() => { setAnswer(null); setQ(''); if (scenario) setScenario(undefined); }}>Clear</button>
+            onClick={() => { setAnswer(null); setQ(''); }}>Clear</button>
         </div>
       </div>
 
