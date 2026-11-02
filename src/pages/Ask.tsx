@@ -47,7 +47,7 @@ export default function Ask() {
     setAnswer(null);
     try {
       if (isScenarioQuestion(text)) {
-        setAnswer({ question: text, askedAt: new Date().toISOString(), status: 'outOfScope', conclusion: PIPELINE_ANSWER, usedTemplate: true } as AskAnswer);
+        setAnswer({ question: text, askedAt: new Date().toISOString(), status: 'cannot', conclusion: PIPELINE_ANSWER, usedTemplate: false });
         return;
       }
       setAnswer(await runAsk(model, text, undefined, callEdge));
