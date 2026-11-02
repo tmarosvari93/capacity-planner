@@ -20,7 +20,7 @@ export default function Plan() {
           <h1 className="text-[22px] font-semibold">Plan</h1>
           <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
         </div>
-        <SkillMatrix title="Skill matrix · FTE balance per week (– short, + spare)" />
+        <SkillMatrix title="Skill matrix · FTE balance per week" />
         <PeopleGrid />
       </div>
       <aside className="card w-[290px] shrink-0 p-4 sticky top-4 text-[12px] text-ink2 space-y-2">
@@ -63,7 +63,7 @@ function PeopleGrid() {
         <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[210px] border-r border-line">Person</th>
+              <th className="eyebrow text-left px-4 py-2 w-[210px] min-w-[210px] border-r border-line sticky left-0 z-10 bg-white">Person</th>
               {past.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
               {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
             </tr>
@@ -98,13 +98,13 @@ function Group({ g, past, colCount, onCell }: {
   return (
     <>
       <tr className="bg-page border-b border-line">
-        <td colSpan={colCount} className="eyebrow px-4 py-1.5">{label} · {g.people.length} (main stack)</td>
+        <td colSpan={colCount} className="eyebrow px-4 py-1.5"><span className="sticky left-4">{label} · {g.people.length} (main stack)</span></td>
       </tr>
       {g.people.map((p) => (
         <tr key={p.email} className="border-b border-line">
-          <td className="px-4 py-1.5 border-r border-line">
-            <div className="font-semibold">{p.name}</div>
-            <div className="text-[11px] text-ink2">
+          <td className="px-4 py-1.5 border-r border-line sticky left-0 z-10 bg-white max-w-[210px]" title={p.name}>
+            <div className="font-semibold truncate">{p.name}</div>
+            <div className="text-[11px] text-ink2 truncate">
               {p.weeklyHours} h/wk · {[p.mainStack, ...p.stacks.filter((s) => s !== p.mainStack)].filter(Boolean).join(', ')}
             </div>
           </td>
@@ -114,7 +114,7 @@ function Group({ g, past, colCount, onCell }: {
       ))}
       {g.hasDemand && g.stack && (
         <tr className="border-b border-line bg-amber-t1/40">
-          <td className="px-4 py-1.5 border-r border-line text-amber-text font-semibold">Unstaffed · {g.stack}</td>
+          <td className="px-4 py-1.5 border-r border-line text-amber-text font-semibold sticky left-0 z-10 bg-amber-t1 truncate">Unstaffed · {g.stack}</td>
           {past.map((w) => <td key={w} />)}
           {FUTURE.map((w, i) => (
             <td key={w} className={`text-center font-mono text-amber-text ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}>

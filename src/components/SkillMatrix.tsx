@@ -53,7 +53,7 @@ export function SkillMatrix({ title }: { title: string }) {
         </table>
       </div>
       <p className="px-4 py-2 text-[11px] text-ink2">
-        Orange −n = FTE short that week. Blue +n = FTE spare (free time of people whose main stack it is, shown from {spareMin} FTE).
+        – short, + spare. Orange −n = FTE short that week. Blue +n = FTE spare (free time of people whose main stack it is, shown from {spareMin} FTE).
         Empty = balanced. Click a cell for the breakdown in hours.
       </p>
       {cell && <DemandPanel stack={cell.stack} w={cell.w} onClose={() => setCell(null)} />}
