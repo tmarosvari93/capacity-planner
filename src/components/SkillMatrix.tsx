@@ -25,7 +25,7 @@ export function SkillMatrix({ title }: { title: string }) {
         <span className="text-[12px] text-ink2">{header}</span>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-[12px]">
+        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
               <th className="eyebrow text-left px-4 py-2 w-[220px] border-r-2 border-ink">Skill · stack</th>

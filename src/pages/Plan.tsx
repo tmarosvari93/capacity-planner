@@ -19,7 +19,7 @@ export default function Plan() {
       <div className="flex-1 min-w-0 space-y-4">
         <div>
           <h1 className="text-[22px] font-semibold">Plan</h1>
-          <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 week, {FUTURE.length} weeks.</p>
+          <p className="text-ink2">{shortDate(FUTURE[0])} 2026 – {shortDate(last)} 2027 (week of), {FUTURE.length} weeks.</p>
         </div>
         <PipelineCard />
         <SkillMatrix title="Skill matrix · FTE balance per week (– short, + spare)" />
@@ -52,7 +52,7 @@ function PipelineCard() {
         <button onClick={() => setScenario(undefined)} className="border border-input rounded px-2.5 py-1 text-[12px] hover:bg-hover">All off</button>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-[12px]">
+        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
               <th className="eyebrow text-left px-4 py-2 w-[260px] border-r-2 border-ink">On · deal</th>
@@ -87,10 +87,10 @@ function PipelineCard() {
                     const first = i === firstIdx;
                     return (
                       <td key={w} className={`${COL} py-2 px-0`}>
-                        <div title={label} className={`h-7 flex items-center overflow-visible whitespace-nowrap text-[11px] border-y
+                        <div title={label} className={`relative h-7 flex items-center overflow-visible whitespace-nowrap text-[11px] border-y
                           ${first ? 'border-l rounded-l pl-2 ml-0.5' : ''} ${w === end ? 'border-r rounded-r mr-0.5' : ''}
                           ${on ? 'bg-amber-t2 border-amber text-amber-text border-solid' : 'bg-white border-amber border-dashed text-amber-text'}`}>
-                          {first ? <span className="relative z-10">{label}</span> : null}
+                          {first ? <span className="absolute left-2 z-10 whitespace-nowrap">{label}</span> : null}
                         </div>
                       </td>
                     );
@@ -155,10 +155,10 @@ function PeopleGrid() {
         </label>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-[12px]">
+        <table className="table-fixed w-full min-w-[1100px] border-collapse text-[12px]">
           <thead>
             <tr className="border-y border-line">
-              <th className="eyebrow text-left px-4 py-2 w-[200px] border-r border-line">Person</th>
+              <th className="eyebrow text-left px-4 py-2 w-[210px] border-r border-line">Person</th>
               {past.map((w) => <th key={w} className={`px-1 py-2 ${COL}`}><WeekHead w={w} actual /></th>)}
               {FUTURE.map((w) => <th key={w} className={`px-1 py-2 ${COL} ${w === TODAY ? 'border-l-2 border-l-ink' : ''}`}><WeekHead w={w} /></th>)}
             </tr>
